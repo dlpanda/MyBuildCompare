@@ -1,0 +1,413 @@
+.index {
+	.navbar {
+		box-sizing: border-box;
+		position: relative;
+		height: 80px;
+
+		.logo {
+			position: absolute;
+			top: 20px;
+		}
+
+		.menu {
+			height: 100%;
+			line-height: 80px;
+			position: absolute;
+			right: 0px;
+
+			.menu-item {
+				cursor: pointer;
+				display: inline-block;
+				margin-right: 30px;
+			}
+
+			.menu-item:hover::after {
+				margin-top: -25px;
+				display: block;
+				content: "";
+				background: #3D3D3D;
+				height: 1px;
+				width: 100%;
+			}
+
+			.search-item {
+				display: inline;
+				width: 185px;
+				height: 40px;
+				border: solid 1px #D1D1D1;
+				border-radius: 90px;
+				padding: 9px 20px;
+
+				input {
+					width: 128px;
+					border: none;
+					padding-right: 30px;
+				}
+			}
+
+		}
+	}
+
+	.banner {
+		background-image: url('../assets/index/banner.png');
+		background-size: 100% 100%;
+		height: 600px;
+		width: 100%;
+		text-align: center;
+		font-size: 16px;
+
+		.title {
+			position: relative;
+			top: 226px;
+			color: #fff;
+			font-size: 48px;
+			text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+		}
+
+		.search {
+			position: relative;
+			display: inline-block;
+			width: 520px;
+			height: 70px;
+			top: 246px;
+			box-sizing: border-box;
+			/* border: 0.5px solid #D1D1D1; */
+			box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+			background-color: #fff;
+			border-radius: 90px;
+
+			>div {
+				display: inline-block;
+			}
+
+			.option {
+				position: relative;
+				cursor: pointer;
+				height: 70px;
+				line-height: 70px;
+				padding: 0 30px;
+				border-radius: 90px;
+				font-weight: 400;
+				color: #888888;
+			}
+
+			.option:nth-child(5) {
+				position: relative;
+				right: -6px;
+				padding-right: 90px;
+			}
+
+			.bold {
+				font-weight: 600;
+				color: #3D3D3D;
+			}
+
+			.round-icon-button {
+				position: absolute;
+				right: 10px;
+				top: 10px;
+				line-height: 48px;
+			}
+		}
+	}
+
+	.slider {
+		margin-top: 75px;
+		margin-left: 80px;
+
+		.title {
+			display: inline-block;
+		}
+
+		.arrow {
+			cursor: pointer;
+			float: right;
+			padding-right: 80px;
+			width: 70px;
+			text-align: right;
+
+			>div {
+				display: inline-block;
+				height: 32px;
+				width: 32px;
+				background-size: 100% 100%;
+			}
+
+			.left-arrow {
+				background-image: url('../assets/icon/left-arrow.png');
+			}
+
+			.right-arrow {
+				margin-left: 5px;
+				background-image: url('../assets/icon/right-arrow.png');
+			}
+
+			.left-arrow:hover {
+				background-image: url('../assets/icon/left-arrow-hover.png');
+			}
+
+			.right-arrow:hover {
+				margin-left: 5px;
+				background-image: url('../assets/icon/right-arrow-hover.png');
+			}
+		}
+
+		.scroll-content {
+			width: calc(100% - 80px);
+			overflow-x: scroll;
+
+			.content {
+				width: 1716px;
+				margin-top: 40px;
+
+				.slider-item {
+					display: inline-block;
+					position: relative;
+					width: 552px;
+					height: 332px;
+					border-radius: 6px;
+					margin-right: 20px;
+					background-size: 100% 100%;
+
+					p {
+						cursor: pointer;
+						position: absolute;
+						left: 30px;
+						bottom: 30px;
+						border-radius: 6px;
+						height: 34px;
+						line-height: 34px;
+						padding: 0 20px;
+						border-radius: 6px;
+						background: rgba(255, 255, 255, 0.8);
+						box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+					}
+
+					p:hover {
+						background: rgba(255, 255, 255, 1);
+					}
+				}
+
+				.slider-item:nth-child(1) {
+					background-image: url('../assets/index/slider-1.png');
+				}
+
+				.slider-item:nth-child(2) {
+					background-image: url('../assets/index/slider-2.png');
+				}
+
+				.slider-item:nth-child(3) {
+					background-image: url('../assets/index/slider-3.png');
+				}
+			}
+		}
+	}
+
+	.how-it-works {
+		margin-top: 75px;
+		padding-top: 75px;
+		padding-bottom: 75px;
+		background-image: url('../assets/index/module-bg.png');
+		background-size: 100% 100%;
+		text-align: center;
+
+		.items {
+			text-align: left;
+			display: flex;
+			width: 774px;
+			margin: 0 auto;
+			margin-top: 40px;
+
+			.item {
+				display: inline-block;
+				border-radius: 6px;
+				width: 216px;
+				height: 211px;
+				padding: 20px;
+				margin: 0px 20px;
+				border: 1px solid #D9D9D9;
+
+				p {
+					margin-top: 80px;
+				}
+
+				.content {
+					margin-top: 10px;
+				}
+			}
+		}
+
+		.button {
+			display: inline-block;
+			margin-top: 40px;
+			height: 48px;
+			line-height: 48px;
+		}
+	}
+
+	.blogs-articles {
+		margin: 80px 75px;
+
+		.items {
+			margin: 20px 0px;
+			display: flex;
+			flex-wrap: wrap;
+
+			.item {
+				margin: 20px 0px;
+				position: relative;
+				width: calc(50% - 40px);
+
+				.content {
+					position: absolute;
+					top: 0px;
+					left: 353px;
+				}
+
+				img {
+					border-radius: 12px;
+				}
+			}
+
+			.item:nth-child(odd) {
+				margin-right: 20px;
+			}
+		}
+
+		.button {
+			display: inline-block;
+			height: 48px;
+			line-height: 48px;
+		}
+	}
+
+	.other-builders {
+
+		padding-top: 75px;
+		padding-bottom: 60px;
+		background-image: url('../assets/index/module-bg.png');
+		background-size: 100% 100%;
+		text-align: center;
+
+		.items {
+			margin: 30px auto 0px auto;
+			width: 1120px;
+			background-size: 100% 100%;
+
+			.item {
+				display: inline-block;
+				position: relative;
+				margin: 10px 10px;
+				background: #fff;
+				width: 260px;
+				height: 90px;
+				border-radius: 12px;
+			}
+
+			.item:nth-child(1) {
+				background-image: url('../assets/index/other-builders/ansa-homes-logo.png');
+			}
+
+			.item:nth-child(2) {
+				background-image: url('../assets/index/other-builders/bluetongue-homes-logo.png');
+			}
+
+			.item:nth-child(3) {
+				background-image: url('../assets/index/other-builders/brolen-homes-logo.png');
+			}
+
+			.item:nth-child(4) {
+				background-image: url('../assets/index/other-builders/casaview-homes-logo.png');
+			}
+
+			.item:nth-child(5) {
+				background-image: url('../assets/index/other-builders/gjgardner-homes-logo 200x7.png');
+			}
+
+			.item:nth-child(6) {
+				background-image: url('../assets/index/other-builders/kurmond-homes-logo.png');
+			}
+
+			.item:nth-child(7) {
+				background-image: url('../assets/index/other-builders/lb-homes-logo.png');
+			}
+
+			.item:nth-child(8) {
+				background-image: url('../assets/index/other-builders/logico-homes-logo.png');
+			}
+
+			.item:nth-child(9) {
+				background-image: url('../assets/index/other-builders/ltk-homes-logo.png');
+			}
+
+			.item:nth-child(10) {
+				background-image: url('../assets/index/other-builders/simone-homes-logo.png');
+			}
+
+			.item:nth-child(11) {
+				background-image: url('../assets/index/other-builders/varroview-homes-logo.png');
+			}
+
+			.item:nth-child(12) {
+				background-image: url('../assets/index/other-builders/vesta-homes-logo.png');
+			}
+		}
+	}
+
+	footer {
+		padding: 0px 80px;
+		border-top: 1px solid #2CE8CB;
+		background: #F9FCFC;
+
+		.content {
+			border-bottom: 1px solid #2CE8CB;
+
+			.items {
+				width: 33%;
+				display: inline-block;
+				padding-bottom: 57px;
+
+				.title {
+					margin-top: 57px;
+					font-size: 16px;
+					font-weight: 600;
+					color: #3D3D3D;
+				}
+
+				p {
+					font-size: 16px;
+				}
+			}
+		}
+
+		.message {
+			height: 70px;
+			line-height: 70px;
+			font-size: 16px;
+
+			span {
+				margin-right: 20px;
+			}
+
+			>div {
+				float: right;
+
+				img {
+					margin-left: 10px;
+				}
+			}
+		}
+	}
+}
+
+.index .tablet {
+	main {
+		padding: 60px;
+	}
+}
+
+.index .mobile {
+	main {
+		padding: 20px;
+	}
+}
