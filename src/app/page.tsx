@@ -127,7 +127,7 @@ export default function Home() {
                         <Image src={Blogs2} alt="Blogs2" width={323} height={233} priority />
                         <div className='content'>
                             <p className='title-6-3D3D3D'>
-                                Don't Fall For Fke Base Prices And Avoid The Price Hike!
+                                Don Not Fall For Fke Base Prices And Avoid The Price Hike!
                             </p>
                             <p className='body-888888'>
                                 Written By <span className='underlined-links'>Mel Davies</span>
