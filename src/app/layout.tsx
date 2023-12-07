@@ -1,15 +1,15 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-// import './globals.css'
-import '../style/common.css'
-import '../style/color.css'
+// import './global.css'
+// import '../style/common.css'
+// import '../style/color.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export const metadata: Metadata = {
-    title: 'MyBuildCompare',
-    description: 'MyBuildCompare',
-}
+// export const metadata: Metadata = {
+//     title: 'MyBuildCompare',
+//     description: 'MyBuildCompare',
+// }
 
 export default function RootLayout({
     children,

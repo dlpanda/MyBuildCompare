@@ -1,0 +1,157 @@
+/* @tailwind base; */
+@tailwind components;
+
+@layer components {
+
+  /* font style */
+  .title-1 {
+    font-weight: 700;
+    font-size: 4rem;
+    color: #003431;
+  }
+
+  .title-2 {
+    font-weight: 700;
+    font-size: 3rem;
+    color: #003431;
+  }
+
+  .title-3 {
+    font-weight: 700;
+    font-size: 2.5rem;
+    color: #003431;
+  }
+
+  .title-4 {
+    font-weight: 700;
+    font-size: 2rem;
+    color: #003431;
+  }
+
+  .title-5-3D3D3D {
+    font-weight: 700;
+    font-size: 1.75rem;
+    color: #3D3D3D;
+  }
+
+  .title-6-3D3D3D {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #3D3D3D;
+  }
+
+  .title-6-003431 {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #003431;
+  }
+
+  .body-888888 {
+    font-weight: 400;
+    font-size: 1.125rem;
+    color: #888888;
+  }
+
+  .body-3D3D3D {
+    font-weight: 400;
+    font-size: 1.125rem;
+    color: #3D3D3D;
+  }
+
+  .body-3D3D3D-bold {
+    font-weight: 700;
+    font-size: 1.125rem;
+    color: #3D3D3D;
+  }
+
+  .body-6E6E6E {
+    font-weight: 400;
+    font-size: 1.125rem;
+    color: #6E6E6E;
+  }
+
+  .underlined-links {
+    cursor: pointer;
+    text-decoration: underline;
+    font-weight: 400;
+    font-size: 1.125rem;
+    color: #6E6E6E;
+  }
+
+  .Breadcrumb-history {
+    font-weight: 400;
+    font-size: 0.875rem;
+    color: #888888;
+  }
+
+  .Breadcrumb-now {
+    font-weight: 400;
+    font-size: 0.875rem;
+    color: #3D3D3D;
+  }
+
+  /* button style */
+  .button {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    padding: 0 1.25rem;
+    height: 3rem;
+    border-radius: 0.375rem;
+  }
+
+  .icon-button {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    padding: 1.25rem;
+    height: 3.125rem;
+    border-radius: 5.625rem;
+
+    .icon {
+      margin-right: 0.625rem;
+      height: 1rem;
+
+    }
+  }
+
+  .round-icon-button {
+    border-radius: 50%;
+    width: 3.125rem;
+    height: 3.125rem;
+  }
+
+  /* line style*/
+  .vertical-lines {
+    display: inline-block;
+    width: 1px;
+    height: 3.125rem;
+    line-height: 3.125rem;
+    background: #D9D9D9;
+  }
+
+  /* font-weight */
+  .semi-bold {
+    font-weight: 600;
+  }
+}
+
+@tailwind utilities;
+
+@media screen and (max-width:500px) {
+  html {
+    font-size: 12px
+  }
+}
+
+@media screen and (min-width:500px)and (max-width:1366px) {
+  html {
+    font-size: 14px
+  }
+}
+
+@media screen and (min-width:1366px) {
+  html {
+    font-size: 16px
+  }
+}

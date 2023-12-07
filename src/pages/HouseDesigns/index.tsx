@@ -19,12 +19,13 @@ import Blogs4 from '../../assets/index/houseDesigns/blogs-4.png'
 import '../../style/houseDesigns.css'
 import '../../style/common.css'
 import '../../style/color.css'
+import { useState } from 'react'
 
-export default function Home() {
+export default function HouseDesigns() {
     let searchValue = 'Search Category 1...'
     let search = 'Search'
     return (
-        <main className='index dark-grey'>
+        <main className='house-designs'>
             <div className='navbar'>
                 <div className='logo'>
                     <Link href="/"><Image src={Logo} alt="Logo" width={120} height={40} priority /></Link>
