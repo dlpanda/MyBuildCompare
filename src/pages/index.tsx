@@ -28,7 +28,7 @@ export default function Home() {
                     description={AppConfig.description} />
             }
         >
-            <div className='banner'>
+            <div className='banner backgroundImage-gradient-conic colors-hh'>
                 <div className='title'>Search. Compare. Build.</div>
                 <div className='search'>
                     <div className='option bold'>House Design</div>

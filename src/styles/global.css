@@ -1,4 +1,4 @@
-/* @tailwind base; */
+@tailwind base;
 @tailwind components;
 
 @layer components {
@@ -285,5 +285,21 @@
 
     .navbar .menu-btn {
         display: none;
+    }
+}
+.search-bar {
+    display: inline;
+    height: 100%;
+    border: solid 1px #D1D1D1;
+    background: #fff;
+    border-radius: 5.625rem;
+    padding: 0.5625rem 1.25rem;
+    input {
+        display: block;
+        outline: 0;
+        width: 11.75rem;
+        background:none;
+        border: none;
+        padding-right: 1.875rem;
     }
 }
