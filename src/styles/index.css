@@ -39,6 +39,7 @@
 				padding: 0.5625rem 1.25rem;
 
 				input {
+					outline: 0;
 					width: 11.75rem;
 					border: none;
 					padding-right: 1.875rem;
@@ -115,9 +116,9 @@
 		margin-top: 4.6875rem;
 		margin-left: 5rem;
 
-		.title {
+		/* .title {
 			display: inline-block;
-		}
+		} */
 
 		.arrow {
 			cursor: pointer;
@@ -152,12 +153,18 @@
 			}
 		}
 
+		.scroll-content::-webkit-scrollbar {
+			display: none;
+		}
+
 		.scroll-content {
 			width: calc(100% - 5rem);
 			overflow-x: scroll;
+			scrollbar-width: none;
+			-ms-overflow-style: none;
 
 			.content {
-				width: 171rem;
+				width: 108rem;
 				margin-top: 2.5rem;
 
 				.slider-item {
@@ -360,12 +367,21 @@
 		background: #F9FCFC;
 
 		.content {
+
+			/* 声明一个容器 */
+			display: grid;
+			/*  声明列的宽度  */
+        	grid-template-columns: repeat(3,1fr);
+			/*  声明行间距和列间距  */
+			grid-gap: 20px;
+			/*  声明行的高度  */
+			/* grid-template-rows: 50%; */
 			border-bottom: 1px solid #2CE8CB;
 
 			.items {
-				width: 33%;
+				/* width: 33%;
 				display: inline-block;
-				padding-bottom: 3.5625rem;
+				padding-bottom: 3.5625rem; */
 
 				.title {
 					margin-top: 3.5625rem;
@@ -397,17 +413,5 @@
 				}
 			}
 		}
-	}
-}
-
-.index .tablet {
-	main {
-		padding: 3.75rem;
-	}
-}
-
-.index .mobile {
-	main {
-		padding: 1.25rem;
 	}
 }

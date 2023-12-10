@@ -4,9 +4,8 @@ import { AppConfig } from '@/utils/AppConfig';
 // 組件
 import Meta from '@/layouts/Meta';
 import Main from '@/templates/Main';
+import Slider from '@/components/index/Slider';
 // 图片
-import Logo from '../assets/index/logo.png'
-import SearchGrey from '../assets/icon/search-grey.png'
 import Search from '@/assets/icon/search.png'
 import SearchGreen from '../assets/icon/search-green.png'
 import ContactGreen from '../assets/icon/contact-green.png'
@@ -42,28 +41,7 @@ export default function Home() {
                     </div>
                 </div>
             </div>
-            <div className='slider'>
-                <div className='title title-4'>
-                    Start Your Journey Here
-                </div>
-                <div className='arrow'>
-                    <div className='left-arrow'></div>
-                    <div className='right-arrow'></div>
-                </div>
-                <div className='scroll-content'>
-                    <div className='content dark-grey semi-bold'>
-                        <div className='slider-item'>
-                            <p>Single-Storey</p>
-                        </div>
-                        <div className='slider-item'>
-                            <p>Double-Storey</p>
-                        </div>
-                        <div className='slider-item'>
-                            <p>Duplex</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <Slider></Slider>
             <div className='how-it-works'>
                 <div className='title title-4'>
                     How It Works</div>
