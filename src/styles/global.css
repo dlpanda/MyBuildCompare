@@ -34,37 +34,37 @@
         color: #3D3D3D;
     }
 
-    .title-6-3D3D3D {
+    .title-6 {
         font-weight: 700;
         font-size: 1.5rem;
         color: #3D3D3D;
     }
 
-    .title-6-003431 {
+    .title-6-light {
         font-weight: 700;
         font-size: 1.5rem;
         color: #003431;
     }
 
-    .body-888888 {
+    .body-text {
         font-weight: 400;
         font-size: 1.125rem;
         color: #888888;
     }
 
-    .body-3D3D3D {
+    .body-text-grey {
         font-weight: 400;
         font-size: 1.125rem;
         color: #3D3D3D;
     }
 
-    .body-3D3D3D-bold {
+    .body-text-grey-bold {
         font-weight: 700;
         font-size: 1.125rem;
         color: #3D3D3D;
     }
 
-    .body-6E6E6E {
+    .body-text-light {
         font-weight: 400;
         font-size: 1.125rem;
         color: #6E6E6E;
@@ -78,13 +78,13 @@
         color: #6E6E6E;
     }
 
-    .Breadcrumb-history {
+    .breadcrumb-history {
         font-weight: 400;
         font-size: 0.875rem;
         color: #888888;
     }
 
-    .Breadcrumb-now {
+    .breadcrumb-now {
         font-weight: 400;
         font-size: 0.875rem;
         color: #3D3D3D;

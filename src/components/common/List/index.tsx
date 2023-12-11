@@ -8,7 +8,7 @@ type ListProps = {
 };
 export default function List(props: ListProps) {
     return (
-        <div className='text-base body-888888 '>
+        <div className='text-base body-text '>
             {props.items.map((v: any) => {
                 return (<div key={v.title}>{v.title}</div>)
             })}

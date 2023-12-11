@@ -12,46 +12,8 @@ export default function Footer(props: FooterProps) {
     return (
         <footer>
             {props.contentTemplate}
-            {/* <div className='content'>
-                <div className='items'>
-                    <p className='title dark-grey'>Quick Links</p>
-                    <p className='body-888888'>Quick Links1</p>
-                    <p className='body-888888'>Quick Links1</p>
-                    <p className='body-888888'>Quick Links1</p>
-                </div>
-                <div className='items'>
-                    <p className='title dark-grey'>Resources</p>
-                    <p className='body-888888'>Category 1</p>
-                    <p className='body-888888'>Category 2</p>
-                    <p className='body-888888'>Category 3</p>
-                </div>
-                <div className='items'>
-                    <p className='title dark-grey'>Designs By room</p>
-                    <p className='body-888888'>3 Bedroom Home Designs</p>
-                    <p className='body-888888'>4 Bedroom Home Designs</p>
-                    <p className='body-888888'>5 Bedroom Home Designs</p>
-                </div>
-                <div className='items'>
-                    <p className='title dark-grey'>Level Sites</p>
-                    <p className='body-888888'>All Level Site Home Designs</p>
-                    <p className='body-888888'>Single Storey Home Designs</p>
-                    <p className='body-888888'>Two Storey Home Designs</p>
-                </div>
-                <div className='items'>
-                    <p className='title dark-grey'>Designs By Must-Haves</p>
-                    <p className='body-888888'>Alfresco</p>
-                    <p className='body-888888'>Must-Have 2</p>
-                    <p className='body-888888'>Must-Have 3</p>
-                </div>
-                <div className='items'>
-                    <p className='title dark-grey'>Designs By Features</p>
-                    <p className='body-888888'>Popular feature 1</p>
-                    <p className='body-888888'>Popular feature 2</p>
-                    <p className='body-888888'>Popular feature 3</p>
-                </div>
-            </div> */}
-            <div className='message body-888888'>
-                <span>e</span>
+            <div className='message body-text'>
+                <span></span>
                 <span></span>
                 <span></span>
                 <span></span>

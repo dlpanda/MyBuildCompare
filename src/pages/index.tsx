@@ -48,28 +48,28 @@ export default function Home() {
                 <div className='items'>
                     <div className='item'>
                         <Image src={SearchGreen} alt="SearchGreen" width={40} height={40} priority />
-                        <p className='body-888888'>
+                        <p className='body-text'>
                             01
                         </p>
-                        <div className='content title-6-3D3D3D'>
+                        <div className='content title-6'>
                             Find The Ideal Home
                         </div>
                     </div>
                     <div className='item'>
                         <Image src={ContactGreen} alt="ContactGreen" width={40} height={40} priority />
-                        <p className='body-888888'>
+                        <p className='body-text'>
                             03
                         </p>
-                        <div className='content title-6-3D3D3D'>
+                        <div className='content title-6'>
                             Compare Builders
                         </div>
                     </div>
                     <div className='item'>
                         <Image src={HammerGreen} alt="HammerGreen" width={40} height={40} priority />
-                        <p className='body-888888'>
+                        <p className='body-text'>
                             04
                         </p>
-                        <div className='content title-6-3D3D3D'>
+                        <div className='content title-6'>
                             Build Your Dream Home
                         </div>
                     </div>
@@ -86,10 +86,10 @@ export default function Home() {
                     <div className='item'>
                         <Image src={Blogs1} alt="Blogs1" width={323} height={233} priority />
                         <div className='content'>
-                            <p className='title-6-3D3D3D'>
+                            <p className='title-6'>
                                 4 Common Floor Plan Mistakes!
                             </p>
-                            <p className='body-888888'>
+                            <p className='body-text'>
                                 Written By <span className='underlined-links'>Mel Davies</span>
                             </p>
                         </div>
@@ -97,10 +97,10 @@ export default function Home() {
                     <div className='item'>
                         <Image src={Blogs2} alt="Blogs2" width={323} height={233} priority />
                         <div className='content'>
-                            <p className='title-6-3D3D3D'>
+                            <p className='title-6'>
                                 Do not Fall For Fke Base Prices And Avoid The Price Hike!
                             </p>
-                            <p className='body-888888'>
+                            <p className='body-text'>
                                 Written By <span className='underlined-links'>Mel Davies</span>
                             </p>
                         </div>
@@ -108,10 +108,10 @@ export default function Home() {
                     <div className='item'>
                         <Image src={Blogs3} alt="Blogs3" width={323} height={233} priority />
                         <div className='content'>
-                            <p className='title-6-3D3D3D'>
+                            <p className='title-6'>
                                 When Is The Best Time To Start Building My New Home?
                             </p>
-                            <p className='body-888888'>
+                            <p className='body-text'>
                                 Written By <span className='underlined-links'>Kathy Schoonenberg</span>
                             </p>
                         </div>
@@ -119,10 +119,10 @@ export default function Home() {
                     <div className='item'>
                         <Image src={Blogs4} alt="Blogs4" width={323} height={233} priority />
                         <div className='content'>
-                            <p className='title-6-3D3D3D'>
+                            <p className='title-6'>
                                 What Stamp Duty Concessions And Exemptions Are Available For New Homes In NSW?
                             </p>
-                            <p className='body-888888'>
+                            <p className='body-text'>
                                 Written By <span className='underlined-links'>Mel Davies</span>
                             </p>
                         </div>

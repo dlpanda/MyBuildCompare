@@ -62,8 +62,8 @@ export default function HouseDesigns() {
                                 <Image src={HeartPNG} alt="HeartPNG" width={24} height={20} priority />
                             </div>
                             <div className='info'>
-                                <p className='body-3D3D3D-bold'>Name</p>
-                                <p className='body-6E6E6E'>Bed, bath, Garage, Squares</p>
+                                <p className='body-text-grey-bold'>Name</p>
+                                <p className='body-text-light'>Bed, bath, Garage, Squares</p>
                             </div>
                             <div className='user underlined-links'>
                                 More Details
@@ -72,7 +72,7 @@ export default function HouseDesigns() {
                     )
                 })}
             </div>
-            <div className='continuing title-6-3D3D3D'>Continuing Exploring</div>
+            <div className='continuing title-6'>Continuing Exploring</div>
             <div className='show-more button blue-green-gradient'>Show More</div>
         </Main>
     )
