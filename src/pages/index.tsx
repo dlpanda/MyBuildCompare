@@ -1,10 +1,12 @@
 import Image from 'next/image'
 import Link from "next/link"
 import { AppConfig } from '@/utils/AppConfig';
+import { BuilderCompare } from '@/utils/BuilderCompare';
 // 組件
 import Meta from '@/layouts/Meta';
 import Main from '@/templates/Main';
 import Slider from '@/components/index/Slider';
+import Grid from '@/components/common/Grid';
 // 图片
 import Search from '@/assets/icon/search.png'
 import SearchGreen from '../assets/icon/search-green.png'
@@ -23,7 +25,7 @@ export default function Home() {
     return (
         <Main
             meta={
-                <Meta 
+                <Meta
                     title={AppConfig.title}
                     description={AppConfig.description} />
             }
@@ -37,7 +39,7 @@ export default function Home() {
                     <div className='vertical-lines'>&nbsp;</div>
                     <div className='option'>Search Location</div>
                     <div className='round-icon-button blue-green-gradient'>
-                        <Image src={Search} alt="Search" width={16} height={16} priority />
+                        <Image className='inline-block' src={Search} alt="Search" width={16} height={16} priority />
                     </div>
                 </div>
             </div>
@@ -136,20 +138,29 @@ export default function Home() {
                 <div className='title title-4'>
                     Some Of The Many Builders We Compare
                 </div>
-                <div className='items'>
-                    <div className='item'></div>
-                    <div className='item'></div>
-                    <div className='item'></div>
-                    <div className='item'></div>
-                    <div className='item'></div>
-                    <div className='item'></div>
-                    <div className='item'></div>
-                    <div className='item'></div>
-                    <div className='item'></div>
-                    <div className='item'></div>
-                    <div className='item'></div>
-                    <div className='item'></div>
-                </div>
+                <Grid className="grid-cols-4 w-[67.25rem] mt-[1.875rem] mx-auto gap-3">
+                    {BuilderCompare.map((v: any) => {
+                        return (
+                            <div className='bg-white h-[5.625rem] rounded-xl]' key={v.id}>
+                                {/* <Image src="../assets/index/other-builders/ansa-homes-logo.png" alt="BuilderCompare" width={40} height={40} priority /> */}
+                            </div>
+                        )
+                    })}
+                </Grid >
+                    {/* <div className='items'>
+                        <div className='item'></div>
+                        <div className='item'></div>
+                        <div className='item'></div>
+                        <div className='item'></div>
+                        <div className='item'></div>
+                        <div className='item'></div>
+                        <div className='item'></div>
+                        <div className='item'></div>
+                        <div className='item'></div>
+                        <div className='item'></div>
+                        <div className='item'></div>
+                        <div className='item'></div>
+                    </div> */}
             </div>
         </Main>
     )

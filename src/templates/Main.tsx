@@ -40,7 +40,7 @@ export default function Main(props: IMainProps) {
             } ></Navbar>
             {props.children}
             <Footer contentTemplate={
-                <Grid items={FooterContent}>
+                <Grid cols={3}>
                     {FooterContent.map((v: any) => {
                         return (
                             <div className='dark-grey font-semibold' key={v.title}>
