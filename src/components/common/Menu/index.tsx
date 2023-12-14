@@ -9,7 +9,7 @@ type MenuProps = {
 export default function Menu(props: MenuProps) {
     return (
         <div>
-            <div className='h-full leading-[5rem] absolute right-0'>
+            <div className='h-full leading-[5rem] absolute right-[5rem]'>
                 {props.menuList.map(v => {
                     return (
                         <div

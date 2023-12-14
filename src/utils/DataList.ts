@@ -64,3 +64,13 @@ export const DataList = [{
     text: "4 Bed, 2 bath, 2 Garage, 26 Squares",
     author: "More Details"
 },]
+
+export const BreadcrumbData = [{
+    text: 'Home',
+},{
+    text: 'House Designs',
+},{
+    text: 'Builder Name',
+},{
+    text: 'Edgewater 186',
+},]

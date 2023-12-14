@@ -1,11 +1,20 @@
-type GradientButtonProps = {
-    text: string,
-    className?: string,
+
+import BreadcrumbNow from '@/components/common/Text/BreadcrumbNow';
+import BreadcrumbHistory from '@/components/common/Text/BreadcrumbHistory';
+type BreadcrumbProps = {
+    data: any,
 };
-export default function GradientButton(props: GradientButtonProps) {
+export default function Breadcrumb(props: BreadcrumbProps) {
+    const data = JSON.parse(JSON.stringify(props.data))
+    const current:any = data.pop()
     return (
-        <div className={`button green-gradient ${props.className}`}>
-            {props.text}
+        <div className='px-20'>
+            {data.map((v: any, i: number) => {
+                return (
+                    <BreadcrumbHistory key={i} text={v.text}></BreadcrumbHistory>
+                )
+            })}
+            <BreadcrumbNow text={current.text}></BreadcrumbNow>
         </div>
     )
 }

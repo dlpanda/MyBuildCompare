@@ -1,6 +1,6 @@
 type TextProps = {
     text: string,
-    className: any,
+    className?: any,
 };
 export default function Text(props: TextProps) {
     return (

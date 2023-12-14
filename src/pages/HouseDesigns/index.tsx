@@ -13,13 +13,10 @@ import Title6 from '@/components/common/Title/Title6';
 import GradientButton from '@/components/common/Button/GradientButton';
 import HouseItem from '@/components/HouseItem';
 // 图片
-import SearchBlack from '../../assets/icon/search-black.png'
 import CofingPNG from '../../assets/icon/cofing.png'
-import HeartPNG from '../../assets/icon/heart.png'
 import House from '../../assets/house-designs/house.png'
 import HouseNext from '../../assets/house-designs/house-next.png'
 import HouseAbove from '../../assets/house-designs/house-above.png'
-import ItemLogo from '../../assets/house-designs/item-logo.png'
 import '../../styles/common.css'
 import '../../styles/color.css'
 import { useState } from 'react'

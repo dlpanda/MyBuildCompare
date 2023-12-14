@@ -3,7 +3,7 @@ type TextProps = {
 };
 export default function Text(props: TextProps) {
     return (
-        <div className='breadcrumb-now'>
+        <div className='breadcrumb-now inline-block'>
             {props.text}
         </div>
     )

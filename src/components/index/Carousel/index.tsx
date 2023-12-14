@@ -25,9 +25,9 @@ export default function CommonCarousel(props: CommonCarouselProps) {
             emulateTouch={false} // 是否拖拽滑动
         >
             {
-                data.map((item: any) => {
+                data.map((item: any, i: any) => {
                     // onClick={() => openUrl(item.url)}
-                    return <div className='w-1/3' key={item.uuid}>
+                    return <div className='w-1/3' key={i}>
                         <div>
                             <Image src={item.src} alt="Search" priority />
                         </div>
