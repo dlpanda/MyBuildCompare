@@ -1,5 +1,5 @@
-import logo from '@/assets/HouseDesigns/item-logo.png'
-import house from '@/assets/HouseDesigns/item-img.png'
+import logo from '../assets/HouseDesigns/item-logo.png'
+import house from '../assets/HouseDesigns/item-img.png'
 export const DataList = [{
     logoSrc:logo,
     isCollect: false,
