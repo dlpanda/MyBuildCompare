@@ -8,6 +8,7 @@ type SearchItemProps = {
     placeholder?: string,
     iconUrl?: string,
     clickSearch: Function,
+    className?:string,
 };
 export default function SearchItem(props: SearchItemProps) {
     const [searchValue, setsearchValue] = useState('');
@@ -18,7 +19,7 @@ export default function SearchItem(props: SearchItemProps) {
         placeholder = 'search'
     } = props;
     return (
-        <div className='search-bar'>
+        <div className={`${props.className} inline h-full border border-[#D1D1D1] background-white rounded-[5.625rem] py-[0.5625rem] px-5`}>
             {
                 !hideIcon && iconPoistion === 'left' ?
                     <Image className="inline-block mr-1" onClick={() => { props.clickSearch(searchValue) }} src={iconUrl} alt="SearchGrey" width={15} height={15} priority />

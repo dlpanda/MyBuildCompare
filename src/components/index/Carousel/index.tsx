@@ -5,11 +5,10 @@ import { Carousel } from 'react-responsive-carousel';
 import Image from 'next/image'
 type CommonCarouselProps = {
     data: any;
-    autoPlay?: boolean;
     // children: ReactNode;
 };
 export default function CommonCarousel(props: CommonCarouselProps) {
-    const { data, autoPlay = true } = props
+    const { data } = props
     return (
         <Carousel
             className='w-full'
@@ -17,7 +16,7 @@ export default function CommonCarousel(props: CommonCarouselProps) {
             showStatus={false} //是否展示右上角状态
             showIndicators={true} // 是否展示指示器
             infiniteLoop={true} //时候循环
-            autoPlay={autoPlay} //是否自动播放
+            autoPlay={true} //是否自动播放
             stopOnHover={true} //  鼠标放上去是否停止播放
             showThumbs={false} // 是否展示轮播缩放展示图
             useKeyboardArrows={false} // 是否使用键盘左右按钮滑动
@@ -28,8 +27,11 @@ export default function CommonCarousel(props: CommonCarouselProps) {
             {
                 data.map((item: any) => {
                     // onClick={() => openUrl(item.url)}
-                    return <div className='w-full' key={item.uuid}>
-                        <Image src={item.src} alt="carouselImg" width={323} height={333} priority />
+                    return <div className='w-1/3' key={item.uuid}>
+                        <div>
+                            <Image src={item.src} alt="Search" priority />
+                        </div>
+                        <p className='h-8 leading-8	px-4 rounded-md absolute  bottom-7  left-7 cursor-pointer bg-white/80 hover:bg-white'>{item.title}</p>
                     </div>
                 })
             }

@@ -1,7 +1,7 @@
 
 type GapProps = {
-    width: String,
-    height: String;
+    width: string,
+    height: string;
 };
 export default function Gap(props: GapProps) {
     const {width = '20px',height = '100px'} = props

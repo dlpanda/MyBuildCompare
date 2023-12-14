@@ -1,23 +1,22 @@
-import Link from 'next/link';
-import Image, { StaticImageData } from 'next/image'
+import Image from 'next/image'
 import Facebook from '@/assets/index/facebook.png'
 import Instagram from '@/assets/index/instagram.png'
 import Pinterest from '@/assets/index/pinterest.png'
-import { ReactNode } from 'react';
 type FooterProps = {
     contentTemplate: any,
-    children: ReactNode;
+    messageData:any,
 };
 export default function Footer(props: FooterProps) {
     return (
-        <footer>
+        <footer className='px-20 bg-[#F9FCFC]'>
             {props.contentTemplate}
-            <div className='message body-text'>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <div>
+            <div className='h-[4.375rem] leading-[4.375rem] body-text'>
+                {props.messageData.map((v:any)=>{
+                    return (
+                        <span className='mr-5' key={v.text}>{v.text}</span>
+                    )
+                })}
+                <div className='flex mt-[1.25rem] float-right gap-[0.625rem]'>
                     <Image src={Instagram} alt="Blogs3" width={30} height={30} priority />
                     <Image src={Facebook} alt="Blogs3" width={30} height={30} priority />
                     <Image src={Pinterest} alt="Blogs3" width={30} height={30} priority />

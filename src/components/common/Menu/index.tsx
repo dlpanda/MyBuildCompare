@@ -9,10 +9,25 @@ type MenuProps = {
 export default function Menu(props: MenuProps) {
     return (
         <div>
-            <div className='menu'>
+            <div className='h-full leading-[5rem] absolute right-0'>
                 {props.menuList.map(v => {
                     return (
-                        <div key={v.name} className='menu-item'><Link href={v.href}>{v.name}</Link></div>
+                        <div
+                            key={v.name}
+                            className='
+                                menu-item
+                                cursor-pointer 
+                                inline-block 
+                                mr-8
+                                // hover:after:content-[""]
+                                // hover:after:mt-[-1.5rem]
+                                // hover:after:block
+                                // hover:after:bg-#3D3D3D
+                                // hover:after:h-0.5
+                                // hover:after:w-full
+                            '>
+                            <Link href={v.href}>{v.name}</Link>
+                        </div>
                     )
                 })}
                 {props.children}

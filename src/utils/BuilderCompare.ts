@@ -1,37 +1,51 @@
+
+import { QAPageJsonLd } from 'next-seo'
+import q from '../assets/index/other-builders/ansa-homes-logo.png'
+import w from '../assets/index/other-builders/bluetongue-homes-logo.png'
+import e from '../assets/index/other-builders/brolen-homes-logo.png'
+import r from '../assets/index/other-builders/casaview-homes-logo.png'
+import t from '../assets/index/other-builders/gjgardner-homes-logo 200x7.png'
+import a from '../assets/index/other-builders/kurmond-homes-logo.png'
+import s from '../assets/index/other-builders/lb-homes-logo.png'
+import d from '../assets/index/other-builders/logico-homes-logo.png'
+import f from '../assets/index/other-builders/ltk-homes-logo.png'
+import z from '../assets/index/other-builders/simone-homes-logo.png'
+import x from '../assets/index/other-builders/varroview-homes-logo.png'
+import c from '../assets/index/other-builders/vesta-homes-logo.png'
 export const BuilderCompare = [{
     id:1,
-    src: "../assets/index/other-builders/ansa-homes-logo.png"
+    src: q
 },{
     id:2,
-    href: "../assets/index/other-builders/bluetongue-homes-logo.png"
+    src: w
 },{
     id:3,
-    href: "../assets/index/other-builders/brolen-homes-logo.png"
+    src: e
 },{
     id:4,
-    href: "../assets/index/other-builders/casaview-homes-logo.png"
+    src: r
 },{
     id:5,
-    href: "../assets/index/other-builders/gjgardner-homes-logo.png"
+    src: t
 },{
     id:6,
-    href: "../assets/index/other-builders/kurmond-homes-logo.png"
+    src: a
 },{
     id:7,
-    href: "../assets/index/other-builders/lb-homes-logo.png"
+    src: s
 },{
     id:8,
-    href: "../assets/index/other-builders/logico-homes-logo.png"
+    src: d
 },{
     id:9,
-    href: "../assets/index/other-builders/ltk-homes-logo.png"
+    src: f
 },{
     id:10,
-    href: "../assets/index/other-builders/simone-homes-logo.png"
+    src: z
 },{
     id:11,
-    href: "../assets/index/other-builders/varroview-homes-logo.png"
+    src: x
 },{
     id:12,
-    href: "../assets/index/other-builders/vesta-homes-logo.png"
+    src: c
 }]

@@ -1,5 +1,4 @@
-import Link from 'next/link';
-import Image from 'next/image'
+
 import { useState } from 'react';
 import type { ReactNode } from 'react';
 import '@/styles/global.css'
@@ -13,6 +12,7 @@ import { FooterContent, FooterMessage } from '@/utils/FooterConfig';
 import SearchItem from '@/components/index/SearchItem';
 import Navbar from '@/components/common/Navbar';
 import Menu from '@/components/common/Menu';
+import LineBottom from '@/components/common/LineBottom';
 import SearchBar from '@/components/common/SearchBar';
 import List from '@/components/common/List';
 import Grid from '@/components/common/Grid';
@@ -31,7 +31,7 @@ export default function Main(props: IMainProps) {
         setsearchValue(value)
     }
     return (
-        <div className='index'>
+        <div>
             {props.meta}
             <Navbar logoUrl={Logo} menuTemplate={
                 <Menu menuList={MenuConfig}>
@@ -39,17 +39,21 @@ export default function Main(props: IMainProps) {
                 </Menu>
             } ></Navbar>
             {props.children}
+            <LineBottom></LineBottom>
             <Footer contentTemplate={
-                <Grid cols={3}>
-                    {FooterContent.map((v: any) => {
-                        return (
-                            <div className='dark-grey font-semibold' key={v.title}>
-                                {v.title}
-                                <List items={v.children}></List>
-                            </div>
-                        )
-                    })}
-                </Grid>
+                <div>
+                    <Grid className="grid-cols-3 gap-6 py-[4.125rem]">
+                        {FooterContent.map((v: any) => {
+                            return (
+                                <div className='dark-grey font-semibold' key={v.title}>
+                                    {v.title}
+                                    <List items={v.children}></List>
+                                </div>
+                            )
+                        })}
+                    </Grid>
+                    <LineBottom></LineBottom>
+                </div>
             } messageData={FooterMessage}></Footer>
         </div>
     )

@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from "react";
 import silder1 from '@/assets/index/slider-1.png'
 import silder2 from '@/assets/index/slider-2.png'
 import silder3 from '@/assets/index/slider-3.png'
-import CommonCarousel from '@/components/common/CommonCarousel';
+import Carousel from '@/components/index/Carousel';
 export default function Slider() {
     const data = [{
         uuid: 1,
@@ -28,7 +28,7 @@ export default function Slider() {
                 <div className='left-arrow'></div>
                 <div className='right-arrow'></div>
             </div>
-            <CommonCarousel data={data}></CommonCarousel>
+            <Carousel data={data}></Carousel>
             {/* <div className='scroll-content' ref={scrollDom}>
                 <div className='content dark-grey semi-bold' ref={scrollContent}>
                     <div className='slider-item'>

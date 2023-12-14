@@ -6,8 +6,8 @@ type NavbarProps = {
 };
 export default function Navbar(props: NavbarProps) {
     return (
-        <div className='navbar'>
-            <div className='logo'>
+        <div className='box-border relative	h-20'>
+            <div className='absolute top-5'>
                 <Link href="/"><Image src={props.logoUrl} alt="Logo" width={120} height={40} priority /></Link>
             </div>
             {props.menuTemplate}

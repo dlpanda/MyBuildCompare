@@ -7,9 +7,8 @@ type GridProps = {
 };
 export default function Grid(props: GridProps) {
     const {cols = 3} = props
-    const colsClassName = `grid-cols-${cols}`
     return (
-        <div className={`grid ${colsClassName}  ${props.className}`}>
+        <div className={`grid ${props.className}`}>
             {props.children}
         </div>
     )

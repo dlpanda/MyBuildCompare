@@ -3,6 +3,15 @@ import Link from "next/link"
 import { AppConfig } from '@/utils/AppConfig';
 import Meta from '@/layouts/Meta';
 import Main from '@/templates/Main';
+import { DataList } from '@/utils/DataList';
+// 组件
+import SearchBar from '@/components/common/SearchBar';
+import IconVerticalButton from '@/components/common/Button/IconVerticalButton';
+import IconButton from '@/components/common/Button/IconButton';
+import Grid from '@/components/common/Grid';
+import Title6 from '@/components/common/Title/Title6';
+import GradientButton from '@/components/common/Button/GradientButton';
+import HouseItem from '@/components/HouseItem';
 // 图片
 import SearchBlack from '../../assets/icon/search-black.png'
 import CofingPNG from '../../assets/icon/cofing.png'
@@ -11,14 +20,16 @@ import House from '../../assets/houseDesigns/house.png'
 import HouseNext from '../../assets/houseDesigns/house-next.png'
 import HouseAbove from '../../assets/houseDesigns/house-above.png'
 import ItemLogo from '../../assets/houseDesigns/item-logo.png'
-import ItemImg from '../../assets/houseDesigns/item-img.png'
 import '../../styles/common.css'
 import '../../styles/color.css'
-import '@/styles/houseDesigns.css'
 import { useState } from 'react'
 
 export default function HouseDesigns() {
     const [searchValue, setsearchValue] = useState('');
+    const getSearchValue = (value: string) => {
+        console.log("searchValue：" + value)
+        setsearchValue(value)
+    }
     return (
         <Main
             meta={
@@ -26,54 +37,32 @@ export default function HouseDesigns() {
                     title={AppConfig.title}
                     description={AppConfig.description} />
             }
-
         >
-            <div className='search-items dark-grey'>
-                <div className='item'>
-                    <Image src={House} alt="House" width={29} height={24} priority />
-                    <p>Single-Storey</p>
-                </div>
-                <div className='item'>
-                    <Image src={HouseNext} alt="HouseNext" width={27} height={24} priority />
-                    <p>Double-Storey</p>
-                </div>
-                <div className='item'>
-                    <Image src={HouseAbove} alt="HouseAbove" width={27} height={24} priority />
-                    <p>Duplex</p>
-                </div>
-                <div className='search-item'>
-                    <Image src={SearchBlack} alt="SearchBlack" width={20} height={20} priority />
-                    <input className='grey' type="text" value={searchValue} placeholder='Search' onChange={e => {
-                        setsearchValue(e.target.value);
-                    }} />
-                </div>
-                <div className='filters'>
-                    <Image src={CofingPNG} alt="CofingPNG" width={20} height={17.5} priority />
-                    <p>Filters</p>
-                </div>
+            <div className='flex justify-center gap-5 h-12'>
+                <IconVerticalButton iconSrc={House} iconWidth={29} iconHeight={24} text='Single-Storey'></IconVerticalButton>
+                <IconVerticalButton iconSrc={HouseNext} iconWidth={27} iconHeight={24} text='Double-Storey'></IconVerticalButton>
+                <IconVerticalButton iconSrc={HouseAbove} iconWidth={27} iconHeight={24} text='Duplex'></IconVerticalButton>
+                <SearchBar className='button-box-shadow' clickSearch={getSearchValue} placeholder={'Search'} iconPoistion='left'></SearchBar>
+                <IconButton iconSrc={CofingPNG} iconWidth={20} iconHeight={20} text='Filters'></IconButton>
             </div>
-            <div className='house-list'>
-                {new Array(9).fill(0).map((v, i) => {
+            <Grid className="grid-cols-4 gap-x-[20px] gap-y-[40px] pt-[3.125rem] px-20">
+                {DataList.map((v: any,i:number) => {
                     return (
-                        <div key={i} className='house-item'>
-                            <Image className='house-img' src={ItemImg} alt="ItemImg" width={323} height={285} priority />
-                            <Image className='logo' src={ItemLogo} alt="ItemLogo" width={100} height={30} priority />
-                            <div className='heart'>
-                                <Image src={HeartPNG} alt="HeartPNG" width={24} height={20} priority />
-                            </div>
-                            <div className='info'>
-                                <p className='body-text-grey-bold'>Name</p>
-                                <p className='body-text-light'>Bed, bath, Garage, Squares</p>
-                            </div>
-                            <div className='user underlined-links'>
-                                More Details
-                            </div>
-                        </div>
+                        <HouseItem
+                            key={i}
+                            logoSrc={v.logoSrc}
+                            isCollect={v.isCollect}
+                            carouselImgSrc={v.carouselImgSrc}
+                            title={v.title}
+                            text={v.text}
+                            author={v.author}></HouseItem>
                     )
                 })}
+            </Grid>
+            <Title6 className='mt-[4.6875rem] mb-[1.25rem] mx-auto text-center' text={'Continuing Exploring'}></Title6> 
+            <div className='text-center'>
+                <GradientButton className='blue-green-gradient mb-[4.6875rem] mx-auto' text={'Show More'}></GradientButton> 
             </div>
-            <div className='continuing title-6'>Continuing Exploring</div>
-            <div className='show-more button blue-green-gradient'>Show More</div>
         </Main>
     )
 }

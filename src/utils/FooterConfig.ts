@@ -1,56 +1,56 @@
 export const FooterContent = [{
     title: 'Quick Links',
     children:[{
-        title:'Quick Links',
+        title:'Quick Links1',
     },{
-        title:'Quick Links',
+        title:'Quick Links2',
     },{
-        title:'Quick Links',
+        title:'Quick Links3',
     }]
 },{
     title: 'Resources',
     children:[{
-        title:'Resources',
+        title:'Resources1',
     },{
-        title:'Resources',
+        title:'Resources2',
     },{
-        title:'Resources',
+        title:'Resources3',
     }]
 },{
     title: 'Designs By room',
     children:[{
-        title:'Designs By room',
+        title:'1Designs By room',
     },{
-        title:'Designs By room',
+        title:'2Designs By room',
     },{
-        title:'Designs By room',
+        title:'3Designs By room',
     }]
 },{
     title: 'Level Sites',
     children:[{
-        title:'Level Sites',
+        title:'Level Sites1',
     },{
-        title:'Level Sites',
+        title:'Level Sites2',
     },{
-        title:'Level Sites',
+        title:'Level Sites3',
     }]
 },{
     title: 'Designs By Must-Haves',
     children:[{
-        title:'Designs By Must-Haves',
+        title:'1Designs By Must-Haves',
     },{
-        title:'Designs By Must-Haves',
+        title:'2Designs By Must-Haves',
     },{
-        title:'Designs By Must-Haves',
+        title:'3Designs By Must-Haves',
     }]
 },{
     title: 'Designs By Features',
     children:[{
-        title:'Designs By Features',
+        title:'1Designs By Features',
     },{
-        title:'Designs By Features',
+        title:'2Designs By Features',
     },{
-        title:'Designs By Features',
+        title:'3Designs By Features',
     }]
 }]
 export const FooterMessage = [{
