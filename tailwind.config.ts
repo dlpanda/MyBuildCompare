@@ -10,10 +10,18 @@ const config: Config = {
     theme: {
         extend: {
             screens: {
-                'tablet': '640px',
-                'laptop': '1024px',
+                'mobile': {
+                    max:'1023px'
+                },
+                'tablet': {
+                    min:'1024px',
+                    max:'1279px'
+                },
                 'desktop': '1280px',
             },
+            backgroundColor:{
+                'popup':'#666666'
+            }
         },
     },
     plugins: [],
