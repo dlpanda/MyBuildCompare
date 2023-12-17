@@ -1,6 +1,6 @@
 type TitleProps = {
     text: string,
-    className: string,
+    className?: string,
 };
 export default function Title(props: TitleProps) {
     return (
