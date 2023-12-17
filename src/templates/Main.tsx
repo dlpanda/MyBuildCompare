@@ -9,7 +9,7 @@ import '@/styles/index.css'
 import { MenuConfig } from '@/utils/MenuConfig';
 import { FooterContent, FooterMessage } from '@/utils/FooterConfig';
 // 组件
-import SearchItem from '@/components/index/SearchItem';
+import SearchItem from '@/components/MybuildCompare/SearchItem';
 import Navbar from '@/components/common/Navbar';
 import Menu from '@/components/common/Menu';
 import LineBottom from '@/components/common/LineBottom';
@@ -42,7 +42,7 @@ export default function Main(props: IMainProps) {
             <LineBottom></LineBottom>
             <Footer contentTemplate={
                 <div>
-                    <Grid className="grid-cols-3 gap-6 py-[4.125rem]">
+                    <Grid className="grid-cols-3 tablet:grid-cols-2 mobile:grid-cols-2 gap-6 py-[4.125rem]">
                         {FooterContent.map((v: any) => {
                             return (
                                 <div className='dark-grey font-semibold' key={v.title}>

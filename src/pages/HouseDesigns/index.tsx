@@ -39,10 +39,10 @@ export default function HouseDesigns() {
                 <IconVerticalButton iconSrc={House} iconWidth={29} iconHeight={24} text='Single-Storey'></IconVerticalButton>
                 <IconVerticalButton iconSrc={HouseNext} iconWidth={27} iconHeight={24} text='Double-Storey'></IconVerticalButton>
                 <IconVerticalButton iconSrc={HouseAbove} iconWidth={27} iconHeight={24} text='Duplex'></IconVerticalButton>
-                <SearchBar className='button-box-shadow' clickSearch={getSearchValue} placeholder={'Search'} iconPoistion='left'></SearchBar>
-                <IconButton iconSrc={CofingPNG} iconWidth={20} iconHeight={20} text='Filters'></IconButton>
+                <SearchBar className='button-box-shadow mobile:hidden' clickSearch={getSearchValue} placeholder={'Search'} iconPoistion='left'></SearchBar>
+                <IconButton textClassName="mobile:hidden" iconSrc={CofingPNG} iconWidth={20} iconHeight={20} text='Filters'></IconButton>
             </div>
-            <Grid className="grid-cols-4 gap-x-[20px] gap-y-[40px] pt-[3.125rem] px-20">
+            <Grid className="grid-cols-4 gap-x-[20px] gap-y-[40px] pt-[3.125rem] px-20 tablet:grid-cols-2 mobile:grid-cols-1">
                 {DataList.map((v: any,i:number) => {
                     return (
                         <HouseItem

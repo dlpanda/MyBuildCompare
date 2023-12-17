@@ -12,5 +12,5 @@ export const MenuConfig = [{
     href: "/HouseDesigns"
 },{
     name: 'Contact',
-    href: "/HouseDesigns"
+    href: "/IndividualBuilder"
 }]

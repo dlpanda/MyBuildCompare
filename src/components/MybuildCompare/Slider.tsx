@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from "react";
 import silder1 from '@/assets/index/slider-1.png'
 import silder2 from '@/assets/index/slider-2.png'
 import silder3 from '@/assets/index/slider-3.png'
-import Carousel from '@/components/index/Carousel';
+import Carousel from '@/components/MybuildCompare/Carousel';
 export default function Slider() {
     const data = [{
         uuid: 1,
@@ -20,14 +20,14 @@ export default function Slider() {
     },]
 
     return (
-        <div className='slider'>
+        <div className='slider mx-[5rem] mobile:mx-2'>
             <div className='title title-4'>
                 Start Your Journey Here
             </div>
-            <div className='arrow'>
+            {/* <div className='arrow'>
                 <div className='left-arrow'></div>
                 <div className='right-arrow'></div>
-            </div>
+            </div> */}
             <Carousel data={data}></Carousel>
             {/* <div className='scroll-content' ref={scrollDom}>
                 <div className='content dark-grey semi-bold' ref={scrollContent}>

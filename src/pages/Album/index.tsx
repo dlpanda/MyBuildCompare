@@ -10,7 +10,6 @@ import Breadcrumb from '@/components/common/Breadcrumb';
 import LineBottom from '@/components/common/LineBottom';
 import Title4 from '@/components/common/Title/Title4';
 import Title6 from '@/components/common/Title/Title6';
-import Title6Light from '@/components/common/Title/Title6Light';
 import BodyTextGreyBold from '@/components/common/Text/BodyTextGreyBold';
 import Grid from '@/components/common/Grid';
 import Form from '@/components/common/Form';
@@ -24,7 +23,6 @@ import Gap from '@/components/common/Gap';
 import CheckBox from '@/components/common/CheckBox';
 import GradientButton from '@/components/common/Button/GradientButton';
 import HouseItem from '@/components/HouseItem';
-import CommonCarousel from '@/components/common/CommonCarousel';
 // 图片
 import Share from '@/assets/icon/share.png'
 import HeartLine from '@/assets/icon/heart-line.png'
@@ -41,7 +39,12 @@ import '@/styles/color.css'
 import { useState } from 'react'
 
 export default function HouseDesigns() {
-    const houseList = JSON.parse(JSON.stringify(DataList)).splice(0, 4)
+    const [searchValue, setsearchValue] = useState('');
+    const getSearchValue = (value: string) => {
+        console.log("searchValue：" + value)
+        setsearchValue(value)
+    }
+    const houseList = DataList.splice(0,4)
     return (
         <Main
             meta={
@@ -51,51 +54,34 @@ export default function HouseDesigns() {
             }
         >
             <LineBottom color="#EFEFEF"></LineBottom>
-            <Breadcrumb className=" mobile:px-2" data={BreadcrumbData}></Breadcrumb>
+            <Breadcrumb data={BreadcrumbData}></Breadcrumb>
             <LineBottom color="#EFEFEF"></LineBottom>
-            <div className='px-20 mobile:px-2'>
-                <Gap className='mobile:hidden' size={50}></Gap>
+            <div className='px-20'>
+                <Gap size={50}></Gap>
                 <div className='flex justify-between'>
-                    <Title4 className='mobile:hidden' text='Edgewater 186 by G.J. Gardner'></Title4>
+                    <Title4 text='Edgewater 186 by G.J. Gardner'></Title4>
                     <div className='flex'>
-                        <IconButton className='border-none shadow-none pr-[0.75rem] mobile:hidden' textClassName="underline body-text-grey tablet:hidden" iconSrc={Share} iconWidth={20} iconHeight={20} text='Share'></IconButton>
-                        <IconButton className='border-none shadow-none pr-[2rem] mobile:hidden' textClassName="underline body-text-grey tablet:hidden" iconSrc={HeartLine} iconWidth={20} iconHeight={20} text='Save'></IconButton>
-                        <IconButton className='border-none shadow-none green-gradient text-white tablet:hidden mobile:hidden' iconSrc={Compare} iconWidth={20} iconHeight={20} text='Compare' iconPoistion='right'></IconButton>
+                        <IconButton className='border-none shadow-none pr-[0.75rem]' textClassName="underline body-text-grey" iconSrc={Share} iconWidth={20} iconHeight={20} text='Share'></IconButton>
+                        <IconButton className='border-none shadow-none pr-[2rem]' textClassName="underline body-text-grey" iconSrc={HeartLine} iconWidth={20} iconHeight={20} text='Save'></IconButton>
+                        <IconButton className='border-none shadow-none green-gradient text-white' iconSrc={Compare} iconWidth={20} iconHeight={20} text='Compare' iconPoistion='right'></IconButton>
                     </div>
                 </div>
-                <Gap className='mobile:hidden' size={40}></Gap>
-                <ButtonOnImg className='mobile:hidden' imgSrc={MainImg}>
+                <Gap size={40}></Gap>
+                <ButtonOnImg className='mt-[2.5rem]' imgSrc={MainImg}>
                     <Button className='absolute bottom-7 right-7 bg-white body-text-grey-bold py-2' text='Show All Photos'></Button>
                 </ButtonOnImg>
-                <CommonCarousel className='hidden mobile:block' autoPlay={false}>
-                    {
-                        houseList[0].carouselImgSrc.map((item: any, index: any) => {
-                            return <div className='w-full' key={index}>
-                                <Image src={item.src} alt="carouselImg" width={323} height={333} priority />
-                            </div>
-                        })
-                    }
-                </CommonCarousel>
-                <Title6Light className='hidden mobile:block' text='Edgewater 186 by G.J. Gardner'></Title6Light>
-                <IconButton className='border-none shadow-none hidden float-right mobile:block' iconSrc={HeartLine} iconWidth={20} iconHeight={20} iconPoistion='right'></IconButton>
                 <Gap size={40}></Gap>
                 <div className='flex'>
-                    <div className='w-[70%] tablet:w-full mobile:w-full'>
-                        <Image className='inline-block ml-[30px] mobile:hidden' src={houseLogo} alt="img" width={200} height={70} priority />
-                        <Link href='/IndividualBuilder'><UnderLinedLinks className='inline-block' text="Visit Builder Page"></UnderLinedLinks></Link>
+                    <div className='w-[70%]'>
+                        <Image className='inline-block ml-[30px]' src={houseLogo} alt="img" width={200} height={70} priority />
+                        <UnderLinedLinks className='inline-block' text="Visit Builder Page"></UnderLinedLinks>
                         <Gap size={80}></Gap>
-                        <Grid className="grid-cols-4 gap-y-[20px] px-[4.375rem] text-center mobile:grid-cols-2">
+                        <div className='flex justify-between px-[4.375rem]'>
                             <IconVerticalButton iconSrc={BedPNG} iconWidth={33} iconHeight={30} text='4 Bed'></IconVerticalButton>
                             <IconVerticalButton iconSrc={BathPNG} iconWidth={33} iconHeight={30} text='2 Bath'></IconVerticalButton>
                             <IconVerticalButton iconSrc={GaragePNG} iconWidth={33} iconHeight={30} text='2 Garage'></IconVerticalButton>
                             <IconVerticalButton iconSrc={LivingPNG} iconWidth={33} iconHeight={30} text='1 Living'></IconVerticalButton>
-                        </Grid>
-                        {/* <div className='flex justify-between px-[4.375rem]  mobile:grid-cols-1'>
-                            <IconVerticalButton iconSrc={BedPNG} iconWidth={33} iconHeight={30} text='4 Bed'></IconVerticalButton>
-                            <IconVerticalButton iconSrc={BathPNG} iconWidth={33} iconHeight={30} text='2 Bath'></IconVerticalButton>
-                            <IconVerticalButton iconSrc={GaragePNG} iconWidth={33} iconHeight={30} text='2 Garage'></IconVerticalButton>
-                            <IconVerticalButton iconSrc={LivingPNG} iconWidth={33} iconHeight={30} text='1 Living'></IconVerticalButton>
-                        </div> */}
+                        </div>
                         <UnderLinedLinks className='text-center' text="Show more specs"></UnderLinedLinks>
                         <Gap size={40}></Gap>
                         <BodyText text="How would you like to live in a house which epitomises the best of indoor and outdoor entertaining, one which takes housing design to a whole new level? The Edgewater, exclusive to G.J. Gardner Homes, consistently delivers the ‘wow’ factor. Featuring a well thought out living area, an open plan family room making an effortless connection to the large alfresco and a formal dining area with its own patio. When seclusion is needed the master bedroom allows you to pamper yourself with a stylish walk-in robe and an elegant ensuite featuring double vanities. Edgewater designs, a stunning new addition to Australia’s best home range."></BodyText>
@@ -110,7 +96,7 @@ export default function HouseDesigns() {
                         <Gap size={40}></Gap>
                         <BodyTextGreyBold text='Must Haves'></BodyTextGreyBold>
                         <Gap size={20}></Gap>
-                        <Grid className="grid-cols-2 gap-y-[20px] mobile:grid-cols-1">
+                        <Grid className="grid-cols-2 gap-y-[20px]">
                             <CheckBox text='Alfresco' isChecked={true}></CheckBox>
                             <CheckBox text='Rumpus' isChecked={true}></CheckBox>
                             <CheckBox text='Home Theatre'></CheckBox>
@@ -122,7 +108,7 @@ export default function HouseDesigns() {
                         <UnderLinedLinks className='text-left' text="Show all inclusions"></UnderLinedLinks>
                         <Gap size={75}></Gap>
                     </div>
-                    <div className='w-[30%] tablet:hidden mobile:hidden'>
+                    <div className='w-[30%]'>
                         <Form></Form>
                     </div>
                 </div>
@@ -131,7 +117,7 @@ export default function HouseDesigns() {
                 <Gap size={75}></Gap>
                 <Title4 className='mx-20' text='Similar House Designs'></Title4>
                 <Gap size={40}></Gap>
-                <Grid className="grid-cols-4 gap-x-[20px] gap-y-[40px] pt-[3.125rem] px-20 tablet:grid-cols-2 mobile:grid-cols-1">
+                <Grid className="grid-cols-4 gap-x-[20px] gap-y-[40px] pt-[3.125rem] px-20">
                     {houseList.map((v: any, i: number) => {
                         if (i < 4) {
                             return (

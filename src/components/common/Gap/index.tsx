@@ -1,12 +1,19 @@
 
 type GapProps = {
-    width: string,
-    height: string;
+    size: number,
+    direction?: string,
+    className?: string,
 };
 export default function Gap(props: GapProps) {
-    const {width = '20px',height = '100px'} = props
+    let width, height
+    if (props.direction === 'verical') {
+        width = props.size / 16 + 'rem'
+        height = '100%'
+    } else {
+        width = '100%'
+        height = props.size / 16 + 'rem'
+    }
     return (
-        <div style={{width:width+'px',height:height+'px'}}></div>
+        <div className={props.className} style={{ width, height }}></div>
     )
 }
-    

@@ -1,19 +1,20 @@
 import Image, { StaticImageData } from 'next/image'
-type ColunmProps = {
+type BlogsProps = {
+    className:string,
     dataList: any,
 };
-export default function Colunm(props: ColunmProps) {
+export default function Blogs(props: BlogsProps) {
     return (
-        <div className="grid grid-cols-2 gap-10 my-10">
+        <div className={`grid grid-cols-2 gap-10 my-10 ${props.className}`}>
             {props.dataList.map((v: any) => {
                 return (
-                    <div key={v.id} className='flex'>
+                    <div key={v.id} className='flex tablet:block'>
                         <div className='flex-1'>
                             <Image className="rounded-[0.75rem] w-full" src={v.imgSrc} alt="icon" priority />
                         </div>
-                        <div  className='content w-1/2 pl-4'>
+                        <div className='content w-1/2 pl-4 tablet:w-full tablet:pl-0'>
                             <p className='title-6'>{v.title}</p>
-                            <p className='body-text'>Written By <span className='underlined-links'>{v.author}</span></p>
+                            <p className='body-text tablet:pt-2'>Written By <span className='underlined-links'>{v.author}</span></p>
                         </div>
                     </div>
                 )

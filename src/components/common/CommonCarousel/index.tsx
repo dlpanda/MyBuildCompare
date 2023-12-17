@@ -1,18 +1,20 @@
 
-import { ReactNode } from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
-import Image from 'next/image'
 type CommonCarouselProps = {
-    data: any;
+    className?: string;
     autoPlay?: boolean;
-    // children: ReactNode;
+    children: any;
+    dynamicHeight?: boolean;
 };
 export default function CommonCarousel(props: CommonCarouselProps) {
-    const { data, autoPlay = true } = props
+    const { 
+        autoPlay = true, 
+        dynamicHeight = false 
+    } = props
     return (
         <Carousel
-            className='w-full'
+            className={`w-full ${props.className}`}
             showArrows={true} //是否展示左右箭头
             showStatus={false} //是否展示右上角状态
             showIndicators={true} // 是否展示指示器
@@ -22,17 +24,10 @@ export default function CommonCarousel(props: CommonCarouselProps) {
             showThumbs={false} // 是否展示轮播缩放展示图
             useKeyboardArrows={false} // 是否使用键盘左右按钮滑动
             swipeable={false} // 是否刷新
-            dynamicHeight={true} //动态高度
+            dynamicHeight={dynamicHeight} //动态高度
             emulateTouch={false} // 是否拖拽滑动
         >
-            {
-                data.map((item: any) => {
-                    // onClick={() => openUrl(item.url)}
-                    return <div className='w-full' key={item.uuid}>
-                        <Image src={item.src} alt="carouselImg" width={323} height={333} priority />
-                    </div>
-                })
-            }
+            {props.children}
         </Carousel >
     )
 }

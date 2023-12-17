@@ -3,7 +3,7 @@ import { ReactNode } from 'react';
 import Image, { StaticImageData } from 'next/image'
 type IconButtonVerticalProps = {
     className?: string,
-    text: string,
+    text?: string,
     iconSrc: string | StaticImageData,
     iconWidth: number,
     iconHeight: number,

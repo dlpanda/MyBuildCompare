@@ -5,9 +5,9 @@ import SearchGrey from '@/assets/icon/search-grey.png'
 type SearchItemProps = {
     hideIcon?: Boolean,
     iconPoistion?: 'right' | 'left',
-    placeholder?: string,
     iconUrl?: string,
     clickSearch: Function,
+    placeholder?: string,
     className?:string,
 };
 export default function SearchItem(props: SearchItemProps) {

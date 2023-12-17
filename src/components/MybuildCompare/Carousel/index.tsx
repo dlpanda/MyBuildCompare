@@ -27,12 +27,14 @@ export default function CommonCarousel(props: CommonCarouselProps) {
             {
                 data.map((item: any, i: any) => {
                     // onClick={() => openUrl(item.url)}
-                    return <div className='w-1/3' key={i}>
-                        <div>
-                            <Image src={item.src} alt="Search" priority />
+                    return (
+                        <div className='w-1/3 mobile:w-full' key={i}>
+                            <div>
+                                <Image src={item.src} alt="Search" priority />
+                            </div>
+                            <p className='h-8 leading-8	px-4 rounded-md absolute  bottom-7  left-7 cursor-pointer bg-white/80 hover:bg-white'>{item.title}</p>
                         </div>
-                        <p className='h-8 leading-8	px-4 rounded-md absolute  bottom-7  left-7 cursor-pointer bg-white/80 hover:bg-white'>{item.title}</p>
-                    </div>
+                    )
                 })
             }
         </Carousel >

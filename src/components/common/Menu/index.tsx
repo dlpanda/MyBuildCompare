@@ -9,7 +9,7 @@ type MenuProps = {
 export default function Menu(props: MenuProps) {
     return (
         <div>
-            <div className='h-full leading-[5rem] absolute right-[5rem]'>
+            <div className='h-full leading-[5rem] absolute right-[5rem] tablet:hidden mobile:hidden'>
                 {props.menuList.map(v => {
                     return (
                         <div
@@ -33,7 +33,7 @@ export default function Menu(props: MenuProps) {
                 {props.children}
                 {/* <Menu clickSearch={getSearchValue}></Menu> */}
             </div>
-            <div className='menu-btn'>
+            <div className='menu-btn absolute right-2 top-8 hidden tablet:block tablet:right-20 mobile:block'>
                 <Image src={MenuIcon} alt="MenuIcon" width={30} height={20} priority />
             </div>
         </div>

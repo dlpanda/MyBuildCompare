@@ -5,10 +5,12 @@ import { BuilderCompare } from '@/utils/BuilderCompare';
 // 组件
 import Meta from '@/layouts/Meta';
 import Main from '@/templates/Main';
-import Slider from '@/components/index/Slider';
+import Slider from '@/components/MybuildCompare/Slider';
 import Grid from '@/components/common/Grid';
-import Blogs from '@/components/common/Blogs';
-import Colunm from '@/components/common/Colunm';
+import Gap from '@/components/common/Gap';
+import Blogs from '@/components/MybuildCompare/Blogs';
+import MobileBlogs from '@/components/MybuildCompare/MobileBlogs';
+import Colunm from '@/components/MybuildCompare/Colunm';
 import Title4 from '@/components/common/Title/Title4';
 import LineVertical from '@/components/common/LineVertical';
 import GradientButton from '@/components/common/Button/GradientButton';
@@ -70,10 +72,10 @@ export default function Home() {
                     description={AppConfig.description} />
             }
         >
-            <div className='banner backgroundImage-gradient-conic colors-hh'>
+            <div className="banner bg-cover bg-[url('../assets/index/banner.png')] mobile:bg-[url('../assets/index/banner-small-screen.png')]">
                 <div className='title'>Search. Compare. Build.</div>
                 <div className='search'>
-                    <div className='option bold'>House Design</div>
+                    <div className='option bold'><Link href={'/HouseDesigns'}>House Design</Link></div>
                     <LineVertical></LineVertical>
                     <div className='option bold'>Filters</div>
                     <LineVertical></LineVertical>
@@ -83,23 +85,26 @@ export default function Home() {
                     </div>
                 </div>
             </div>
+            <Gap className="mobile:hidden" size={75}></Gap>
+            <Gap className="hidden mobile:block" size={40}></Gap>
             <Slider></Slider>
-            <div className='mt-[4.6875rem] py-[4.6875rem] bg-cover text-center' style={{backgroundImage: `url(${ModuleBg.src})`}}>
+            <div className='mt-[4.6875rem] py-[4.6875rem] bg-cover text-center bg-cover' style={{backgroundImage: `url(${ModuleBg.src})`}}>
                 <Title4 text="How It Works"></Title4>
                 <Colunm dataList={columData}></Colunm>
                 <GradientButton className='mt-10' text='Connect With Right Builder'></GradientButton>
             </div>
-            <div className='my-20 mx-[4.6875rem]'>
+            <div className='my-20 mx-[4.6875rem] mobile:mx-2'>
                 <Title4 text="Blogs And Articles"></Title4>
-                <Blogs dataList={blogsData}></Blogs>
+                <Blogs className='mobile:hidden' dataList={blogsData}></Blogs>
+                <MobileBlogs className='hidden mobile:block' dataList={blogsData}></MobileBlogs>
                 <GradientButton text='View More Articles'></GradientButton>
             </div>
             <div className='pt-[4.7rem] pb-[3.75rem] bg-cover text-center' style={{backgroundImage: `url(${ModuleBg.src})`}}>
-                <Title4 text="Some Of The Many Builders We Compare"></Title4>
-                <Grid className="grid-cols-4 w-[67.25rem] mt-[1.875rem] mx-auto gap-3">
+                <Title4 className='mobile:text-left px-4' text="Some Of The Many Builders We Compare"></Title4>
+                <Grid className="grid-cols-4 tablet:grid-cols-3 mobile:grid-cols-2 max-w-[67.25rem] mt-[1.875rem] mx-auto gap-3 px-4">
                     {BuilderCompare.map((v: any) => {
                         return (
-                            <div className='bg-white h-[5.625rem] rounded-xl]' key={v.id}>
+                            <div className='bg-white rounded-xl' key={v.id}>
                                 <Image className='mx-auto' src={v.src} alt={v.id} priority />
                             </div>
                         )
