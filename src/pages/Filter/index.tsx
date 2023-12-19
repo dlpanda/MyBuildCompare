@@ -35,7 +35,7 @@ export default function HouseDesigns() {
             }
         >
             <Popup>
-                <Dialog className='relative my-[40px] h-[calc(100%-80px)] px-8 py-4 bg-white rounded-md mobile:my-0 mobile:mt-8 mobile:h-[calc(100%-2rem)] mobile:w-full'>
+                <Dialog className='relative my-[40px] !h-[calc(100%-80px)] px-8 py-4 bg-white rounded-md mobile:my-0 mobile:mt-8 mobile:!h-[calc(100%-2rem)] mobile:!w-full'>
                     <Gap size={15}></Gap>
                     <div className='absolute top-4 left-8 text-2xl'>
                         <Link className='flex' href='/HouseDesigns'>

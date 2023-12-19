@@ -29,7 +29,7 @@ export default function HouseDesigns() {
             }
         >
             <Popup>
-                <Dialog className='!w-[45%] mt-[10rem] mobile:!w-[90%] bg-white py-20 px-20 rounded-md h-auto'>
+                <Dialog className='!w-[45%] mt-[10rem] mobile:!w-[90%] bg-white py-20 px-20 rounded-md !h-auto'>
                     <Title6 text="Get in Touch"></Title6>
                     <Gap size={30}></Gap>
                     <Input className={inputClassName} placeholder="Full Name*"></Input>
@@ -42,7 +42,9 @@ export default function HouseDesigns() {
                     <Gap size={10}></Gap>
                     <Input className={inputClassName} placeholder="Message*"></Input>
                     <Gap size={40}></Gap>
-                    <GradientButton text='Submit Enquiry' className="w-full text-center blue-green-gradient"></GradientButton>
+                    <Link className='flex' href='/IndividualBuilder'>
+                        <GradientButton text='Submit Enquiry' className="w-full text-center blue-green-gradient"></GradientButton>
+                    </Link>
                     <Gap size={50}></Gap>
                 </Dialog>
             </Popup>
