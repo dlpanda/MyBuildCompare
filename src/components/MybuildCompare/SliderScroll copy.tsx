@@ -1,5 +1,9 @@
 // 首页滚动图片
 import React, { useState, useRef, useEffect } from "react";
+import silder1 from '@/assets/index/slider-1.png'
+import silder2 from '@/assets/index/slider-2.png'
+import silder3 from '@/assets/index/slider-3.png'
+import Carousel from '@/components/MybuildCompare/Carousel';
 export default function Slider() {
     const [scrollFlag, setscrollFlag] = useState(true);
     const [timer, settimer] = useState(0);
@@ -77,6 +81,7 @@ export default function Slider() {
                 <div className='left-arrow'></div>
                 <div className='right-arrow'></div>
             </div>
+            {/* <Carousel data={data}></Carousel> */}
             <div className='scroll-content' ref={scrollDom}>
                 <div className='content dark-grey semi-bold' ref={scrollContent}>
                     <div className='slider-item'>
