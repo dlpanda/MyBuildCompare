@@ -3,13 +3,13 @@ export const MenuConfig = [{
     href: "/HouseDesigns"
 },{
     name: 'Your Stories',
-    href: "/HouseDesigns"
+    href: "/YourStories"
 },{
     name: 'Resource Centre',
-    href: "/HouseDesigns"
+    href: "/ResourceCentre"
 },{
     name: 'Builders Directory',
-    href: "/HouseDesigns"
+    href: "/BuildDirctory"
 },{
     name: 'Contact',
     href: "/IndividualBuilder"

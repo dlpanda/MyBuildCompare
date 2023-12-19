@@ -45,9 +45,15 @@ export default function Main(props: IMainProps) {
                     <Grid className="grid-cols-3 tablet:grid-cols-2 mobile:grid-cols-2 gap-6 py-[4.125rem]">
                         {FooterContent.map((v: any) => {
                             return (
-                                <div className='dark-grey font-semibold' key={v.title}>
+                                <div className='dark-grey font-semibold cursor-default' key={v.title}>
                                     {v.title}
-                                    <List items={v.children}></List>
+                                    {v.children.map((v: any) => {
+                                        return (
+                                            <div key={v.title} className='text-base body-text cursor-pointer'>
+                                                <span className='hover:underline'>{v.title}</span>
+                                            </div>
+                                        )
+                                    })}
                                 </div>
                             )
                         })}

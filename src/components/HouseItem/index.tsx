@@ -33,15 +33,17 @@ export default function HouseItem(props: HouseItemProps) {
             <CommonCarousel
                 autoPlay={false}
             >{
-                props.carouselImgSrc.map((item: any,index: any) => {
-                    return <div className='w-full' key={index}>
-                        <Image src={item.src} alt="carouselImg" width={323} height={333} priority />
-                    </div>
-                })
-            }</CommonCarousel>
-            <Link href='/IndividualHouseDesigns'><BodyTextGreyBold className="mt-[20px]" text={props.title}></BodyTextGreyBold></Link>
+                    props.carouselImgSrc.map((item: any, index: any) => {
+                        return <div className='w-full' key={index}>
+                            <Image src={item.src} alt="carouselImg" width={323} height={333} priority />
+                        </div>
+                    })
+                }</CommonCarousel>
+            <BodyTextGreyBold className="mt-[20px]" text={props.title}></BodyTextGreyBold>
             <BodyTextLight text={props.text}></BodyTextLight>
-            <UnderLinedLinks className="mt-[10px]" text={props.author}></UnderLinedLinks>
-        </div>
+            <Link href='/IndividualHouseDesigns'>
+                <UnderLinedLinks className="mt-[10px]" text={props.author}></UnderLinedLinks>
+            </Link>
+        </div >
     )
 }

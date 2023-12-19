@@ -60,7 +60,9 @@ export default function HouseDesigns() {
                     <div className='flex'>
                         <IconButton className='border-none shadow-none pr-[0.75rem] mobile:hidden' textClassName="underline body-text-grey tablet:hidden" iconSrc={Share} iconWidth={20} iconHeight={20} text='Share'></IconButton>
                         <IconButton className='border-none shadow-none pr-[2rem] mobile:hidden' textClassName="underline body-text-grey tablet:hidden" iconSrc={HeartLine} iconWidth={20} iconHeight={20} text='Save'></IconButton>
-                        <IconButton className='border-none shadow-none green-gradient text-white tablet:hidden mobile:hidden' iconSrc={Compare} iconWidth={20} iconHeight={20} text='Compare' iconPoistion='right'></IconButton>
+                        <Link className='flex' href='/CompareHouseDesigns'>
+                            <IconButton className='border-none shadow-none green-gradient text-white tablet:hidden mobile:hidden' iconSrc={Compare} iconWidth={20} iconHeight={20} text='Compare' iconPoistion='right'></IconButton>
+                        </Link>
                     </div>
                 </div>
                 <Gap className='mobile:hidden' size={40}></Gap>
