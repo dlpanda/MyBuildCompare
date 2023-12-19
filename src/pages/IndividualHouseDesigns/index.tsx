@@ -67,7 +67,9 @@ export default function HouseDesigns() {
                 </div>
                 <Gap className='mobile:hidden' size={40}></Gap>
                 <ButtonOnImg className='mobile:hidden' imgSrc={MainImg}>
-                    <Button className='absolute bottom-7 right-7 bg-white body-text-grey-bold py-2' text='Show All Photos'></Button>
+                    <Link className='flex' href='/Album'>
+                        <Button className='absolute bottom-7 right-7 bg-white body-text-grey-bold py-2' text='Show All Photos'></Button>
+                    </Link>
                 </ButtonOnImg>
                 <CommonCarousel className='hidden mobile:block' autoPlay={false}>
                     {

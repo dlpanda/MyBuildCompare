@@ -11,10 +11,10 @@ const config: Config = {
         extend: {
             screens: {
                 'mobile': {
-                    max:'1023px'
+                    max:'1022px'
                 },
                 'tablet': {
-                    min:'1024px',
+                    min:'1023px',
                     max:'1279px'
                 },
                 'desktop': '1280px',

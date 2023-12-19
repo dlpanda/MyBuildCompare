@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from "next/link"
 import { AppConfig } from '@/utils/AppConfig';
 import { BuilderCompare } from '@/utils/BuilderCompare';
+import React, { useState, useRef, useEffect } from "react";
 // 组件
 import Meta from '@/layouts/Meta';
 import Main from '@/templates/Main';
@@ -64,6 +65,11 @@ export default function Home() {
         imgSrc: Blogs4,
         author: 'Mel Davies'
     },]
+    const [currentType, setcurrentType] = useState('');
+    const changeType = (type:string)=>{
+        console.log(type)
+        setcurrentType(type)
+    }
     return (
         <Main
             meta={
@@ -72,15 +78,15 @@ export default function Home() {
                     description={AppConfig.description} />
             }
         >
-            <div className="banner bg-cover bg-[url('../assets/index/banner.png')] mobile:bg-[url('../assets/index/banner-small-screen.png')]">
+            <div className="select-none	banner bg-cover bg-[url('../assets/index/banner.png')] mobile:bg-[url('../assets/index/banner-small-screen.png')]">
                 <div className='title'>Search. Compare. Build.</div>
-                <div className='search'>
-                    <div className='option bold'><Link href={'/HouseDesigns'}>House Design</Link></div>
+                <div className={`search ${currentType ? '!bg-[#D1D1D1]' : '' }`}>
+                    <div className={`option bold ${currentType === 'design' ? 'bg-white' : '' }`} onClick={() => changeType('design')}>House Design</div>
                     <LineVertical></LineVertical>
-                    <div className='option bold'>Filters</div>
+                    <div className={`option bold ${currentType === 'Filters' ? 'bg-white' : '' }`} onClick={() => changeType('Filters')}>Filters</div>
                     <LineVertical></LineVertical>
-                    <div className='option'>Search Location</div>
-                    <div className='round-icon-button blue-green-gradient'>
+                    <div className={`option ${currentType === 'Location' ? 'bg-white' : '' }`} onClick={() => changeType('Location')}>Search Location</div>
+                    <div className={`round-icon-button blue-green-gradient ${currentType === 'Location' ? 'bg-white' : '' }`} >
                         <Image className='inline-block' src={Search} alt="Search" width={16} height={16} priority />
                     </div>
                 </div>

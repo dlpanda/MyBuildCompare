@@ -8,8 +8,8 @@ type ButtonProps = {
 };
 export default function Button(props: ButtonProps) {
     return (
-        <div className={`px-5 border border-[#D1D1D1] rounded-[5.625rem] button-box-shadow cursor-pointer ${props.className}`}>
-            <div className={`${props.textClassName}`}>
+        <div className={`inline-block px-5 border border-[#D1D1D1] rounded-[5.625rem] button-box-shadow cursor-pointer ${props.className}`}>
+            <div className={`inline-block ${props.textClassName}`}>
                 {props.text}
             </div>
         </div>

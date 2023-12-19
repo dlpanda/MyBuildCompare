@@ -1,6 +1,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import Image from 'next/image'
+import Link from "next/link"
 import Title6Light from '@/components/common/Title/Title6Light';
 import Title7Light from '@/components/common/Title/Title7Light';
 import GradientButton from '@/components/common/Button/GradientButton';
@@ -42,8 +43,11 @@ export default function Form(props: FormProps) {
                 <Gap size={10}></Gap>
                 <Input className={inputClassName} placeholder="Message*"></Input>
             </div>
-                <Gap size={10}></Gap>
-            <GradientButton text='Submit Enquiry' className="w-full text-center blue-green-gradient"></GradientButton>
+            <Gap size={10}></Gap>
+            <GradientButton text='Submit Enquiry' className="w-full text-center blue-green-gradient tablet:hidden mobile:hidden"></GradientButton>
+            <Link className='flex' href='/DialogForm'>
+                <GradientButton text='Enquire' className="w-full text-center blue-green-gradient hidden tablet:block mobile:block"></GradientButton>
+            </Link>
             <Gap size={50}></Gap>
         </div>
     )

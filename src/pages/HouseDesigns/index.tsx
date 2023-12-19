@@ -40,10 +40,12 @@ export default function HouseDesigns() {
                 <IconVerticalButton iconSrc={HouseNext} iconWidth={27} iconHeight={24} text='Double-Storey'></IconVerticalButton>
                 <IconVerticalButton iconSrc={HouseAbove} iconWidth={27} iconHeight={24} text='Duplex'></IconVerticalButton>
                 <SearchBar className='button-box-shadow mobile:hidden' clickSearch={getSearchValue} placeholder={'Search'} iconPoistion='left'></SearchBar>
-                <IconButton textClassName="mobile:hidden" iconSrc={CofingPNG} iconWidth={20} iconHeight={20} text='Filters'></IconButton>
+                <Link className='flex' href='/Filter'>
+                    <IconButton textClassName="mobile:hidden" iconSrc={CofingPNG} iconWidth={20} iconHeight={20} text='Filters'></IconButton>
+                </Link>
             </div>
             <Grid className="grid-cols-4 gap-x-[20px] gap-y-[40px] pt-[3.125rem] px-20 tablet:grid-cols-2 mobile:grid-cols-1">
-                {DataList.map((v: any,i:number) => {
+                {DataList.map((v: any, i: number) => {
                     return (
                         <HouseItem
                             key={i}
@@ -56,9 +58,9 @@ export default function HouseDesigns() {
                     )
                 })}
             </Grid>
-            <Title6 className='mt-[4.6875rem] mb-[1.25rem] mx-auto text-center' text={'Continuing Exploring'}></Title6> 
+            <Title6 className='mt-[4.6875rem] mb-[1.25rem] mx-auto text-center' text={'Continuing Exploring'}></Title6>
             <div className='text-center'>
-                <GradientButton className='blue-green-gradient mb-[4.6875rem] mx-auto' text={'Show More'}></GradientButton> 
+                <GradientButton className='blue-green-gradient mb-[4.6875rem] mx-auto' text={'Show More'}></GradientButton>
             </div>
         </Main>
     )

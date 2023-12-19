@@ -29,7 +29,7 @@ export default function HouseDesigns() {
         >
             <Gap size={75}></Gap>
             <div className='flex px-20 flex-wrap mobile:px-2'>
-                <div className='w-[30%] tablet:w-full mobile:w-full'>
+                <div className='w-[30%] tablet:w-[65%] mobile:w-full'>
                     <Form></Form>
                 </div>
                 <div className='w-[70%] px-40 tablet:w-full tablet:px-0 mobile:w-full mobile:px-2'>
