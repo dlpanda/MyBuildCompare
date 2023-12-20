@@ -164,7 +164,7 @@ export default function Home() {
                     <SearchBar className='w-full h-full !inline-block leading-[2.5rem] rounded-xl font-semibold' iconUrl={SearchBlack} iconPoistion='left' placeholder='Search Locations' iconSize={20} inputClassName="!w-[calc(100%-20px-0.625rem)] !text-[#3D3D3D]" clickSearch={() => { }}></SearchBar>
                 </div>
                 {/* mobile */}
-                <div className='w-[90%] h-[48px] flex mx-auto'>
+                <div className='hidden w-[90%] h-[48px] mx-auto mobile:flex'>
                     <SearchBar
                         className='flex-1 h-full !inline-block leading-[36px] rounded-full font-semibold button-box-shadow border-[0.5px] border-[#D1D1D1] bg-white'
                         iconUrl={SearchBlack}
