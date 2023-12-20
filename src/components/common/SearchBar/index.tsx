@@ -11,6 +11,7 @@ type SearchItemProps = {
     placeholder?: string,
     className?:string,
     inputClassName?: string
+    iconClassName?: string
 };
 export default function SearchItem(props: SearchItemProps) {
     const [searchValue, setsearchValue] = useState('');
@@ -25,7 +26,7 @@ export default function SearchItem(props: SearchItemProps) {
         <div className={`${props.className} inline h-full border border-[#D1D1D1] background-white rounded-[5.625rem] py-[0.5625rem] px-5`}>
             {
                 !hideIcon && iconPoistion === 'left' ?
-                    <Image className="inline-block mr-[0.625rem]" onClick={() => { props.clickSearch(searchValue) }} src={iconUrl} alt="SearchGrey" width={iconSize} height={iconSize} priority />
+                    <Image className={`inline-block mr-[0.625rem] ${props.iconClassName}`} onClick={() => { props.clickSearch(searchValue) }} src={iconUrl} alt="SearchGrey" width={iconSize} height={iconSize} priority />
                     :
                     ""
             }
@@ -34,7 +35,7 @@ export default function SearchItem(props: SearchItemProps) {
             }} />
             {
                 !hideIcon && iconPoistion === 'right' ?
-                    <Image className="inline-block ml-1" onClick={() => { props.clickSearch(searchValue) }} src={iconUrl} alt="SearchGrey" width={iconSize} height={iconSize} priority />
+                    <Image  className={`inline-block ml-1 ${props.iconClassName}`} onClick={() => { props.clickSearch(searchValue) }} src={iconUrl} alt="SearchGrey" width={iconSize} height={iconSize} priority />
                     :
                     ""
             }

@@ -32,6 +32,7 @@ import ModuleBg from '../assets/index/module-bg.png'
 import House from '@/assets/house-designs/house.png'
 import HouseNext from '@/assets/house-designs/house-next.png'
 import HouseAbove from '@/assets/house-designs/house-above.png'
+import CofingPNG from '@/assets/icon/cofing.png'
 import '@/styles/color.css'
 import '@/styles/common.css'
 import '@/styles/global.css'
@@ -82,7 +83,7 @@ export default function Home() {
     }
     const [currentDesign, setcurrentDesign] = useState('');
     const changeDesign = (type: string) => {
-        if (type === currentType) {
+        if (type === currentDesign) {
             setcurrentDesign('')
         } else {
             setcurrentDesign(type)
@@ -98,12 +99,10 @@ export default function Home() {
         >
             <div className="banner select-none bg-cover bg-[url('../assets/index/banner.png')] mobile:bg-[url('../assets/index/banner-small-screen.png')]">
                 <Gap size={226}></Gap>
-                <div className='title'>Search. Compare. Build.</div>
+                <div className='title'>Search. Compare.<br className='hidden mobile:block' /> Build.</div>
                 <Gap size={20}></Gap>
-                <div className={`
-                    search 
-                    ${currentType ? '!bg-[#F2F2F2]' : ''}
-                `}>
+                {/* desktop & tablet */}
+                <div className={`search mobile:!hidden ${currentType ? '!bg-[#F2F2F2]' : ''} `}>
                     <div className={`option bold ${currentType === 'design' ? 'bg-white' : ''}`} onClick={() => changeType('design')}>House Design</div>
                     <LineVertical className={`${currentType === 'design' || currentType === 'Filters' ? '!hidden' : ''}`}></LineVertical>
                     <div className={`option bold ${currentType === 'Filters' ? 'bg-white' : ''}`} onClick={() => changeType('Filters')}>Filters</div>
@@ -147,7 +146,7 @@ export default function Home() {
                     </div>
                 </div>
                 <Gap size={10}></Gap>
-                <div className={`${currentType === 'design' ? 'flex' : 'hidden'} button-box-shadow w-[37.5rem] h-[12.5rem] p-[2.5rem] bg-[#fff] mx-auto rounded-xl text-left relative` }>
+                <div className={`${currentType === 'design' ? 'flex' : 'hidden'} button-box-shadow w-[37.5rem] h-[12.5rem] p-[2.5rem] bg-[#fff] mx-auto rounded-xl text-left relative`}>
                     <SeachItem icon={House} iconWidth={28} iconHeight={24} text='Single-Storey' isAcitve={currentDesign === 'Single-Storey'} onClick={() => changeDesign('Single-Storey')}></SeachItem>
                     <Gap direction='verical' size={20}></Gap>
                     <SeachItem icon={HouseAbove} iconWidth={28} iconHeight={24} text='Double-Storey' isAcitve={currentDesign === 'Double-Storey'} onClick={() => changeDesign('Double-Storey')}></SeachItem>
@@ -162,7 +161,24 @@ export default function Home() {
                     <ButtonGroup title='Garage'></ButtonGroup>
                 </div>
                 <div className={`${currentType === 'Location' ? 'block' : 'hidden'} button-box-shadow w-[36.8125rem] h-[8.75rem] p-[2.5rem] bg-[#fff] mx-auto rounded-xl text-left relative`}>
-                    <SearchBar className='w-full h-full !inline-block leading-[2.5rem] rounded-xl font-semibold' iconUrl={SearchBlack} iconPoistion='left' placeholder='Search Locations' iconSize={20} inputClassName="!w-[calc(100%-20px-0.625rem)] !text-[#3D3D3D]" clickSearch={() => {}}></SearchBar>
+                    <SearchBar className='w-full h-full !inline-block leading-[2.5rem] rounded-xl font-semibold' iconUrl={SearchBlack} iconPoistion='left' placeholder='Search Locations' iconSize={20} inputClassName="!w-[calc(100%-20px-0.625rem)] !text-[#3D3D3D]" clickSearch={() => { }}></SearchBar>
+                </div>
+                {/* mobile */}
+                <div className='w-[90%] h-[48px] flex mx-auto'>
+                    <SearchBar
+                        className='flex-1 h-full !inline-block leading-[36px] rounded-full font-semibold button-box-shadow border-[0.5px] border-[#D1D1D1] bg-white'
+                        iconUrl={SearchBlack}
+                        iconPoistion='left'
+                        placeholder='Search Locations'
+                        iconSize={20}
+                        iconClassName="mt-[-6px]"
+                        inputClassName="!w-[calc(100%-20px-0.625rem)] !text-[#3D3D3D] text-[16px]"
+                        clickSearch={() => { }}></SearchBar>
+                    <div className='rounded-full ml-2 inline-block w-[48px] h-full leading-[48px] p-[14px] button-box-shadow border-[0.5px] border-[#D1D1D1] bg-white'>
+                        <Link href='/IndexFilter'>
+                            <Image className='' src={CofingPNG} alt="img" width={20} height={20} priority />
+                        </Link>
+                    </div>
                 </div>
             </div>
             <Gap className="mobile:hidden" size={75}></Gap>
