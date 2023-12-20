@@ -10,55 +10,55 @@ export const FooterContent = [{
 },{
     title: 'Resources',
     children:[{
-        title:'Resources1',
+        title:'Category 1',
     },{
-        title:'Resources2',
+        title:'Category 2',
     },{
-        title:'Resources3',
+        title:'Category 3',
     }]
 },{
     title: 'Designs By room',
     children:[{
-        title:'1Designs By room',
+        title:'3 Bedroom Home Designs',
     },{
-        title:'2Designs By room',
+        title:'4 Bedroom Home Designs',
     },{
-        title:'3Designs By room',
+        title:'5 Bedroom Home Designs',
     }]
 },{
     title: 'Level Sites',
     children:[{
-        title:'Level Sites1',
+        title:'All Level Site Home Designs',
     },{
-        title:'Level Sites2',
+        title:'Single Storey Home Designs',
     },{
-        title:'Level Sites3',
+        title:'Two Storey Home Designs',
     }]
 },{
     title: 'Designs By Must-Haves',
     children:[{
-        title:'1Designs By Must-Haves',
+        title:'Alfresco',
     },{
-        title:'2Designs By Must-Haves',
+        title:'Must-have 2',
     },{
-        title:'3Designs By Must-Haves',
+        title:'Must-have 3',
     }]
 },{
     title: 'Designs By Features',
     children:[{
-        title:'1Designs By Features',
+        title:'Popular Feature 1',
     },{
-        title:'2Designs By Features',
+        title:'Popular Feature 2',
     },{
-        title:'3Designs By Features',
+        title:'Popular Feature 3',
     }]
 }]
 export const FooterMessage = [{
     text:'© 2023 My Build Compare'
 },{
-    text:'All rights reserveds'
+    text:'All Rights Reserveds'
 },{
-    text:'privacy policy'
+    text:'Privacy Policy'
 },{
-    text:'terms & conditions'
+    text:'Terms & Conditions'
 },]

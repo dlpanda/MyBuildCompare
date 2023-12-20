@@ -19,6 +19,8 @@ import Gap from '@/components/common/Gap';
 import Grid from '@/components/common/Grid';
 import CheckBox from '@/components/common/CheckBox';
 import UnderLinedLinks from '@/components/common/Text/UnderLinedLinks'
+import Input from '@/components/common/Input'
+import ButtonGroup from '@/components/MybuildCompare/ButtonGroup';
 // 图片
 import HousePNG1 from '@/assets/photos/1.png'
 import BackPNG from '@/assets/icon/left-arrow.png'
@@ -48,32 +50,11 @@ export default function HouseDesigns() {
                     <Gap size={15}></Gap>
                     <Title6 text="Rooms and Parking"></Title6>
                     <Gap size={15}></Gap>
-                    <BodyTextGrey text="Bedrooms"></BodyTextGrey>
-                    <Gap size={10}></Gap>
-                    <Button className='mr-3 py-2 text-white bg-[#3D3D3D]' text="Any"></Button>
-                    <Button className='mr-3 py-2' text="1"></Button>
-                    <Button className='mr-3 py-2' text="2"></Button>
-                    <Button className='mr-3 py-2' text="3"></Button>
-                    <Button className='mr-3 py-2' text="4"></Button>
-                    <Button className='mr-3 py-2' text="5+"></Button>
-                    <Gap size={10}></Gap>
-                    <BodyTextGrey text="Bathrooms"></BodyTextGrey>
-                    <Gap size={10}></Gap>
-                    <Button className='mr-3 py-2 text-white bg-[#3D3D3D]' text="Any"></Button>
-                    <Button className='mr-3 py-2' text="1"></Button>
-                    <Button className='mr-3 py-2' text="2"></Button>
-                    <Button className='mr-3 py-2' text="3"></Button>
-                    <Button className='mr-3 py-2' text="4"></Button>
-                    <Button className='mr-3 py-2' text="5+"></Button>
-                    <Gap size={10}></Gap>
-                    <BodyTextGrey text="Garage"></BodyTextGrey>
-                    <Gap size={10}></Gap>
-                    <Button className='mr-3 py-2 text-white bg-[#3D3D3D]' text="Any"></Button>
-                    <Button className='mr-3 py-2' text="1"></Button>
-                    <Button className='mr-3 py-2' text="2"></Button>
-                    <Button className='mr-3 py-2' text="3"></Button>
-                    <Button className='mr-3 py-2' text="4"></Button>
-                    <Button className='mr-3 py-2' text="5+"></Button>
+                    <ButtonGroup title='Bedrooms'></ButtonGroup>
+                    <Gap size={20}></Gap>
+                    <ButtonGroup title='Bathrooms'></ButtonGroup>
+                    <Gap size={20}></Gap>
+                    <ButtonGroup title='Garage'></ButtonGroup>
                     <Gap size={15}></Gap>
                     <LineBottom color='#EFEFEF'></LineBottom>
                     <Gap size={15}></Gap>
@@ -82,14 +63,14 @@ export default function HouseDesigns() {
                     <div className='flex'>
                         <div className='py-2 px-3 border border-[#D1D1D1] w-[40%] rounded-xl'>
                             <p className='text-[#6E6E6E] text-[0.875rem]'>Block Width</p>
-                            <BodyText text="0"></BodyText>
+                            <Input inputValue="0"></Input>
                         </div>
                         <div className='w-[20%] text-center leading-[4.125]'>
                             ——
                         </div>
                         <div className='py-2 px-3 border border-[#D1D1D1] w-[40%] rounded-xl'>
                             <p className='text-[#6E6E6E] text-[0.875rem]'>Block Length</p>
-                            <BodyText text="0"></BodyText>
+                            <Input inputValue="0"></Input>
                         </div>
                     </div>
                     <Gap size={15}></Gap>

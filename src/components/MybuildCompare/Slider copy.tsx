@@ -18,72 +18,73 @@ export default function Slider() {
         title: 'Single-Storey',
         src: silder3,
     },]
+
     const [scrollFlag, setscrollFlag] = useState(true);
     const [timer, settimer] = useState(0);
     let scrollDom: any = useRef(); // ref绑定DOM
-    const [onceWidth, setonceWidth] = useState(0);
+    let scrollContent: any = useRef()
     // dom生成之后
     useEffect(() => {
-        setonceWidth(document.querySelector('.slider-item')?.clientWidth || 552)
-        //鼠标进入
+        // const maxSrollWidth = scrollDom.current.scrollWidth - scrollDom.current.offsetWidth
+        // const setScrollEvent = () => {
+        //     let isSrollToRight = true
+        //     const newTimer:any = setInterval(() => {
+        //         // console.log(scrollFlag)
+        //         if (isSrollToRight) {
+        //             scrollDom.current.scrollLeft += 1
+        //             isSrollToRight = scrollDom.current.scrollLeft < maxSrollWidth
+        //         } else {
+        //             scrollDom.current.scrollLeft -= 1
+        //             isSrollToRight = scrollDom.current.scrollLeft === 0
+        //         }
+        //     }, 20)
+        //     settimer(newTimer)
+        //     // console.log(newTimer)
+        //     // settimer(prevFoo => {
+        //     //     console.log('read foo state in setFoo function', prevFoo);
+        //     //     return newTimer;
+        //     // });
+        // }
+        // setScrollEvent()
         scrollDom.current.onmouseover = function () {
             setscrollFlag(false)
+            // console.log('onmouseover')
+            // console.log(timer)
+            // clearInterval(timer)
         }
-        //鼠标移出
+        //鼠标移出事件
         scrollDom.current.onmouseout = function () {
             setscrollFlag(true)
+            // console.log('onmouseout')
+            // setScrollEvent()
         }
     }, [])
-    const [isSrollToRight, setisSrollToRight] = useState(true);
     // scrollFlag改变
     useEffect(() => {
         let newTimer: any = timer
         if (scrollFlag) {
             const maxSrollWidth = scrollDom.current.scrollWidth - scrollDom.current.offsetWidth
+            let isSrollToRight = true
             newTimer = setInterval(() => {
+                // console.log(scrollFlag)
                 if (isSrollToRight) {
                     scrollDom.current.scrollLeft += 1
-                    setisSrollToRight(scrollDom.current.scrollLeft < maxSrollWidth)
+                    isSrollToRight = scrollDom.current.scrollLeft < maxSrollWidth
                 } else {
                     scrollDom.current.scrollLeft -= 1
-                    setisSrollToRight(scrollDom.current.scrollLeft === 0)
+                    isSrollToRight = scrollDom.current.scrollLeft === 0
                 }
             }, 20)
             settimer(newTimer)
         }
+        // else {
+        //     clearInterval(timer)
+        // }
         // 组件销毁
         return () => {
             clearInterval(newTimer)
         }
     }, [scrollFlag])
-    // 正在执行动画
-    const [isSrolling, setisSrolling] = useState(false);
-    const arrow = (type: string) => {
-        if(isSrolling) return
-        setisSrolling(true)
-        setscrollFlag(false)
-        let flag = 0
-        const currentTimer = setInterval(() => {
-            if (flag < onceWidth) {
-                flag++
-                if (type === 'left') {
-                    scrollDom.current.scrollLeft -= 1
-                } else {
-                    scrollDom.current.scrollLeft += 1
-                }
-            }else{
-                clearInterval(currentTimer)
-                setscrollFlag(true)
-                setisSrolling(false)
-            }
-            const maxSrollWidth = scrollDom.current.scrollWidth - scrollDom.current.offsetWidth
-            if(scrollDom.current.scrollLeft >= maxSrollWidth || scrollDom.current.scrollLeft <= 0){
-                clearInterval(currentTimer)
-                setscrollFlag(true)
-                setisSrolling(false)
-            }
-        }, 1)
-    }
     return (
         <div className='slider mx-[5rem] mobile:mx-2'>
             <div className='title title-4'>
@@ -95,7 +96,7 @@ export default function Slider() {
             </div>
             {/* <Carousel data={data}></Carousel> */}
             <div className='scroll-content' ref={scrollDom}>
-                <div className='content dark-grey semi-bold'>
+                <div className='content dark-grey semi-bold' ref={scrollContent}>
                     <div className='slider-item slider-item1'>
                         <p>Single-Storey</p>
                     </div>

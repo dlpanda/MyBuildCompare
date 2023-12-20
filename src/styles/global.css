@@ -181,6 +181,14 @@
         width: 10px;
         transform: rotate(-45deg);
     }
+
+    .white-filter {
+        filter: brightness(100);
+    }
+    input::placeholder {
+        color: #888888 !important;
+        font-weight: normal !important;
+    }
 }
 
 @tailwind utilities;
