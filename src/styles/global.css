@@ -185,9 +185,14 @@
     .white-filter {
         filter: brightness(100);
     }
+
     input::placeholder {
         color: #888888 !important;
         font-weight: normal !important;
+    }
+
+    .active-shadow {
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     }
 }
 
@@ -344,5 +349,5 @@
 }
 
 ::-webkit-scrollbar {
-  display: none;
+    display: none;
 }

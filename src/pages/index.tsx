@@ -103,15 +103,31 @@ export default function Home() {
                 <Gap size={20}></Gap>
                 {/* desktop & tablet */}
                 <div className={`search mobile:!hidden ${currentType ? '!bg-[#F2F2F2]' : ''} `}>
-                    <div className={`option bold ${currentType === 'design' ? 'bg-white' : ''}`} onClick={() => changeType('design')}>House Design</div>
+                    <div className={`
+                            option 
+                            bold 
+                            ${currentType === 'design' ? 'bg-white active-shadow !font-semibold !text-[#3D3D3D]' : ''}
+                            ${currentType ? '!font-normal text-[#888888]' : 'font-semibold !text-[#3D3D3D]'}
+                        `} onClick={() => changeType('design')}
+                    >
+                        House Design
+                    </div>
                     <LineVertical className={`${currentType === 'design' || currentType === 'Filters' ? '!hidden' : ''}`}></LineVertical>
-                    <div className={`option bold ${currentType === 'Filters' ? 'bg-white' : ''}`} onClick={() => changeType('Filters')}>Filters</div>
+                    <div className={`
+                        option 
+                        bold 
+                        ${currentType === 'Filters' ? 'bg-white active-shadow !font-semibold !text-[#3D3D3D]' : ''}
+                        ${currentType ? '!font-normal text-[#888888]' : 'font-semibold !text-[#3D3D3D]'}
+                        `} onClick={() => changeType('Filters')}
+                    >
+                        Filters
+                    </div>
                     <LineVertical className={`${currentType === 'Location' || currentType === 'Filters' ? '!hidden' : ''}`}></LineVertical>
                     <div
                         className={`
                             option 
-                            ${currentType === 'Location' ? '!bg-white' : ''}
-                            ${currentType ? '!pr-[10rem] bg-[#F2F2F2]' : 'bg-white'}
+                            ${currentType === 'Location' ? '!bg-white active-shadow !font-semibold !text-[#3D3D3D]' : ''}
+                            ${currentType ? '!pr-[10rem] bg-[#F2F2F2] !font-normal' : 'bg-white font-semibold'}
                         `}
                         onClick={() => changeType('Location')}
                     >
