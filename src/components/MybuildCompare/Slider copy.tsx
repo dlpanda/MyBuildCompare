@@ -91,8 +91,8 @@ export default function Slider() {
                 Start Your Journey Here
             </div>
             <div className='arrow'>
-                <div className='left-arrow' onClick={() => arrow('left')}></div>
-                <div className='right-arrow' onClick={() => arrow('right')}></div>
+                <div className='left-arrow'></div>
+                <div className='right-arrow'></div>
             </div>
             {/* <Carousel data={data}></Carousel> */}
             <div className='scroll-content' ref={scrollDom}>
