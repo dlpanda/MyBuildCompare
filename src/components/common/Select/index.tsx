@@ -1,8 +1,12 @@
-import Image from 'next/image';
 import house from '@/assets/icon/select-icon.png';
+import Image from 'next/image';
+
+// value change?
+
 type SelectProps = {
   text: string;
 };
+
 export default function Select(props: SelectProps) {
   return (
     <div className="flex text-center border text-[#3D3D3D] h-12 leading-[3rem] rounded-md font-[500]">

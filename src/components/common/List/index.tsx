@@ -1,11 +1,9 @@
-import Link from 'next/link';
-import Image, { StaticImageData } from 'next/image';
-import Facebook from '@/assets/index/facebook.png';
-import Instagram from '@/assets/index/instagram.png';
-import Pinterest from '@/assets/index/pinterest.png';
+// extends item types
+
 type ListProps = {
   items: any;
 };
+
 export default function List(props: ListProps) {
   return (
     <div className="text-base body-text ">

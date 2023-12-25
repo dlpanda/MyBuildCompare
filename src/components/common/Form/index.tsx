@@ -1,12 +1,15 @@
-import React, { useState, useRef, useEffect } from 'react';
-import Title6Light from '@/components/common/Title/Title6Light';
-import Title7Light from '@/components/common/Title/Title7Light';
 import GradientButton from '@/components/common/Button/GradientButton';
 import Gap from '@/components/common/Gap';
 import Input from '@/components/common/Input';
+import Title6Light from '@/components/common/Title/Title6Light';
+import Title7Light from '@/components/common/Title/Title7Light';
+
+// react-hook-form?
+
 type FormProps = {
   // text: string,
 };
+
 export default function Form(props: FormProps) {
   const inputClassName =
     'text-[#0D544E] p-4 w-full outline-none  placeholder:text-[#0D544E] placeholder:opacity-50';

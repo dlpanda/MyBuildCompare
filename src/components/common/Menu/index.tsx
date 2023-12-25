@@ -1,11 +1,14 @@
-import Link from 'next/link';
-import Image, { StaticImageData } from 'next/image';
-import { ReactNode } from 'react';
 import MenuIcon from '@/assets/icon/menu-icon.png';
+import Image from 'next/image';
+import Link from 'next/link';
+import { ReactNode } from 'react';
+
+// extends item types
 type MenuProps = {
   menuList: Array<any>;
   children: ReactNode;
 };
+
 export default function Menu(props: MenuProps) {
   return (
     <div>

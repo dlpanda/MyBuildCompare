@@ -1,10 +1,13 @@
 import Image, { StaticImageData } from 'next/image';
 import type { ReactNode } from 'react';
+
 type ButtonOnImgProps = {
   className?: string;
   imgSrc: string | StaticImageData;
   children: ReactNode;
 };
+
+// Comp Name
 export default function ButtonimgVertical(props: ButtonOnImgProps) {
   return (
     <div className={`relative ${props.className}`}>

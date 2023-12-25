@@ -3,8 +3,11 @@ type GapProps = {
   direction?: string;
   className?: string;
 };
+
+// usememo
 export default function Gap(props: GapProps) {
   let width, height, myClassName;
+
   if (props.direction === 'verical') {
     width = props.size / 16 + 'rem';
     height = '100%';
@@ -14,5 +17,6 @@ export default function Gap(props: GapProps) {
     height = props.size / 16 + 'rem';
     myClassName = props.className;
   }
+
   return <div className={myClassName} style={{ width, height }}></div>;
 }

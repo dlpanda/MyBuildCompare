@@ -1,11 +1,15 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
+
+// reflect changes?
 type InputProps = {
   inputValue?: string;
   placeholder?: string;
   className?: string;
 };
+
 export default function Input(props: InputProps) {
   const [inputValue, setinputValue] = useState(props.inputValue || '');
+
   return (
     <input
       className={`outline-none ${props.className}`}

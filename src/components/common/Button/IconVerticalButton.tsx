@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
 import Image, { StaticImageData } from 'next/image';
+
 type IconButtonVerticalProps = {
   className?: string;
   text: string;
@@ -7,6 +7,7 @@ type IconButtonVerticalProps = {
   iconWidth: number;
   iconHeight: number;
 };
+
 export default function ButtonIconVertical(props: IconButtonVerticalProps) {
   return (
     <div className={`${props.className}`}>

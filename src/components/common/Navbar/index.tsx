@@ -1,9 +1,12 @@
-import Link from 'next/link';
 import Image, { StaticImageData } from 'next/image';
+import Link from 'next/link';
+
+// any?
 type NavbarProps = {
   logoUrl: string | StaticImageData;
   menuTemplate: any;
 };
+
 export default function Navbar(props: NavbarProps) {
   return (
     <div className="box-border relative	h-20 px-20 mobile:px-2">

@@ -1,9 +1,12 @@
+// merge into one with line btm?
+
 type LineVerticalProps = {
   width?: string;
   height?: string;
   color?: string;
   className?: string;
 };
+
 export default function LineBottom(props: LineVerticalProps) {
   const { width = '1px', height = '3.125rem', color = '#D9D9D9' } = props;
   const lineHeight = height;

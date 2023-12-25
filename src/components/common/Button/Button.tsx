@@ -1,11 +1,12 @@
-import { ReactNode } from 'react';
-import Image, { StaticImageData } from 'next/image';
+// typing issues
+
 type ButtonProps = {
   className?: string;
   text: string;
   textClassName?: string;
   onClick?: any;
 };
+
 export default function Button(props: ButtonProps) {
   return (
     <div

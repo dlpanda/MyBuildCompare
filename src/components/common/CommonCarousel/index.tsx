@@ -1,13 +1,17 @@
-import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
+
 type CommonCarouselProps = {
   className?: string;
   autoPlay?: boolean;
   children: any;
   dynamicHeight?: boolean;
 };
+
+// Comp Naming
 export default function CommonCarousel(props: CommonCarouselProps) {
   const { autoPlay = true, dynamicHeight = false } = props;
+
   return (
     <Carousel
       className={`w-full ${props.className}`}

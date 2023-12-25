@@ -1,7 +1,9 @@
 // 带图标的搜索
-import React, { useState, useRef, useEffect } from 'react';
-import Image from 'next/image';
 import SearchGrey from '@/assets/icon/search-grey.png';
+import Image from 'next/image';
+import { useState } from 'react';
+
+// value change?
 type SearchItemProps = {
   hideIcon?: Boolean;
   iconPoistion?: 'right' | 'left';
@@ -13,6 +15,7 @@ type SearchItemProps = {
   inputClassName?: string;
   iconClassName?: string;
 };
+
 export default function SearchItem(props: SearchItemProps) {
   const [searchValue, setsearchValue] = useState('');
   const {

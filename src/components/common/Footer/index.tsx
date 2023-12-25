@@ -1,11 +1,14 @@
-import Image from 'next/image';
+// global declaration
 import Facebook from '@/assets/index/facebook.png';
 import Instagram from '@/assets/index/instagram.png';
 import Pinterest from '@/assets/index/pinterest.png';
+import Image from 'next/image';
+
 type FooterProps = {
   contentTemplate: any;
   messageData: any;
 };
+
 export default function Footer(props: FooterProps) {
   return (
     <footer className="px-20 bg-[#F9FCFC]">

@@ -1,15 +1,20 @@
-import React, { useState, useRef, useEffect } from 'react';
 import BodyTextGrey from '@/components/common/Text/BodyTextGrey';
+import { useState } from 'react';
+
 type CheckBoxProps = {
   isChecked?: boolean;
   disabled?: boolean;
   text: string;
 };
+
 export default function CheckBox(props: CheckBoxProps) {
   const [checked, setChecked] = useState(props.isChecked);
+
+  // use callback
   const handleChange = () => {
     setChecked(!checked);
   };
+
   return (
     <div>
       <input

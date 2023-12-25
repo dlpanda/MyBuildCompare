@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
 import Image, { StaticImageData } from 'next/image';
+
 type IconButtonVerticalProps = {
   className?: string;
   text?: string;
@@ -9,8 +9,10 @@ type IconButtonVerticalProps = {
   iconPoistion?: string;
   textClassName?: string;
 };
+
 export default function ButtonIconVertical(props: IconButtonVerticalProps) {
   const { iconPoistion = 'left' } = props;
+
   return (
     <div
       className={`flex gap-4 items-center px-5 border border-[#D1D1D1] rounded-[5.625rem] button-box-shadow cursor-pointer ${props.className}`}

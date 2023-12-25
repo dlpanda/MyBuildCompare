@@ -1,8 +1,10 @@
 import { ReactNode } from 'react';
+
 type DialogProps = {
   className?: string;
   children: ReactNode;
 };
+
 export default function Dialog(props: DialogProps) {
   return (
     <div
