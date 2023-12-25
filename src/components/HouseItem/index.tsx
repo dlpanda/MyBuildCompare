@@ -1,18 +1,22 @@
+import heart from '@/assets/icon/heart.png';
 import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
-import heart from '@/assets/icon/heart.png';
+// rexport from comps
 import CommonCarousel from '@/components/common/CommonCarousel';
 import BodyTextGreyBold from '@/components/common/Text/BodyTextGreyBold';
 import BodyTextLight from '@/components/common/Text/BodyTextLight';
 import UnderLinedLinks from '@/components/common/Text/UnderLinedLinks';
+
 type HouseItemProps = {
   logoSrc: StaticImageData;
   isCollect: string;
+  // change to items
   carouselImgSrc: [];
   title: string;
   text: string;
   author: string;
 };
+
 export default function HouseItem(props: HouseItemProps) {
   return (
     <div className="relative">

@@ -1,9 +1,10 @@
 // 首页滚动图片
-import React, { useState, useRef, useEffect } from 'react';
 import silder1 from '@/assets/index/slider-1.png';
 import silder2 from '@/assets/index/slider-2.png';
 import silder3 from '@/assets/index/slider-3.png';
-import Carousel from '@/components/MybuildCompare/Carousel';
+import { useEffect, useRef, useState } from 'react';
+
+// copy??
 export default function Slider() {
   const data = [
     {

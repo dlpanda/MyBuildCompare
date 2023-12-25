@@ -1,10 +1,12 @@
 // 首页-右上角搜索
-import React, { useState, useRef, useEffect } from 'react';
-import Image from 'next/image';
 import SearchGrey from '@/assets/icon/search-grey.png';
+import Image from 'next/image';
+import { useState } from 'react';
+
 type SearchItemProps = {
   clickSearch: Function;
 };
+
 export default function SearchItem(props: SearchItemProps) {
   const [searchValue, setsearchValue] = useState('');
   return (

@@ -1,10 +1,13 @@
-import React, { useState, useRef, useEffect } from 'react';
 import Button from '@/components/common/Button/Button';
-import BodyTextGrey from '@/components/common/Text/BodyTextGrey';
 import Gap from '@/components/common/Gap';
+import BodyTextGrey from '@/components/common/Text/BodyTextGrey';
+import { useState } from 'react';
+
+// items?
 type ButtonGroupProps = {
   title: string;
 };
+
 export default function ButtonGroup(props: ButtonGroupProps) {
   const buttonClass = 'mr-3 h-[2.5rem] leading-[2.5rem]';
   const [currentType, setcurrentType] = useState('Any');
@@ -15,6 +18,7 @@ export default function ButtonGroup(props: ButtonGroupProps) {
       setcurrentType(type);
     }
   };
+
   return (
     <div>
       <BodyTextGrey

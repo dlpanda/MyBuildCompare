@@ -1,11 +1,13 @@
 // 移动端blogs
-import React, { useState, useRef, useEffect } from 'react';
-import Image from 'next/image';
 import CommonCarousel from '@/components/common/CommonCarousel';
+import Image from 'next/image';
+
+// merge into Blogs?
 type MobileBlogsProps = {
   className: string;
   dataList: any;
 };
+
 export default function Slider(props: MobileBlogsProps) {
   return (
     <div className={`pt-[20px] ${props.className}`}>

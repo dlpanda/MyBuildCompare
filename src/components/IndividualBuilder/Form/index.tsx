@@ -1,18 +1,17 @@
-import React, { useState, useRef, useEffect } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import Title6Light from '@/components/common/Title/Title6Light';
-import Title7Light from '@/components/common/Title/Title7Light';
 import GradientButton from '@/components/common/Button/GradientButton';
 import Gap from '@/components/common/Gap';
 import Input from '@/components/common/Input';
 import BodyText from '@/components/common/Text/BodyText';
 import UnderLinedLinks from '@/components/common/Text/UnderLinedLinks';
+import Image from 'next/image';
+import Link from 'next/link';
 // 图片
 import houseLogo from '@/assets/individual-builder/logo.png';
+
 type FormProps = {
   // text: string,
 };
+
 export default function Form(props: FormProps) {
   const inputClassName =
     'text-[#0D544E] p-4 w-full outline-none border border-[#888888] rounded-md placeholder:text-[#0D544E] placeholder:opacity-50';

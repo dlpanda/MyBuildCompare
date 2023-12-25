@@ -1,5 +1,7 @@
-import Image, { StaticImageData } from 'next/image';
 import Gap from '@/components/common/Gap';
+import Image from 'next/image';
+
+// reflecting changes?
 type SearchItemProps = {
   icon: any;
   iconWidth: number;
@@ -8,8 +10,10 @@ type SearchItemProps = {
   isAcitve: boolean;
   onClick: any;
 };
+
 export default function SearchItem(props: SearchItemProps) {
   const { isAcitve = false } = props;
+
   return (
     <div
       onClick={props.onClick}

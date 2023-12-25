@@ -1,9 +1,12 @@
-import Image, { StaticImageData } from 'next/image';
+import Image from 'next/image';
 import Link from 'next/link';
+
+// data item type?
 type BlogsProps = {
   className: string;
   dataList: any;
 };
+
 export default function Blogs(props: BlogsProps) {
   return (
     <div className={`grid grid-cols-2 gap-10 my-10 ${props.className}`}>

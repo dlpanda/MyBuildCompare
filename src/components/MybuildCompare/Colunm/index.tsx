@@ -1,9 +1,12 @@
-import Image, { StaticImageData } from 'next/image';
-import Title6 from '@/components/common/Title/Title6';
 import BodyText from '@/components/common/Text/BodyText';
+import Title6 from '@/components/common/Title/Title6';
+import Image from 'next/image';
+
+// type?
 type ColunmProps = {
   dataList: any;
 };
+
 export default function Colunm(props: ColunmProps) {
   return (
     <div className="mx-auto mt-[2.5rem] w-[45rem] flex gap-[2.5rem] text-left mobile:flex-col mobile:gap-[10px] mobile:px-2 mobile:w-auto">
