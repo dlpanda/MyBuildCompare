@@ -1,16 +1,22 @@
-export const MenuConfig = [{
+export const MenuConfig = [
+  {
     name: 'House Designs',
-    href: "/HouseDesigns"
-},{
+    href: '/HouseDesigns',
+  },
+  {
     name: 'Your Stories',
-    href: "/YourStories"
-},{
+    href: '/YourStories',
+  },
+  {
     name: 'Resource Centre',
-    href: "/ResourceCentre"
-},{
+    href: '/ResourceCentre',
+  },
+  {
     name: 'Builders Directory',
-    href: "/BuildDirctory"
-},{
+    href: '/BuildDirctory',
+  },
+  {
     name: 'Contact',
-    href: "/IndividualBuilder"
-}]
+    href: '/IndividualBuilder',
+  },
+];

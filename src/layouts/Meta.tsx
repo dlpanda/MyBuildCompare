@@ -31,6 +31,5 @@ export default function Meta(props: IMetaProps) {
         }}
       />
     </>
-  )
+  );
 }
-

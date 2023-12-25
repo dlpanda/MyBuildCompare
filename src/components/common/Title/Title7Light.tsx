@@ -1,10 +1,6 @@
 type TitleProps = {
-    text: string,
+  text: string;
 };
 export default function Title(props: TitleProps) {
-    return (
-        <div className='title-7-light'>
-            {props.text}
-        </div>
-    )
+  return <div className="title-7-light">{props.text}</div>;
 }
