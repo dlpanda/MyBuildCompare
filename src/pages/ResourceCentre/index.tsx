@@ -1,40 +1,30 @@
-import Image from 'next/image';
-import { AppConfig } from '@/utils/AppConfig';
-import React, { useState, useRef, useEffect } from 'react';
 import Meta from '@/layouts/Meta';
 import Main from '@/templates/Main';
-import { DataList } from '@/utils/DataList';
+import { AppConfig } from '@/utils/AppConfig';
+import Image from 'next/image';
 import Link from 'next/link';
 // 组件
-import Input from '@/components/common/Input';
-import IconVerticalButton from '@/components/common/Button/IconVerticalButton';
-import Button from '@/components/common/Button/Button';
-import Title2 from '@/components/common/Title/Title2';
-import Title3 from '@/components/common/Title/Title3';
-import Title4 from '@/components/common/Title/Title4';
-import Title6 from '@/components/common/Title/Title6';
-import Grid from '@/components/common/Grid';
-import Form from '@/components/IndividualBuilder/Form';
-import BodyText from '@/components/common/Text/BodyText';
-import BodyTextLight from '@/components/common/Text/BodyTextLight';
-import Gap from '@/components/common/Gap';
-import GradientButton from '@/components/common/Button/GradientButton';
-import UnderLinedLinks from '@/components/common/Text/UnderLinedLinks';
-import HouseItem from '@/components/HouseItem';
 import Blogs from '@/components/MybuildCompare/Blogs';
 import MobileBlogs from '@/components/MybuildCompare/MobileBlogs';
+import Button from '@/components/common/Button/Button';
+import GradientButton from '@/components/common/Button/GradientButton';
+import Gap from '@/components/common/Gap';
+import Grid from '@/components/common/Grid';
+import Input from '@/components/common/Input';
+import BodyText from '@/components/common/Text/BodyText';
+import UnderLinedLinks from '@/components/common/Text/UnderLinedLinks';
+import Title4 from '@/components/common/Title/Title4';
+import Title6 from '@/components/common/Title/Title6';
 // 图片
-import MainPNG from '@/assets/resource-centre/mian.png';
-import itemPNG from '@/assets/resource-centre/item.png';
-import onePNG from '@/assets/resource-centre/1.png';
-import twoPNG from '@/assets/resource-centre/2.png';
-import bottomPNG from '@/assets/resource-centre/bottom.png';
 import Blogs1 from '@/assets/index/blogs-1.png';
 import Blogs2 from '@/assets/index/blogs-2.png';
 import Blogs3 from '@/assets/index/blogs-3.png';
 import Blogs4 from '@/assets/index/blogs-4.png';
-import '@/styles/common.css';
+import bottomPNG from '@/assets/resource-centre/bottom.png';
+import itemPNG from '@/assets/resource-centre/item.png';
+import MainPNG from '@/assets/resource-centre/mian.png';
 import '@/styles/color.css';
+import '@/styles/common.css';
 
 export default function HouseDesigns() {
   const blogsData: any = [

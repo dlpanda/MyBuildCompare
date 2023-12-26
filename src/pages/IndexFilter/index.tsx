@@ -1,36 +1,27 @@
-import Image from 'next/image';
-import React, { useState, useRef, useEffect } from 'react';
-import Link from 'next/link';
-import { AppConfig } from '@/utils/AppConfig';
 import Meta from '@/layouts/Meta';
 import Main from '@/templates/Main';
-import { DataList } from '@/utils/DataList';
+import { AppConfig } from '@/utils/AppConfig';
+import Link from 'next/link';
+import { useState } from 'react';
 // 组件
-import Title6 from '@/components/common/Title/Title6';
-import IconButton from '@/components/common/Button/IconButton';
-import BodyTextGrey from '@/components/common/Text/BodyTextGrey';
-import BodyTextGreyBold from '@/components/common/Text/BodyTextGreyBold';
-import LineBottom from '@/components/common/LineBottom';
-import Popup from '@/components/common/Popup';
-import Dialog from '@/components/common/CommonDialog';
-import Gap from '@/components/common/Gap';
-import Grid from '@/components/common/Grid';
-import CheckBox from '@/components/common/CheckBox';
-import UnderLinedLinks from '@/components/common/Text/UnderLinedLinks';
-import Input from '@/components/common/Input';
 import ButtonGroup from '@/components/MybuildCompare/ButtonGroup';
 import SeachItem from '@/components/MybuildCompare/SeachItem';
+import IconButton from '@/components/common/Button/IconButton';
+import Dialog from '@/components/common/CommonDialog';
+import Gap from '@/components/common/Gap';
+import LineBottom from '@/components/common/LineBottom';
+import Popup from '@/components/common/Popup';
 import SearchBar from '@/components/common/SearchBar';
+import UnderLinedLinks from '@/components/common/Text/UnderLinedLinks';
+import Title6 from '@/components/common/Title/Title6';
 // 图片
-import Search from '@/assets/icon/search.png';
-import HousePNG1 from '@/assets/photos/1.png';
-import BackPNG from '@/assets/icon/left-arrow.png';
-import House from '@/assets/house-designs/house.png';
-import HouseNext from '@/assets/house-designs/house-next.png';
 import HouseAbove from '@/assets/house-designs/house-above.png';
+import HouseNext from '@/assets/house-designs/house-next.png';
+import House from '@/assets/house-designs/house.png';
 import SearchBlack from '@/assets/icon/search-black.png';
-import '@/styles/common.css';
+import Search from '@/assets/icon/search.png';
 import '@/styles/color.css';
+import '@/styles/common.css';
 
 export default function HouseDesigns() {
   const [currentDesign, setcurrentDesign] = useState('');
@@ -41,6 +32,7 @@ export default function HouseDesigns() {
       setcurrentDesign(type);
     }
   };
+
   return (
     <Main
       meta={

@@ -1,26 +1,22 @@
-import Image from 'next/image';
-import React, { useState, useRef, useEffect } from 'react';
-import Link from 'next/link';
-import { AppConfig } from '@/utils/AppConfig';
 import Meta from '@/layouts/Meta';
 import Main from '@/templates/Main';
-import { DataList } from '@/utils/DataList';
+import { AppConfig } from '@/utils/AppConfig';
+import Link from 'next/link';
 // 组件
-import Popup from '@/components/common/Popup';
+import GradientButton from '@/components/common/Button/GradientButton';
 import Dialog from '@/components/common/CommonDialog';
 import Gap from '@/components/common/Gap';
 import Input from '@/components/common/Input';
+import Popup from '@/components/common/Popup';
 import Title6 from '@/components/common/Title/Title6';
-import GradientButton from '@/components/common/Button/GradientButton';
 // 图片
-import HousePNG1 from '@/assets/photos/1.png';
-import BackPNG from '@/assets/icon/left-arrow.png';
-import '@/styles/common.css';
 import '@/styles/color.css';
+import '@/styles/common.css';
 
 export default function HouseDesigns() {
   const inputClassName =
     'text-[#0D544E] p-4 w-full outline-none border border-[#888888] rounded-md placeholder:text-[#0D544E] placeholder:opacity-50';
+
   return (
     <Main
       meta={

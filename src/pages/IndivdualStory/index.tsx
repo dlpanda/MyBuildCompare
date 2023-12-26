@@ -1,36 +1,29 @@
-import Image from 'next/image';
-import { AppConfig } from '@/utils/AppConfig';
 import Meta from '@/layouts/Meta';
 import Main from '@/templates/Main';
-import { DataList } from '@/utils/DataList';
+import { AppConfig } from '@/utils/AppConfig';
+import Image from 'next/image';
 import Link from 'next/link';
 // 组件
+import Button from '@/components/common/Button/Button';
+import ButtonOnImg from '@/components/common/Button/ButtonOnImg';
+import GradientButton from '@/components/common/Button/GradientButton';
+import Gap from '@/components/common/Gap';
+import BodyText from '@/components/common/Text/BodyText';
+import BodyTextLight from '@/components/common/Text/BodyTextLight';
 import Title2 from '@/components/common/Title/Title2';
 import Title3 from '@/components/common/Title/Title3';
 import Title4 from '@/components/common/Title/Title4';
 import Title6 from '@/components/common/Title/Title6';
-import ButtonOnImg from '@/components/common/Button/ButtonOnImg';
-import Button from '@/components/common/Button/Button';
-import Grid from '@/components/common/Grid';
-import Form from '@/components/IndividualBuilder/Form';
-import BodyText from '@/components/common/Text/BodyText';
-import BodyTextLight from '@/components/common/Text/BodyTextLight';
-import Gap from '@/components/common/Gap';
-import GradientButton from '@/components/common/Button/GradientButton';
-import HouseItem from '@/components/HouseItem';
-import Blogs from '@/components/YourStories/Blogs';
 // 图片
-import MainPNG from '@/assets/your-stroies/main.png';
-import Blogs1 from '@/assets/your-stroies/story1.png';
-import Blogs2 from '@/assets/your-stroies/story2.png';
 import img1 from '@/assets/your-stroies/1.png';
 import img2 from '@/assets/your-stroies/2.png';
 import img3 from '@/assets/your-stroies/3.png';
 import img4 from '@/assets/your-stroies/4.png';
 import img5 from '@/assets/your-stroies/5.png';
 import img6 from '@/assets/your-stroies/6.png';
-import '@/styles/common.css';
+import MainPNG from '@/assets/your-stroies/main.png';
 import '@/styles/color.css';
+import '@/styles/common.css';
 
 export default function HouseDesigns() {
   return (

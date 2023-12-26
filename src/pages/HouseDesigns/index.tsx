@@ -1,25 +1,24 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import { AppConfig } from '@/utils/AppConfig';
 import Meta from '@/layouts/Meta';
 import Main from '@/templates/Main';
+import { AppConfig } from '@/utils/AppConfig';
 import { DataList } from '@/utils/DataList';
+import Link from 'next/link';
 // 组件
-import SearchBar from '@/components/common/SearchBar';
-import IconVerticalButton from '@/components/common/Button/IconVerticalButton';
-import IconButton from '@/components/common/Button/IconButton';
-import Grid from '@/components/common/Grid';
-import Title6 from '@/components/common/Title/Title6';
-import GradientButton from '@/components/common/Button/GradientButton';
 import HouseItem from '@/components/HouseItem';
+import GradientButton from '@/components/common/Button/GradientButton';
+import IconButton from '@/components/common/Button/IconButton';
+import IconVerticalButton from '@/components/common/Button/IconVerticalButton';
+import Grid from '@/components/common/Grid';
+import SearchBar from '@/components/common/SearchBar';
+import Title6 from '@/components/common/Title/Title6';
 // 图片
-import CofingPNG from '../../assets/icon/cofing.png';
-import House from '../../assets/house-designs/house.png';
-import HouseNext from '../../assets/house-designs/house-next.png';
-import HouseAbove from '../../assets/house-designs/house-above.png';
-import '../../styles/common.css';
-import '../../styles/color.css';
 import { useState } from 'react';
+import HouseAbove from '../../assets/house-designs/house-above.png';
+import HouseNext from '../../assets/house-designs/house-next.png';
+import House from '../../assets/house-designs/house.png';
+import CofingPNG from '../../assets/icon/cofing.png';
+import '../../styles/color.css';
+import '../../styles/common.css';
 
 export default function HouseDesigns() {
   const [searchValue, setsearchValue] = useState('');
@@ -27,6 +26,7 @@ export default function HouseDesigns() {
     console.log('searchValue：' + value);
     setsearchValue(value);
   };
+
   return (
     <Main
       meta={
@@ -71,6 +71,7 @@ export default function HouseDesigns() {
       <Grid className="grid-cols-4 gap-x-[20px] gap-y-[40px] pt-[3.125rem] px-20 tablet:grid-cols-2 mobile:grid-cols-1">
         {DataList.map((v: any, i: number) => {
           return (
+            // destruction
             <HouseItem
               key={i}
               logoSrc={v.logoSrc}

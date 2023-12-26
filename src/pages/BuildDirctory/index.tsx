@@ -1,45 +1,35 @@
-import Image from 'next/image';
-import { AppConfig } from '@/utils/AppConfig';
-import React, { useState, useRef, useEffect } from 'react';
 import Meta from '@/layouts/Meta';
 import Main from '@/templates/Main';
-import { DataList } from '@/utils/DataList';
+import { AppConfig } from '@/utils/AppConfig';
+import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
 // 组件
-import SearchBar from '@/components/common/SearchBar';
-import IconVerticalButton from '@/components/common/Button/IconVerticalButton';
-import IconButton from '@/components/common/Button/IconButton';
-import Title2 from '@/components/common/Title/Title2';
-import Title3 from '@/components/common/Title/Title3';
-import Title4 from '@/components/common/Title/Title4';
-import Title6 from '@/components/common/Title/Title6';
-import Grid from '@/components/common/Grid';
-import Form from '@/components/IndividualBuilder/Form';
-import BodyText from '@/components/common/Text/BodyText';
-import BodyTextLight from '@/components/common/Text/BodyTextLight';
-import Gap from '@/components/common/Gap';
 import GradientButton from '@/components/common/Button/GradientButton';
+import IconVerticalButton from '@/components/common/Button/IconVerticalButton';
+import Gap from '@/components/common/Gap';
+import Grid from '@/components/common/Grid';
+import SearchBar from '@/components/common/SearchBar';
+import BodyText from '@/components/common/Text/BodyText';
 import UnderLinedLinks from '@/components/common/Text/UnderLinedLinks';
-import HouseItem from '@/components/HouseItem';
-import Blogs from '@/components/YourStories/Blogs';
+import Title2 from '@/components/common/Title/Title2';
+import Title6 from '@/components/common/Title/Title6';
 // 图片
-import CofingPNG from '@/assets/icon/cofing.png';
-import House from '@/assets/house-designs/house.png';
-import HouseNext from '@/assets/house-designs/house-next.png';
 import HouseAbove from '@/assets/house-designs/house-above.png';
-import MainPNG from '@/assets/your-stroies/main.png';
-import Blogs1 from '@/assets/your-stroies/story1.png';
-import Blogs2 from '@/assets/your-stroies/story2.png';
+import HouseNext from '@/assets/house-designs/house-next.png';
+import House from '@/assets/house-designs/house.png';
 import houseLogo from '@/assets/individual-builder/logo.png';
-import '@/styles/common.css';
 import '@/styles/color.css';
+import '@/styles/common.css';
 
 export default function HouseDesigns() {
+  // camel case
   const [searchValue, setsearchValue] = useState('');
   const getSearchValue = (value: string) => {
     console.log('searchValue：' + value);
     setsearchValue(value);
   };
+
   return (
     <Main
       meta={

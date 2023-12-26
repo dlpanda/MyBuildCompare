@@ -1,21 +1,20 @@
-import Image from 'next/image';
-import { AppConfig } from '@/utils/AppConfig';
 import Meta from '@/layouts/Meta';
 import Main from '@/templates/Main';
+import { AppConfig } from '@/utils/AppConfig';
 import { DataList } from '@/utils/DataList';
+import Image from 'next/image';
 // 组件
-import Title6 from '@/components/common/Title/Title6';
-import Grid from '@/components/common/Grid';
-import Form from '@/components/IndividualBuilder/Form';
-import BodyTextLight from '@/components/common/Text/BodyTextLight';
-import Gap from '@/components/common/Gap';
-import GradientButton from '@/components/common/Button/GradientButton';
 import HouseItem from '@/components/HouseItem';
-import Popup from '@/components/common/Popup';
+import Form from '@/components/IndividualBuilder/Form';
+import GradientButton from '@/components/common/Button/GradientButton';
+import Gap from '@/components/common/Gap';
+import Grid from '@/components/common/Grid';
+import BodyTextLight from '@/components/common/Text/BodyTextLight';
+import Title6 from '@/components/common/Title/Title6';
 // 图片
 import AwardsPNG from '@/assets/individual-builder/awards.png';
-import '@/styles/common.css';
 import '@/styles/color.css';
+import '@/styles/common.css';
 
 export default function HouseDesigns() {
   const houseList = JSON.parse(JSON.stringify(DataList)).splice(0, 2);

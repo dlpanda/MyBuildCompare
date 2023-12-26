@@ -1,30 +1,27 @@
-import Image from 'next/image';
-import { AppConfig } from '@/utils/AppConfig';
 import Meta from '@/layouts/Meta';
 import Main from '@/templates/Main';
+import { AppConfig } from '@/utils/AppConfig';
 import { DataList } from '@/utils/DataList';
+import Image from 'next/image';
 import Link from 'next/link';
 // 组件
-import Title4 from '@/components/common/Title/Title4';
-import Title6 from '@/components/common/Title/Title6';
-import Grid from '@/components/common/Grid';
-import CommonCarousel from '@/components/common/CommonCarousel';
-import BodyTextGreyBold from '@/components/common/Text/BodyTextGreyBold';
-import Gap from '@/components/common/Gap';
-import UnderLinedLinks from '@/components/common/Text/UnderLinedLinks';
-import Select from '@/components/common/Select';
 import IconVerticalButton from '@/components/common/Button/IconVerticalButton';
 import CheckBox from '@/components/common/CheckBox';
+import CommonCarousel from '@/components/common/CommonCarousel';
+import Gap from '@/components/common/Gap';
+import Grid from '@/components/common/Grid';
+import Select from '@/components/common/Select';
+import BodyTextGreyBold from '@/components/common/Text/BodyTextGreyBold';
+import UnderLinedLinks from '@/components/common/Text/UnderLinedLinks';
+import Title4 from '@/components/common/Title/Title4';
+import Title6 from '@/components/common/Title/Title6';
 
-import GradientButton from '@/components/common/Button/GradientButton';
-import HouseItem from '@/components/HouseItem';
-import Popup from '@/components/common/Popup';
 // 图片
-import AwardsPNG from '@/assets/individual-builder/awards.png';
-import '@/styles/common.css';
 import '@/styles/color.css';
+import '@/styles/common.css';
 
 export default function HouseDesigns() {
+  // ??
   const houseList = JSON.parse(JSON.stringify(DataList)).splice(0, 3);
   return (
     <Main

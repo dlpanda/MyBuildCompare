@@ -1,19 +1,17 @@
-import Image from 'next/image';
-import React, { useState, useRef, useEffect } from 'react';
-import Link from 'next/link';
-import { AppConfig } from '@/utils/AppConfig';
 import Meta from '@/layouts/Meta';
 import Main from '@/templates/Main';
-import { DataList } from '@/utils/DataList';
+import { AppConfig } from '@/utils/AppConfig';
+import Image from 'next/image';
+import Link from 'next/link';
 // 组件
-import Popup from '@/components/common/Popup';
 import Dialog from '@/components/common/CommonDialog';
 import Gap from '@/components/common/Gap';
+import Popup from '@/components/common/Popup';
 // 图片
-import HousePNG1 from '@/assets/photos/1.png';
 import BackPNG from '@/assets/icon/left-arrow.png';
-import '@/styles/common.css';
+import HousePNG1 from '@/assets/photos/1.png';
 import '@/styles/color.css';
+import '@/styles/common.css';
 
 export default function HouseDesigns() {
   return (

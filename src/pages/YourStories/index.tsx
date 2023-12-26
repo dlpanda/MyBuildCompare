@@ -1,24 +1,23 @@
-import Image from 'next/image';
-import { AppConfig } from '@/utils/AppConfig';
 import Meta from '@/layouts/Meta';
 import Main from '@/templates/Main';
+import { AppConfig } from '@/utils/AppConfig';
 import { DataList } from '@/utils/DataList';
+import Image from 'next/image';
 import Link from 'next/link';
 // 组件
-import Title4 from '@/components/common/Title/Title4';
-import Grid from '@/components/common/Grid';
-import Form from '@/components/IndividualBuilder/Form';
-import BodyText from '@/components/common/Text/BodyText';
-import Gap from '@/components/common/Gap';
-import GradientButton from '@/components/common/Button/GradientButton';
 import HouseItem from '@/components/HouseItem';
 import Blogs from '@/components/YourStories/Blogs';
+import GradientButton from '@/components/common/Button/GradientButton';
+import Gap from '@/components/common/Gap';
+import Grid from '@/components/common/Grid';
+import BodyText from '@/components/common/Text/BodyText';
+import Title4 from '@/components/common/Title/Title4';
 // 图片
 import MainPNG from '@/assets/your-stroies/main.png';
 import Blogs1 from '@/assets/your-stroies/story1.png';
 import Blogs2 from '@/assets/your-stroies/story2.png';
-import '@/styles/common.css';
 import '@/styles/color.css';
+import '@/styles/common.css';
 
 export default function HouseDesigns() {
   const houseList = JSON.parse(JSON.stringify(DataList)).splice(0, 4);

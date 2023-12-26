@@ -1,15 +1,18 @@
-import logo from '@/assets/house-designs/item-logo.png';
-import house from '@/assets/compare-house-designs/house1.png';
-import house1 from '@/assets/compare-house-designs/house1.png';
-import house2 from '@/assets/compare-house-designs/house2.png';
-import house3 from '@/assets/compare-house-designs/house3.png';
 import house11 from '@/assets/compare-house-designs/house1-1.png';
+import {
+  default as house,
+  default as house1,
+} from '@/assets/compare-house-designs/house1.png';
 import house21 from '@/assets/compare-house-designs/house2-1.png';
+import house2 from '@/assets/compare-house-designs/house2.png';
 import house31 from '@/assets/compare-house-designs/house3-1.png';
+import house3 from '@/assets/compare-house-designs/house3.png';
+import logo from '@/assets/house-designs/item-logo.png';
 import BathPNG from '@/assets/icon/bath.png';
 import BedPNG from '@/assets/icon/bed.png';
 import GaragePNG from '@/assets/icon/garage.png';
 import LivingPNG from '@/assets/icon/living.png';
+
 export const DataList = [
   {
     logoSrc: logo,
