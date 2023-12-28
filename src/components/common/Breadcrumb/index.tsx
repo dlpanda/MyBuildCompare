@@ -1,19 +1,26 @@
-// relative imports
+import { useMemo } from 'react';
+import BreadcrumbHistory from './BreadcrumbHistory';
+import BreadcrumbNow from './BreadcrumbNow';
 
-import BreadcrumbHistory from '@/components/common/Text/BreadcrumbHistory';
-import BreadcrumbNow from '@/components/common/Text/BreadcrumbNow';
+type BreadcrumbItem = {
+  label: string;
+};
 
-type BreadcrumbProps = {
-  data: any;
+export type BreadcrumbProps = {
+  data: BreadcrumbItem[];
   className?: string;
 };
 
-export default function Breadcrumb(props: BreadcrumbProps) {
-  const data = JSON.parse(JSON.stringify(props.data));
-  const current: any = data.pop();
+// TODO PAN
+export default function Breadcrumb({ data, className }: BreadcrumbProps) {
+  const [current, rest] = useMemo(() => {
+    const copy = data.slice();
+    return [copy.pop(), copy];
+  }, [data]);
+
   return (
-    <div className={`px-20 ${props.className}`}>
-      {data.map((v: any, i: number) => {
+    <div className={`px-20 ${className}`}>
+      {data.map((v, i) => {
         return <BreadcrumbHistory key={i} text={v.text}></BreadcrumbHistory>;
       })}
       <BreadcrumbNow text={current.text}></BreadcrumbNow>

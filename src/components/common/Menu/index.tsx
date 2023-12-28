@@ -3,9 +3,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ReactNode } from 'react';
 
+type MenuItem = { name: string; href: string };
+
 // extends item types
 type MenuProps = {
-  menuList: Array<any>;
+  menuList: Array<MenuItem>;
   children: ReactNode;
 };
 

@@ -1,8 +1,9 @@
-import GradientButton from '@/components/common/Button/GradientButton';
+// TODO PAN
 import Gap from '@/components/common/Gap';
 import Input from '@/components/common/Input';
 import Title6Light from '@/components/common/Title/Title6Light';
 import Title7Light from '@/components/common/Title/Title7Light';
+import { GradientButton } from '../Button';
 
 // react-hook-form?
 

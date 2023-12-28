@@ -1,7 +1,13 @@
-type TextProps = {
-  text: string;
+import { PropsWithChildren } from 'react';
+
+type TextVariant = 'default' | 'grey' | 'grey-bold';
+
+type TextProps = PropsWithChildren<{
   className?: string;
-};
-export default function Text(props: TextProps) {
+  variant?: TextVariant;
+}>;
+
+// TODO PAN
+export default function Text({ className, variant = 'default' }: TextProps) {
   return <div className={`body-text ${props.className}`}>{props.text}</div>;
 }

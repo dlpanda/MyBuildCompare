@@ -1,11 +1,10 @@
-// typing issues
+import { PropsWithChildren } from 'react';
 
-type ButtonProps = {
+export type ButtonProps = PropsWithChildren<{
   className?: string;
-  text: string;
   textClassName?: string;
-  onClick?: any;
-};
+  onClick?: () => void;
+}>;
 
 export default function Button(props: ButtonProps) {
   return (

@@ -1,5 +1,5 @@
-import BodyTextGrey from '@/components/common/Text/BodyTextGrey';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
+import { BodyText } from '../Text';
 
 type CheckBoxProps = {
   isChecked?: boolean;
@@ -11,9 +11,9 @@ export default function CheckBox(props: CheckBoxProps) {
   const [checked, setChecked] = useState(props.isChecked);
 
   // use callback
-  const handleChange = () => {
+  const handleChange = useCallback(() => {
     setChecked(!checked);
-  };
+  }, []);
 
   return (
     <div>
@@ -28,10 +28,10 @@ export default function CheckBox(props: CheckBoxProps) {
         onChange={handleChange}
       />
       <label htmlFor="coding">
-        <BodyTextGrey
+        <BodyText
           className="inline-block ml-2 h-[30px] leading-[30px]"
           text={props.text}
-        ></BodyTextGrey>
+        ></BodyText>
       </label>
     </div>
   );

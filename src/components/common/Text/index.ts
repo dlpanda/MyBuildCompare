@@ -1,3 +1,4 @@
 // reexport?
 
-export default {};
+// TODO same as Button
+export { default as BodyText } from './BodyText';

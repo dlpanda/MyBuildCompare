@@ -4,7 +4,7 @@ import { AppConfig } from '@/utils/AppConfig';
 import Image from 'next/image';
 import Link from 'next/link';
 // 组件
-import Dialog from '@/components/common/CommonDialog';
+import Dialog from '@/components';
 import Gap from '@/components/common/Gap';
 import Popup from '@/components/common/Popup';
 // 图片

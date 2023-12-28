@@ -8,6 +8,7 @@ type ButtonOnImgProps = {
 };
 
 // Comp Name
+// TODO iamge size
 export default function ButtonimgVertical(props: ButtonOnImgProps) {
   return (
     <div className={`relative ${props.className}`}>

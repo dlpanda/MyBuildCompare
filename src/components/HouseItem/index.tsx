@@ -7,11 +7,13 @@ import BodyTextGreyBold from '@/components/common/Text/BodyTextGreyBold';
 import BodyTextLight from '@/components/common/Text/BodyTextLight';
 import UnderLinedLinks from '@/components/common/Text/UnderLinedLinks';
 
+import {} from '../common';
+
 type HouseItemProps = {
   logoSrc: StaticImageData;
   isCollect: string;
   // change to items
-  carouselImgSrc: [];
+  carouselImgSrc: string[];
   title: string;
   text: string;
   author: string;

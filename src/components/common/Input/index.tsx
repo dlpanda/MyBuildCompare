@@ -1,24 +1,24 @@
-import { useState } from 'react';
-
-// reflect changes?
+// TODO PAN
 type InputProps = {
   inputValue?: string;
   placeholder?: string;
   className?: string;
+  onChange?: (value: string) => void;
 };
 
-export default function Input(props: InputProps) {
-  const [inputValue, setinputValue] = useState(props.inputValue || '');
-
+export default function Input({
+  inputValue,
+  className,
+  placeholder,
+  onChange,
+}: InputProps) {
   return (
     <input
-      className={`outline-none ${props.className}`}
+      className={`outline-none ${className}`}
       type="text"
       value={inputValue}
-      placeholder={props.placeholder || ''}
-      onChange={(e) => {
-        setinputValue(e.target.value);
-      }}
+      placeholder={placeholder || ''}
+      onChange={(e) => onChange?.(e.target.value)}
     />
   );
 }

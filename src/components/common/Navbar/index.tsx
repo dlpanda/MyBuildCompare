@@ -1,10 +1,11 @@
 import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
+import { ReactNode } from 'react';
 
 // any?
 type NavbarProps = {
   logoUrl: string | StaticImageData;
-  menuTemplate: any;
+  menuTemplate: ReactNode;
 };
 
 export default function Navbar(props: NavbarProps) {

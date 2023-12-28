@@ -4,8 +4,15 @@ import BodyTextGrey from '@/components/common/Text/BodyTextGrey';
 import { useState } from 'react';
 
 // items?
+
+type ButtonItem = {
+  label: string;
+  className: string;
+};
+
 type ButtonGroupProps = {
   title: string;
+  items: ButtonItem[];
 };
 
 export default function ButtonGroup(props: ButtonGroupProps) {

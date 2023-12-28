@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+// TODO PAN
 // data item type?
 type BlogsProps = {
   className: string;

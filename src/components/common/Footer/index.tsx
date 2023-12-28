@@ -1,12 +1,14 @@
-// global declaration
 import Facebook from '@/assets/index/facebook.png';
 import Instagram from '@/assets/index/instagram.png';
 import Pinterest from '@/assets/index/pinterest.png';
 import Image from 'next/image';
+import { ReactNode } from 'react';
+
+type Message = { label: string };
 
 type FooterProps = {
-  contentTemplate: any;
-  messageData: any;
+  contentTemplate: ReactNode;
+  messageData: Message[];
 };
 
 export default function Footer(props: FooterProps) {
@@ -14,7 +16,7 @@ export default function Footer(props: FooterProps) {
     <footer className="px-20 bg-[#F9FCFC]">
       {props.contentTemplate}
       <div className="h-[4.375rem] leading-[4.375rem] body-text">
-        {props.messageData.map((v: any) => {
+        {props.messageData.map((v) => {
           return (
             <span className="mr-5" key={v.text}>
               {v.text}
