@@ -6,13 +6,18 @@ export type ButtonProps = PropsWithChildren<{
   onClick?: () => void;
 }>;
 
-export default function Button(props: ButtonProps) {
+export default function Button({
+  onClick,
+  className,
+  textClassName,
+  children,
+}: ButtonProps) {
   return (
     <div
-      onClick={props.onClick}
-      className={`inline-block px-5 border border-[#D1D1D1] rounded-[5.625rem] button-box-shadow cursor-pointer ${props.className}`}
+      onClick={onClick}
+      className={`inline-block px-5 border border-[#D1D1D1] rounded-[5.625rem] button-box-shadow cursor-pointer ${className}`}
     >
-      <div className={`inline-block ${props.textClassName}`}>{props.text}</div>
+      <div className={`inline-block ${textClassName}`}>{children}</div>
     </div>
   );
 }

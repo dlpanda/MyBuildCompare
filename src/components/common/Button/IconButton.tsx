@@ -1,14 +1,15 @@
 import Image, { StaticImageData } from 'next/image';
+import { PropsWithChildren } from 'react';
 
-type IconButtonVerticalProps = {
+type IconButtonVerticalProps = PropsWithChildren<{
   className?: string;
-  text?: string;
   iconSrc: string | StaticImageData;
   iconWidth: number;
   iconHeight: number;
   iconPoistion?: string;
   textClassName?: string;
-};
+  direction?: string;
+}>;
 
 export default function ButtonIconVertical(props: IconButtonVerticalProps) {
   const { iconPoistion = 'left' } = props;
@@ -33,7 +34,7 @@ export default function ButtonIconVertical(props: IconButtonVerticalProps) {
       ) : (
         ''
       )}
-      <div className={`${props.textClassName}`}>{props.text}</div>
+      <div className={`${props.textClassName}`}>{props.children}</div>
       {iconPoistion === 'right' ? (
         <Image
           className=""

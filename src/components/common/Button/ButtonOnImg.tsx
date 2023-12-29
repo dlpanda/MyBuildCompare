@@ -1,26 +1,28 @@
 import Image, { StaticImageData } from 'next/image';
-import type { ReactNode } from 'react';
+import { PropsWithChildren } from 'react';
 
-type ButtonOnImgProps = {
+type ButtonOnImgProps = PropsWithChildren<{
   className?: string;
   imgSrc: string | StaticImageData;
-  children: ReactNode;
-};
+}>;
 
-// Comp Name
 // TODO iamge size
-export default function ButtonimgVertical(props: ButtonOnImgProps) {
+export default function ButtonOnImg({
+  className,
+  imgSrc,
+  children,
+}: ButtonOnImgProps) {
   return (
-    <div className={`relative ${props.className}`}>
+    <div className={`relative ${className}`}>
       <Image
         className="w-full"
-        src={props.imgSrc}
+        src={imgSrc}
         alt="img"
         width={1352}
         height={560}
         priority
       />
-      {props.children}
+      {children}
     </div>
   );
 }
