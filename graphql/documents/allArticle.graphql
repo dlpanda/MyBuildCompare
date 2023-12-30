@@ -1,0 +1,8 @@
+query allArticle {
+  allArticle {
+    title
+    contents {
+      portableTextImageRaw
+    }
+  }
+}
