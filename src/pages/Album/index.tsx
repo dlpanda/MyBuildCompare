@@ -15,9 +15,13 @@ import BackPNG from "@/assets/icon/left-arrow.png";
 import "@/styles/common.css";
 import "@/styles/color.css";
 import { GetStaticProps } from "next";
-import sanity, { AllArticleQuery, Article } from "@/services/sanity";
+import sanity, { AllArticleQuery } from "@/services/sanity";
 
-export default function HouseDesigns({ data }: { data: Article[] }) {
+type Props = {
+  data: AllArticleQuery["allArticle"];
+};
+
+export default function HouseDesigns({ data }: Props) {
   console.log(data[0]?.title);
 
   return (
@@ -83,6 +87,4 @@ export default function HouseDesigns({ data }: { data: Article[] }) {
 export const getStaticProps = (async (context) => {
   const data = await sanity.getArticles();
   return { props: { data } };
-}) satisfies GetStaticProps<{
-  data: AllArticleQuery["allArticle"];
-}>;
+}) satisfies GetStaticProps<Props>;
