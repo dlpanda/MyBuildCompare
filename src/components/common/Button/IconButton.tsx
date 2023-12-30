@@ -1,56 +1,56 @@
-import Image, { StaticImageData } from 'next/image';
+import clsx from 'clsx';
+import { StaticImageData } from 'next/image';
 import { PropsWithChildren } from 'react';
+import Icon from '../Icon';
 
-type IconButtonVerticalProps = PropsWithChildren<{
-  className?: string;
-  iconSrc: string | StaticImageData;
-  iconWidth: number;
-  iconHeight: number;
-  iconPoistion?: string;
-  textClassName?: string;
-  direction?: string;
+type IconButtonProps = PropsWithChildren<{
+    className?: string;
+    iconSrc: string | StaticImageData;
+    iconWidth: number;
+    iconHeight: number;
+    iconPoistion?: 'right' | 'left' | 'top';
+    textClassName?: string;
 }>;
 
-export default function ButtonIconVertical(props: IconButtonVerticalProps) {
-  const { iconPoistion = 'left' } = props;
-
-  return (
-    <div
-      className={`flex gap-4 items-center px-5 border border-[#D1D1D1] rounded-[5.625rem] button-box-shadow cursor-pointer ${props.className}`}
-    >
-      {iconPoistion === 'left' ? (
-        <Image
-          className=""
-          style={{
-            height: props.iconHeight + 'px',
-            width: props.iconWidth + 'px',
-          }}
-          src={props.iconSrc}
-          alt="icon"
-          width={props.iconWidth}
-          height={props.iconHeight}
-          priority
-        />
-      ) : (
-        ''
-      )}
-      <div className={`${props.textClassName}`}>{props.children}</div>
-      {iconPoistion === 'right' ? (
-        <Image
-          className=""
-          style={{
-            height: props.iconHeight + 'px',
-            width: props.iconWidth + 'px',
-          }}
-          src={props.iconSrc}
-          alt="icon"
-          width={props.iconWidth}
-          height={props.iconHeight}
-          priority
-        />
-      ) : (
-        ''
-      )}
-    </div>
-  );
+export default function ButtonIcon({
+    className,
+    textClassName,
+    children,
+    iconHeight,
+    iconWidth,
+    iconSrc,
+    iconPoistion = 'left',
+}: IconButtonProps) {
+    const classNames = clsx(
+        ` gap-4 items-center px-5 rounded-[5.625rem]  cursor-pointer ${className}`,
+        {
+            flex: iconPoistion !== 'top',
+            border: iconPoistion !== 'top',
+            'button-box-shadow': iconPoistion !== 'top',
+            'border-[#D1D1D1]': iconPoistion !== 'top',
+        }
+    );
+    const textClassNames = clsx(`${textClassName}`, {
+        block: iconPoistion === 'top',
+    });
+    return (
+        <div className={classNames}>
+            <Icon
+                className={clsx({
+                    hidden: iconPoistion !== 'left' && iconPoistion !== 'top',
+                    'mx-auto': iconPoistion === 'top',
+                })}
+                iconSrc={iconSrc}
+                iconWidth={iconWidth}
+                iconHeight={iconHeight}
+            />
+            <div className={textClassNames}>{children}</div>
+            <Icon
+                className={clsx({ hidden: iconPoistion !== 'right' })}
+                iconSrc={iconSrc}
+                iconWidth={iconWidth}
+                iconHeight={iconHeight}
+            />
+        </div>
+    );
 }

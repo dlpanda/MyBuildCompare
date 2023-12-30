@@ -1,13 +1,12 @@
-import { ReactNode } from 'react';
+import clsx from 'clsx';
+import { PropsWithChildren } from 'react';
 
-type GridProps = {
-  className?: string;
-  cols?: number;
-  children: ReactNode;
-};
+type GridProps = PropsWithChildren<{
+    className?: string;
+    cols?: number | string;
+}>;
 
-// ?? props
-export default function Grid(props: GridProps) {
-  const { cols = 3 } = props;
-  return <div className={`grid ${props.className}`}>{props.children}</div>;
+export default function Grid({ className, children, cols = 3 }: GridProps) {
+    const classNames = clsx(`grid grid-cols-${cols} ${className}`);
+    return <div className={classNames}>{children}</div>;
 }

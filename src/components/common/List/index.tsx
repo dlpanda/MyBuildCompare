@@ -19,25 +19,25 @@ import { ReactNode } from 'react';
 type Item = { title: string };
 
 type ListProps<T> = {
-  items: T[];
-  renderItem?: (item: T, index: number) => ReactNode;
+    items: T[];
+    renderItem?: (item: T, index: number) => ReactNode;
 };
 
 export default function List<T extends Item>({
-  items,
-  renderItem,
+    items,
+    renderItem,
 }: ListProps<T>) {
-  return (
-    <div className="text-base body-text ">
-      {items.map((v, i) => {
-        return (
-          <div key={v.title}>
-            {v.title} <div>{renderItem?.(v, i)}</div>
-          </div>
-        );
-      })}
-    </div>
-  );
+    return (
+        <div className="text-base body-text ">
+            {items.map((v, i) => {
+                return (
+                    <div key={v.title}>
+                        {v.title} <div>{renderItem?.(v, i)}</div>
+                    </div>
+                );
+            })}
+        </div>
+    );
 }
 
 // type Student = { title: string; age: number };

@@ -9,12 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "clsx": "^2.1.0",
     "i": "^0.3.7",
     "next": "14.0.3",
     "next-seo": "^6.4.0",
     "npm": "^10.2.5",
     "react": "^18",
     "react-dom": "^18",
+    "react-hook-form": "^7.49.2",
     "react-responsive-carousel": "^3.2.23"
   },
   "devDependencies": {
