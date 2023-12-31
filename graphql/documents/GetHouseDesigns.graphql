@@ -1,0 +1,10 @@
+query GetHouseDesigns(
+  $where: HouseDesignFilter
+  $sort: [HouseDesignSorting!]
+  $limit: Int
+  $offset: Int
+) {
+  allHouseDesign(where: $where, sort: $sort, limit: $limit, offset: $offset) {
+    title
+  }
+}

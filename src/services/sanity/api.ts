@@ -11,6 +11,17 @@ class Client extends UrqlClient {
     });
   }
 
+  async getHouseDesigns() {
+    const { data, error } = await this.query<AllArticleQuery>(
+      AllArticleDocument,
+      {}
+    );
+
+    if (error) throw error;
+
+    return data?.allArticle;
+  }
+
   async getArticles() {
     const { data, error } = await this.query<AllArticleQuery>(
       AllArticleDocument,

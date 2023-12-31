@@ -1,0 +1,5 @@
+query GetBuilder($id: ID!) {
+  Builder(id: $id) {
+    title
+  }
+}
