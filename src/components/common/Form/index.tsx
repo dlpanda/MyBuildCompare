@@ -1,12 +1,9 @@
-// TODO PAN
-import Gap from '@/components/common/Gap';
-import Input from '@/components/common/Input';
-import Title6Light from '@/components/common/Title/Title6Light';
-import Title7Light from '@/components/common/Title/Title7Light';
 import { Button } from '../Button';
+import Gap from '../Gap';
+import Input from '../Input';
+import Title from '../Title';
 
 // react-hook-form?
-
 type FormProps = {
     // text: string,
 };
@@ -17,8 +14,8 @@ export default function Form(props: FormProps) {
     return (
         <div className="button-box-shadow px-8 rounded-md bg-cover bg-[url('../assets/index/module-bg.png')]">
             <Gap size={50}></Gap>
-            <Title6Light text="Contact Us"></Title6Light>
-            <Title7Light text="Enquire for Price"></Title7Light>
+            <Title variant="6-light">Contact Us</Title>
+            <Title variant="7-light">Enquire for Price</Title>
             <Gap size={30}></Gap>
             <Input className={inputClassName} placeholder="First Name*"></Input>
             <Gap size={10}></Gap>
