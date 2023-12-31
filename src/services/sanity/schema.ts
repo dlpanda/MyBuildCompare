@@ -1895,7 +1895,7 @@ export type GetBuildersQueryVariables = Exact<{
 }>;
 
 
-export type GetBuildersQuery = { __typename?: 'RootQuery', allBuilder: Array<{ __typename?: 'Builder', title: string | null }> };
+export type GetBuildersQuery = { __typename?: 'RootQuery', allBuilder: Array<{ __typename?: 'Builder', _id: string | null, title: string | null, licenseNo: string | null, sinceYear: number | null, logo: { __typename?: 'Image', asset: { __typename?: 'SanityImageAsset', url: string | null } | null } | null }> };
 
 export type GetHouseDesignQueryVariables = Exact<{
   id: Scalars['ID']['input'];
@@ -1939,7 +1939,15 @@ export const GetBuilderDocument = gql`
 export const GetBuildersDocument = gql`
     query GetBuilders($where: BuilderFilter, $sort: [BuilderSorting!], $limit: Int, $offset: Int) {
   allBuilder(where: $where, sort: $sort, limit: $limit, offset: $offset) {
+    _id
     title
+    logo {
+      asset {
+        url
+      }
+    }
+    licenseNo
+    sinceYear
   }
 }
     `;
