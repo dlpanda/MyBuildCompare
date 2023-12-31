@@ -22,8 +22,6 @@ type Props = {
 };
 
 export default function HouseDesigns({ data }: Props) {
-  console.log(data[0]?.title);
-
   return (
     <Main
       meta={
