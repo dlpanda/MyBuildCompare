@@ -5,15 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 // 组件
 import Blogs from '@/components/MybuildCompare/Blogs';
-import Button from '@/components/common/Button/Button';
-import GradientButton from '@/components/common/Button/GradientButton';
-import Gap from '@/components/common/Gap';
-import Grid from '@/components/common/Grid';
-import Input from '@/components/common/Input';
-import BodyText from '@/components/common/Text/BodyText';
-import UnderLinedLinks from '@/components/common/Text/UnderLinedLinks';
-import Title4 from '@/components/common/Title/Title4';
-import Title6 from '@/components/common/Title/Title6';
+import { Button, Gap, Grid, Input, Text, Title } from '@/components/common';
 // 图片
 import Blogs1 from '@/assets/index/blogs-1.png';
 import Blogs2 from '@/assets/index/blogs-2.png';
@@ -74,19 +66,21 @@ export default function HouseDesigns() {
                     />
                 </div>
                 <div className="absolute top-[30%] w-[30%] tablet:static mobile:static tablet:w-full mobile:w-full">
-                    <BodyText text="Written by Alex Morrison"></BodyText>
+                    <Text>Written by Alex Morrison</Text>
                     <Gap size={10}></Gap>
-                    <Title4 text="5 Tips For Anyone Constructing a New Home"></Title4>
+                    <Title variant="4">
+                        5 Tips For Anyone Constructing a New Home
+                    </Title>
                     <Gap size={40}></Gap>
                     <Link href="/IndividualResource">
-                        <GradientButton text="Read More"></GradientButton>
+                        <Button className="green-gradient">Read More</Button>
                     </Link>
                 </div>
             </div>
             <Gap className="tablet:hidden mobile:hidden" size={75}></Gap>
             <Gap className="hidden tablet:block mobile:block" size={40}></Gap>
             <div className="px-[3.75rem]">
-                <Title4 text="Latest Resources"></Title4>
+                <Title variant="4">Latest Resources</Title>
                 <Gap size={40}></Gap>
                 <Blogs dataList={blogsData}></Blogs>
             </div>
@@ -96,12 +90,12 @@ export default function HouseDesigns() {
                     className="hidden tablet:block mobile:block"
                     size={40}
                 ></Gap>
-                <Title4 text="Categories"></Title4>
+                <Title variant="4">Categories</Title>
                 <Gap className="mobile:hidden" size={20}></Gap>
-                <Button className="mr-4 py-2" text="All"></Button>
-                <Button className="mr-4 py-2" text="Category 1"></Button>
-                <Button className="mr-4 py-2" text="Category 2"></Button>
-                <Button className="mr-4 py-2" text="Category 3"></Button>
+                <Button className="mr-4">All</Button>
+                <Button className="mr-4">Category 1</Button>
+                <Button className="mr-4">Category 2</Button>
+                <Button className="mr-4">Category 3</Button>
                 <Gap size={40}></Gap>
                 <Grid className="grid-cols-4 gap-x-[20px] gap-y-[40px] tablet:hidden mobile:hidden">
                     {new Array(16).fill('').map((v: any, i: number) => {
@@ -114,16 +108,18 @@ export default function HouseDesigns() {
                                     priority
                                 />
                                 <Link href="/IndivdualStory">
-                                    <Title6 text="How to make your space a beautiful place on a budget!"></Title6>
+                                    <Title variant="6">
+                                        How to make your space a beautiful place
+                                        on a budget!
+                                    </Title>
                                 </Link>
-                                <BodyText
-                                    className="inline-block"
-                                    text="Written By"
-                                ></BodyText>
-                                <UnderLinedLinks
+                                <Text className="inline-block">Written by</Text>
+                                <Text
+                                    variant="underlined-links"
                                     className="inline-block ml-2"
-                                    text="Mel Davies"
-                                ></UnderLinedLinks>
+                                >
+                                    Mel Davies
+                                </Text>
                             </div>
                         );
                     })}
@@ -139,22 +135,24 @@ export default function HouseDesigns() {
                                     priority
                                 />
                                 <Link href="/IndivdualStory">
-                                    <Title6 text="How to make your space a beautiful place on a budget!"></Title6>
+                                    <Title variant="6">
+                                        How to make your space a beautiful place
+                                        on a budget!
+                                    </Title>
                                 </Link>
-                                <BodyText
-                                    className="inline-block"
-                                    text="Written By"
-                                ></BodyText>
-                                <UnderLinedLinks
+                                <Text className="inline-block">Written by</Text>
+                                <Text
+                                    variant="underlined-links"
                                     className="inline-block ml-2"
-                                    text="Mel Davies"
-                                ></UnderLinedLinks>
+                                >
+                                    Mel Davies
+                                </Text>
                             </div>
                         );
                     })}
                 </Grid>
                 <Gap size={40}></Gap>
-                <GradientButton text="Show more"></GradientButton>
+                <Button className="green-gradient">Show more</Button>
                 <Gap className="tablet:hidden mobile:hidden" size={75}></Gap>
                 <Gap
                     className="hidden tablet:block mobile:block"
@@ -163,17 +161,14 @@ export default function HouseDesigns() {
             </div>
             <div className="relative px-[8.75rem] mobile:px-[2rem]">
                 <div className="absolute top-[30%] w-[30%] tablet:static mobile:static tablet:w-full mobile:w-full">
-                    <Title4 text="Keep up to date with the latest"></Title4>
+                    <Title variant="4">Keep up to date with the latest</Title>
                     <Gap size={20}></Gap>
                     <Input className="rounded-md box-border border border-[#888888] px-4 py-3 mr-2 w-[65%] text-[#0D544E]"></Input>
                     <Gap
                         className="hidden tablet:hidden mobile:block"
                         size={10}
                     ></Gap>
-                    <GradientButton
-                        className=""
-                        text="Subscribe"
-                    ></GradientButton>
+                    <Button>Subscribe</Button>
                 </div>
                 <Gap className="hidden tablet:block" size={40}></Gap>
                 <Gap className="hidden mobile:block" size={20}></Gap>

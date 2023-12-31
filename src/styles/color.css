@@ -1,48 +1,49 @@
 /* color config */
 .dark-green {
-	color: #003431;
+    color: #003431;
 }
 
 .dark-grey {
-	color: #3D3D3D;
+    color: #3d3d3d;
 }
 
 .grey {
-	color: #888888;
+    color: #888888;
 }
 
 .light-grey {
-	color: #D1D1D1;
+    color: #d1d1d1;
 }
 
 .white-smoke {
-	color: #EFEFEF;
+    color: #efefef;
 }
 
 .ghost-white {
-	color: #F9FCFC;
+    color: #f9fcfc;
 }
 
 .light-green {
-	color: #2CE8CB;
+    color: #2ce8cb;
 }
 
 .green {
-	color: #048173;
+    color: #048173;
 }
 
 .green-gradient {
-	background-image: linear-gradient(to top right, #02cAAE, #0D544E);
+    color: #ffffff;
+    background-image: linear-gradient(to top right, #02caae, #0d544e);
 }
 
 .dark-green-gradient {
-	background-image: linear-gradient(to top right, #00A38F, #0D544E);
+    background-image: linear-gradient(to top right, #00a38f, #0d544e);
 }
 
 .blue-green-gradient {
-	background-image: linear-gradient(to right, #00BCF0, #A1DC00);
+    background-image: linear-gradient(to right, #00bcf0, #a1dc00);
 }
 
 .dark-blue-green-gradient {
-	background-image: linear-gradient(to top right, #009CD4, #7FB500);
+    background-image: linear-gradient(to top right, #009cd4, #7fb500);
 }

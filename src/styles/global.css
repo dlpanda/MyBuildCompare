@@ -100,7 +100,7 @@
         display: inline-block;
         font-size: 1rem;
         font-weight: 600;
-        color: #ffffff;
+        /* color: #ffffff; */
         padding: 0 1.25rem;
         height: 3rem;
         line-height: 3rem;
