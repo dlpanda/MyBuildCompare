@@ -15,10 +15,10 @@ import BackPNG from "@/assets/icon/left-arrow.png";
 import "@/styles/common.css";
 import "@/styles/color.css";
 import { GetStaticProps } from "next";
-import sanity, { AllArticleQuery } from "@/services/sanity";
+import sanity, { GetArticlesQuery } from "@/services/sanity";
 
 type Props = {
-  data: AllArticleQuery["allArticle"];
+  data: GetArticlesQuery["allArticle"];
 };
 
 export default function HouseDesigns({ data }: Props) {
@@ -83,8 +83,3 @@ export default function HouseDesigns({ data }: Props) {
     </Main>
   );
 }
-
-export const getStaticProps = (async (context) => {
-  const data = await sanity.getArticles();
-  return { props: { data } };
-}) satisfies GetStaticProps<Props>;
