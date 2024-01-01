@@ -1,12 +1,8 @@
 import { Button, Gap, Input, Text } from '@/components/common';
+import { GetBuilderQuery } from '@/services/sanity';
 import Image from 'next/image';
 import Link from 'next/link';
-// 图片
-
-import { Builder } from '@/services/sanity';
-type FormProps = {
-    data: Builder;
-};
+type FormProps = { data: GetBuilderQuery['Builder'] };
 
 export default function Form({ data }: FormProps) {
     const inputClassName =

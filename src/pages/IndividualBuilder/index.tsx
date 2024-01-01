@@ -14,9 +14,9 @@ import AwardsPNG from '@/assets/individual-builder/awards.png';
 import '@/styles/color.css';
 import '@/styles/common.css';
 // 接口
-import sanity, { Builder } from '@/services/sanity';
+import sanity, { GetBuilderQuery } from '@/services/sanity';
 import { useState } from 'react';
-type Props = { data: Builder };
+type Props = { data: GetBuilderQuery['Builder'] };
 
 export default function HouseDesigns({ data }: Props) {
     const houseList = JSON.parse(JSON.stringify(DataList)).splice(0, 2);
