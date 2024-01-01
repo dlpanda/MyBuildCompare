@@ -9,7 +9,7 @@ type MyBuildCarouselProps = {
 export default function MyBuildCarousel(props: MyBuildCarouselProps) {
     const { data } = props;
     return (
-        <Carousel className="w-full">
+        <Carousel autoPlay={true} className="w-full">
             {data.map((item: any, i: any) => {
                 // onClick={() => openUrl(item.url)}
                 return (

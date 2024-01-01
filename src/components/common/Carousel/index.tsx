@@ -5,7 +5,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a lo
 
 export type CarouselProps = {
     className?: string;
-    autoPlay: boolean;
+    autoPlay?: boolean;
     children: ReactChild[];
 };
 // & RRCarouselProps
