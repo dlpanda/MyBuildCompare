@@ -1,9 +1,10 @@
 import Meta from '@/layouts/Meta';
 import Main from '@/templates/Main';
 import { AppConfig } from '@/utils/AppConfig';
+import { GetStaticProps } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 // 组件
 import {
     Button,
@@ -18,16 +19,30 @@ import {
 import HouseAbove from '@/assets/house-designs/house-above.png';
 import HouseNext from '@/assets/house-designs/house-next.png';
 import House from '@/assets/house-designs/house.png';
-import houseLogo from '@/assets/individual-builder/logo.png';
+// 样式
 import '@/styles/color.css';
 import '@/styles/common.css';
+// 接口
+import sanity, { GetBuildersQuery } from '@/services/sanity';
+type Props = { data: GetBuildersQuery['allBuilder'] };
 
-export default function HouseDesigns() {
+const QUERY_LIMIT = 9;
+
+export default function HouseDesigns({ data }: Props) {
     const [searchValue, setSearchValue] = useState('');
     const getSearchValue = (value: string) => {
         console.log('searchValue：' + value);
         setSearchValue(value);
     };
+
+    const [builders, setBuilders] = useState(data);
+    const handleShowMore = useCallback(async () => {
+        const more = await sanity.getBuilders({
+            limit: QUERY_LIMIT,
+            offset: builders.length,
+        });
+        setBuilders((prev) => prev.concat(more));
+    }, [builders.length]);
 
     return (
         <Main
@@ -76,17 +91,17 @@ export default function HouseDesigns() {
             </div>
             <Gap className="mobile:hidden" size={50}></Gap>
             <Grid className="grid-cols-3 gap-x-[20px] gap-y-[20px] pt-[3.125rem] px-20 tablet:grid-cols-2 mobile:grid-cols-1">
-                {new Array(11).fill('').map((v: any, i: number) => {
+                {builders.map(({ _id, licenseNo, sinceYear, logo }) => {
                     return (
                         <div
-                            key={i}
+                            key={_id}
                             className="button-box-shadow px-8 rounded-md bg-cover"
                         >
                             <div className="flex px-2 py-6">
                                 <div className="w-[8.75rem]">
                                     <Image
                                         className="w-full rounded-md"
-                                        src={houseLogo}
+                                        src={logo.asset.url || ''}
                                         alt="img"
                                         width={140}
                                         height={140}
@@ -95,12 +110,17 @@ export default function HouseDesigns() {
                                 </div>
                                 <div className="flex flex-1 flex-col pl-4">
                                     <Gap size={20}></Gap>
-                                    <Text>License No. 276763C</Text>
-                                    <Text>Since YYYY</Text>
+                                    <Text>License No. {licenseNo}</Text>
+                                    <Text>Since {sinceYear}</Text>
                                     <Gap size={30}></Gap>
                                     <Link
                                         className="flex"
-                                        href="/IndividualBuilder"
+                                        href={{
+                                            pathname: '/IndividualBuilder',
+                                            query: {
+                                                id: _id,
+                                            },
+                                        }}
                                     >
                                         <Text variant="underlined-links">
                                             Visit Builder Website
@@ -131,3 +151,8 @@ export default function HouseDesigns() {
         </Main>
     );
 }
+
+export const getStaticProps = (async (context) => {
+    const data = await sanity.getBuilders({ limit: QUERY_LIMIT, offset: 0 });
+    return { props: { data } };
+}) satisfies GetStaticProps<Props>;

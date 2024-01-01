@@ -1,0 +1,5 @@
+query GetHouseDesign($id: ID!) {
+  HouseDesign(id: $id) {
+    title
+  }
+}

@@ -7,6 +7,14 @@ const config: Config = {
         './src/app/**/*.{js,ts,jsx,tsx,mdx}',
         './src/templates/**/*.{js,ts,jsx,tsx,mdx}',
     ],
+    safelist: [
+        {
+            pattern: /^(grid-cols-)?([0-9])+$/,
+        },
+        {
+            pattern: /^(body-text-)?.+$/,
+        },
+    ],
     theme: {
         extend: {
             screens: {

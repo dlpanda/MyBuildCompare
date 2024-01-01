@@ -1,0 +1,5 @@
+query GetArticle($id: ID!) {
+  Article(id: $id) {
+    title
+  }
+}

@@ -1,0 +1,10 @@
+query GetArticles(
+  $where: ArticleFilter
+  $sort: [ArticleSorting!]
+  $limit: Int
+  $offset: Int
+) {
+  allArticle(where: $where, sort: $sort, limit: $limit, offset: $offset) {
+    title
+  }
+}

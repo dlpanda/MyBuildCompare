@@ -1,3 +1,4 @@
+import { Text } from '@/components/common';
 import Carousel from '@/components/common/Carousel';
 import clsx from 'clsx';
 import Image, { StaticImageData } from 'next/image';
@@ -61,12 +62,15 @@ export default function Blogs({ className, dataList }: BlogsProps) {
                                     priority
                                 />
                                 <p className="title-6 text-left">{v.title}</p>
-                                <p className="body-text pt-2 text-left">
+                                <div className="body-text pt-2 text-left">
                                     Written By{' '}
-                                    <span className="underlined-links">
+                                    <Text
+                                        variant="underlined-links"
+                                        className="inline-block"
+                                    >
                                         {v.author}
-                                    </span>
-                                </p>
+                                    </Text>
+                                </div>
                             </div>
                         );
                     })}

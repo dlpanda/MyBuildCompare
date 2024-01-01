@@ -9,6 +9,7 @@ type TextProps = PropsWithChildren<{
 }>;
 
 export default function Text({ children, className, variant = '' }: TextProps) {
-    const classNames = clsx(`${className} body-text-${variant} `);
+    const textVariant = `body-text-${variant}`;
+    const classNames = clsx(`${className} ${textVariant} `);
     return <div className={classNames}>{children}</div>;
 }

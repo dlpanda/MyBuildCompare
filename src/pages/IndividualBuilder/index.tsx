@@ -3,6 +3,7 @@ import Main from '@/templates/Main';
 import { AppConfig } from '@/utils/AppConfig';
 import { DataList } from '@/utils/DataList';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 // 组件
 import HouseItem from '@/components/HouseItem';
 import Form from '@/components/IndividualBuilder/Form';
@@ -14,6 +15,10 @@ import '@/styles/common.css';
 
 export default function HouseDesigns() {
     const houseList = JSON.parse(JSON.stringify(DataList)).splice(0, 2);
+    const router = useRouter();
+    const { id } = router.query;
+    console.log(router, '============');
+    console.log(id);
     return (
         <Main
             meta={

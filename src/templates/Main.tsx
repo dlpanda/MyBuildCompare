@@ -50,10 +50,11 @@ export default function Main(props: IMainProps) {
             <Line></Line>
             <Footer messageData={FooterMessage}>
                 <div>
-                    {/* grid-cols-3  */}
                     <Grid
                         cols="3"
-                        className="tablet:grid-cols-2 mobile:grid-cols-2 gap-6 py-[4.125rem]"
+                        tabletCols="2"
+                        mobileCols="2"
+                        className="gap-6 py-[4.125rem]"
                     >
                         {FooterContent.map((v: any) => {
                             return (

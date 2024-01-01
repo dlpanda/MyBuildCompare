@@ -9,8 +9,9 @@ type MenuItemProps = PropsWithChildren<{
 
 export default function MenuItem({ data }: MenuItemProps) {
     return (
-        <div
-            className='
+        <Link href={data.href}>
+            <div
+                className='
                 menu-item
                 cursor-pointer 
                 inline-block 
@@ -22,8 +23,9 @@ export default function MenuItem({ data }: MenuItemProps) {
                 // hover:after:h-0.5
                 // hover:after:w-full
             '
-        >
-            <Link href={data.href}>{data.name}</Link>
-        </div>
+            >
+                {data.name}
+            </div>
+        </Link>
     );
 }
