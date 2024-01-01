@@ -10,8 +10,7 @@ type HouseItemProps = {
     logoSrc: StaticImageData | string;
     isCollect: boolean;
     carouselItem: {
-        __typename?: 'Image';
-        asset: { __typename?: 'SanityImageAsset'; url: string };
+        asset: { url: string };
     }[];
     // carouselItem: MyImage[];
     title: string;
