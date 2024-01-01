@@ -1,10 +1,25 @@
 query GetHouseDesigns(
-  $where: HouseDesignFilter
-  $sort: [HouseDesignSorting!]
-  $limit: Int
-  $offset: Int
+    $where: HouseDesignFilter
+    $sort: [HouseDesignSorting!]
+    $limit: Int
+    $offset: Int
 ) {
-  allHouseDesign(where: $where, sort: $sort, limit: $limit, offset: $offset) {
-    title
-  }
+    allHouseDesign(where: $where, sort: $sort, limit: $limit, offset: $offset) {
+        _id
+        title
+        builder {
+            title
+            logo {
+                asset {
+                    url
+                }
+            }
+        }
+        photos {
+            asset {
+                url
+            }
+        }
+        overview
+    }
 }
