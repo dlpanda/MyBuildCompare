@@ -54,8 +54,9 @@ export default function HouseDesigns({ data }: Props) {
                     <Title variant="6">About Builder</Title>
                     <Gap size={30}></Gap>
                     <Text>
-                        {builder.description ||
-                            `GJ Gardner Homes is rated as Australia&apos;s No.1 and
+                        {builder
+                            ? builder.description
+                            : `GJ Gardner Homes is rated as Australia&apos;s No.1 and
                         Most Trusted National Home Building brand as a result of
                         their level of customer satisfaction. Their commitment
                         to acting with integrity, transparency and reliability

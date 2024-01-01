@@ -27,8 +27,16 @@ export default function Blogs({ className, data }: BlogsProps) {
                                 <Image
                                     className="rounded-[0.75rem] w-full"
                                     src={v.image ? v.image.asset.url : house1}
-                                    width={v.image.asset.size}
-                                    height={v.image.asset.size}
+                                    width={
+                                        v.image
+                                            ? v.image.asset.size
+                                            : house1.width
+                                    }
+                                    height={
+                                        v.image
+                                            ? v.image.asset.size
+                                            : house1.height
+                                    }
                                     alt="icon"
                                     priority
                                 />
