@@ -52,7 +52,7 @@ export default function HouseDesigns() {
                                 <Select label={v.type}></Select>
                                 <Gap size={40}></Gap>
                                 <Carousel autoPlay={false}>
-                                    {v.carouselImgSrc.map(
+                                    {v.carouselItem.map(
                                         (item: any, index: any) => {
                                             return (
                                                 <div

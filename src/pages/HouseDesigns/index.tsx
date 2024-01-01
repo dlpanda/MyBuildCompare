@@ -103,7 +103,7 @@ export default function HouseDesigns({ data }: Props) {
                             key={v._id}
                             logoSrc={v.builder.logo.asset.url}
                             isCollect={false}
-                            carouselImgSrc={v.photos}
+                            carouselItem={v.photos}
                             title={v.title}
                             text={v.overview}
                             author={'More Details'}

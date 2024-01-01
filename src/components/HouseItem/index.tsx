@@ -1,7 +1,7 @@
 import house1 from '@/assets/compare-house-designs/house1.png';
 import heart from '@/assets/icon/heart.png';
 import { Text } from '@/components/common';
-import { Image as MyImage } from '@/services/sanity';
+// import { Image as MyImage } from '@/services/sanity';
 import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
 import { Carousel } from '../common';
@@ -9,7 +9,11 @@ import { Carousel } from '../common';
 type HouseItemProps = {
     logoSrc: StaticImageData | string;
     isCollect: boolean;
-    carouselImgSrc: MyImage[];
+    carouselItem: {
+        __typename?: 'Image';
+        asset: { __typename?: 'SanityImageAsset'; url: string };
+    }[];
+    // carouselItem: MyImage[];
     title: string;
     text: string;
     author: string;
@@ -18,7 +22,7 @@ type HouseItemProps = {
 export default function HouseItem({
     logoSrc,
     isCollect,
-    carouselImgSrc,
+    carouselItem,
     title,
     text,
     author,
@@ -37,7 +41,7 @@ export default function HouseItem({
                 <Image src={heart} alt="icon" width={24} height={20} priority />
             </div>
             <Carousel autoPlay={false}>
-                {carouselImgSrc.map((item, index) => {
+                {carouselItem.map((item, index) => {
                     return (
                         <div className="w-full" key={index}>
                             <Image

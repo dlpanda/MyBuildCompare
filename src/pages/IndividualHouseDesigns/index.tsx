@@ -101,21 +101,19 @@ export default function HouseDesigns() {
                     </Link>
                 </ButtonOnImg>
                 <Carousel className="hidden mobile:block" autoPlay={false}>
-                    {houseList[0].carouselImgSrc.map(
-                        (item: any, index: any) => {
-                            return (
-                                <div className="w-full" key={index}>
-                                    <Image
-                                        src={item.src}
-                                        alt="carouselImg"
-                                        width={323}
-                                        height={333}
-                                        priority
-                                    />
-                                </div>
-                            );
-                        }
-                    )}
+                    {houseList[0].carouselItem.map((item: any, index: any) => {
+                        return (
+                            <div className="w-full" key={index}>
+                                <Image
+                                    src={item.src}
+                                    alt="carouselImg"
+                                    width={323}
+                                    height={333}
+                                    priority
+                                />
+                            </div>
+                        );
+                    })}
                 </Carousel>
                 <Title variant="6-light" className="hidden mobile:block">
                     Edgewater 186 by G.J. Gardner
@@ -270,7 +268,7 @@ export default function HouseDesigns() {
                                     key={i}
                                     logoSrc={v.logoSrc}
                                     isCollect={v.isCollect}
-                                    carouselImgSrc={v.carouselImgSrc}
+                                    carouselItem={v.carouselItem}
                                     title={v.title}
                                     text={v.text}
                                     author={v.author}

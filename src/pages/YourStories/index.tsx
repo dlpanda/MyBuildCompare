@@ -95,7 +95,7 @@ export default function HouseDesigns() {
                                     key={i}
                                     logoSrc={v.logoSrc}
                                     isCollect={v.isCollect}
-                                    carouselImgSrc={v.carouselImgSrc}
+                                    carouselItem={v.carouselItem}
                                     title={v.title}
                                     text={v.text}
                                     author={v.author}
