@@ -1,15 +1,25 @@
-
-import React, { useState, useRef, useEffect } from "react";
+import clsx from 'clsx';
 type InputProps = {
-    inputValue?: string,
-    placeholder?: string,
-    className?: string,
+    inputValue?: string;
+    placeholder?: string;
+    className?: string;
+    onChange?: (value: string) => void;
 };
-export default function Input(props: InputProps) {
-    const [inputValue, setinputValue] = useState(props.inputValue || '');
+
+export default function Input({
+    inputValue,
+    className,
+    placeholder = '',
+    onChange,
+}: InputProps) {
+    const classNames = clsx(`outline-none ${className}`);
     return (
-        <input className={`outline-none ${props.className}`} type="text" value={inputValue} placeholder={props.placeholder ||''} onChange={e => {
-            setinputValue(e.target.value);
-        }} />
-    )
+        <input
+            className={classNames}
+            type="text"
+            value={inputValue}
+            placeholder={placeholder}
+            onChange={(e) => onChange?.(e.target.value)}
+        />
+    );
 }

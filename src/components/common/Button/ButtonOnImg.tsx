@@ -1,16 +1,29 @@
+import clsx from 'clsx';
+import Image, { StaticImageData } from 'next/image';
+import { PropsWithChildren } from 'react';
 
-import Image, { StaticImageData } from 'next/image'
-import type { ReactNode } from 'react';
-type ButtonOnImgProps = {
-    className?: string,
-    imgSrc: string | StaticImageData,
-    children: ReactNode;
-};
-export default function ButtonimgVertical(props: ButtonOnImgProps) {
+type ButtonOnImgProps = PropsWithChildren<{
+    className?: string;
+    imgSrc: string | StaticImageData;
+}>;
+
+export default function ButtonOnImg({
+    className,
+    imgSrc,
+    children,
+}: ButtonOnImgProps) {
+    const textClassNames = clsx(`relative ${className}`);
     return (
-        <div className={`relative ${props.className}`}>
-            <Image className='w-full' src={props.imgSrc} alt="img" width={1352} height={560} priority />
-            {props.children}
+        <div className={textClassNames}>
+            <Image
+                className="w-full"
+                src={imgSrc}
+                alt="img"
+                width={1352}
+                height={560}
+                priority
+            />
+            {children}
         </div>
-    )
+    );
 }

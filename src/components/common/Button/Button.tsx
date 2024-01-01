@@ -1,18 +1,25 @@
+import clsx from 'clsx';
+import { PropsWithChildren } from 'react';
 
-import { ReactNode } from 'react';
-import Image, { StaticImageData } from 'next/image'
-type ButtonProps = {
-    className?: string,
-    text: string,
-    textClassName?:string,
-    onClick?:any,
-};
-export default function Button(props: ButtonProps) {
+export type ButtonProps = PropsWithChildren<{
+    className?: string;
+    textClassName?: string;
+    onClick?: () => void;
+}>;
+
+export default function Button({
+    onClick,
+    className,
+    textClassName,
+    children,
+}: ButtonProps) {
+    const classNames = clsx(
+        `button inline-block px-5 border border-[#D1D1D1] rounded-[5.625rem] button-box-shadow cursor-pointer ${className}`
+    );
+    const textClassNames = clsx(`inline-block ${textClassName}`);
     return (
-        <div onClick={props.onClick} className={`inline-block px-5 border border-[#D1D1D1] rounded-[5.625rem] button-box-shadow cursor-pointer ${props.className}`}>
-            <div className={`inline-block ${props.textClassName}`}>
-                {props.text}
-            </div>
+        <div onClick={onClick} className={classNames}>
+            <div className={textClassNames}>{children}</div>
         </div>
-    )
+    );
 }

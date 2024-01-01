@@ -1,67 +1,135 @@
-import Image from 'next/image'
-import Link from "next/link"
-import { AppConfig } from '@/utils/AppConfig';
 import Meta from '@/layouts/Meta';
 import Main from '@/templates/Main';
-import { DataList } from '@/utils/DataList';
+import { AppConfig } from '@/utils/AppConfig';
+import { GetStaticProps } from 'next';
+import Link from 'next/link';
 // 组件
-import SearchBar from '@/components/common/SearchBar';
-import IconVerticalButton from '@/components/common/Button/IconVerticalButton';
-import IconButton from '@/components/common/Button/IconButton';
-import Grid from '@/components/common/Grid';
-import Title6 from '@/components/common/Title/Title6';
-import GradientButton from '@/components/common/Button/GradientButton';
 import HouseItem from '@/components/HouseItem';
+import {
+    Button,
+    Grid,
+    IconButton,
+    SearchBar,
+    Title,
+} from '@/components/common';
 // 图片
-import CofingPNG from '../../assets/icon/cofing.png'
-import House from '../../assets/house-designs/house.png'
-import HouseNext from '../../assets/house-designs/house-next.png'
-import HouseAbove from '../../assets/house-designs/house-above.png'
-import '../../styles/common.css'
-import '../../styles/color.css'
-import { useState } from 'react'
+import { useState } from 'react';
+import HouseAbove from '../../assets/house-designs/house-above.png';
+import HouseNext from '../../assets/house-designs/house-next.png';
+import House from '../../assets/house-designs/house.png';
+import CofingPNG from '../../assets/icon/cofing.png';
+import '../../styles/color.css';
+import '../../styles/common.css';
+// 接口
+import sanity, { GetHouseDesignsQuery } from '@/services/sanity';
+const QUERY_LIMIT = 9;
+type Props = { data: GetHouseDesignsQuery['allHouseDesign'] };
 
-export default function HouseDesigns() {
+export default function HouseDesigns({ data }: Props) {
     const [searchValue, setsearchValue] = useState('');
     const getSearchValue = (value: string) => {
-        console.log("searchValue：" + value)
-        setsearchValue(value)
-    }
+        console.log('searchValue：' + value);
+        setsearchValue(value);
+    };
+    const [designs, setDesigns] = useState(data);
+    console.log(designs);
+    // const handleShowMore = useCallback(async () => {
+    //     const more = await sanity.getHouseDesigns({
+    //         limit: QUERY_LIMIT,
+    //         offset: designs.length,
+    //     });
+    //     setDesigns((prev) => prev.concat(more));
+    // }, [designs.length]);
     return (
         <Main
             meta={
                 <Meta
                     title={AppConfig.title}
-                    description={AppConfig.description} />
+                    description={AppConfig.description}
+                />
             }
         >
-            <div className='flex justify-center gap-5 h-12'>
-                <IconVerticalButton iconSrc={House} iconWidth={29} iconHeight={24} text='Single-Storey'></IconVerticalButton>
-                <IconVerticalButton iconSrc={HouseNext} iconWidth={27} iconHeight={24} text='Double-Storey'></IconVerticalButton>
-                <IconVerticalButton iconSrc={HouseAbove} iconWidth={27} iconHeight={24} text='Duplex'></IconVerticalButton>
-                <SearchBar className='button-box-shadow mobile:hidden' clickSearch={getSearchValue} placeholder={'Search'} iconPoistion='left'></SearchBar>
-                <Link className='flex' href='/Filter'>
-                    <IconButton textClassName="mobile:hidden" iconSrc={CofingPNG} iconWidth={20} iconHeight={20} text='Filters'></IconButton>
+            <div className="flex justify-center gap-5 h-12">
+                <IconButton
+                    iconSrc={House}
+                    iconWidth={29}
+                    iconHeight={24}
+                    iconPoistion="top"
+                >
+                    Single-Storey
+                </IconButton>
+                <IconButton
+                    iconSrc={HouseNext}
+                    iconWidth={27}
+                    iconHeight={24}
+                    iconPoistion="top"
+                >
+                    Double-Storey
+                </IconButton>
+                <IconButton
+                    iconSrc={HouseAbove}
+                    iconWidth={27}
+                    iconHeight={24}
+                    iconPoistion="top"
+                >
+                    Duplex
+                </IconButton>
+                <SearchBar
+                    className="button-box-shadow mobile:hidden"
+                    clickSearch={getSearchValue}
+                    placeholder={'Search'}
+                    iconPoistion="left"
+                ></SearchBar>
+                <Link className="flex" href="/Filter">
+                    <IconButton
+                        textClassName="mobile:hidden"
+                        iconSrc={CofingPNG}
+                        iconWidth={20}
+                        iconHeight={20}
+                    >
+                        Filters
+                    </IconButton>
                 </Link>
             </div>
-            <Grid className="grid-cols-4 gap-x-[20px] gap-y-[40px] pt-[3.125rem] px-20 tablet:grid-cols-2 mobile:grid-cols-1">
-                {DataList.map((v: any, i: number) => {
+            <Grid
+                cols="4"
+                className="gap-x-[20px] gap-y-[40px] pt-[3.125rem] px-20 tablet:grid-cols-2 mobile:grid-cols-1"
+            >
+                {/* DataList */}
+                {designs.map((v) => {
                     return (
+                        // destruction
                         <HouseItem
-                            key={i}
-                            logoSrc={v.logoSrc}
-                            isCollect={v.isCollect}
-                            carouselImgSrc={v.carouselImgSrc}
+                            key={v._id}
+                            logoSrc={v.builder.logo.asset.url}
+                            isCollect={false}
+                            carouselItem={v.photos}
                             title={v.title}
-                            text={v.text}
-                            author={v.author}></HouseItem>
-                    )
+                            text={v.overview}
+                            author={'More Details'}
+                        ></HouseItem>
+                    );
                 })}
             </Grid>
-            <Title6 className='mt-[4.6875rem] mb-[1.25rem] mx-auto text-center' text={'Continuing Exploring'}></Title6>
-            <div className='text-center'>
-                <GradientButton className='blue-green-gradient mb-[4.6875rem] mx-auto' text={'Show More'}></GradientButton>
+            <Title
+                variant="6"
+                className="mt-[4.6875rem] mb-[1.25rem] mx-auto text-center"
+            >
+                Continuing Exploring
+            </Title>
+            <div className="text-center">
+                <Button className="blue-green-gradient text-white mb-[4.6875rem] mx-auto">
+                    Show More
+                </Button>
             </div>
         </Main>
-    )
+    );
 }
+
+export const getStaticProps = (async (context) => {
+    const data = await sanity.getHouseDesigns({
+        limit: QUERY_LIMIT,
+        offset: 0,
+    });
+    return { props: { data } };
+}) satisfies GetStaticProps<Props>;

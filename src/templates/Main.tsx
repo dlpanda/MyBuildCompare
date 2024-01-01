@@ -1,24 +1,29 @@
-
-import { useState } from 'react';
+import '@/styles/color.css';
+import '@/styles/common.css';
+import '@/styles/global.css';
+import '@/styles/index.css';
 import type { ReactNode } from 'react';
-import '@/styles/global.css'
-import '@/styles/common.css'
-import '@/styles/color.css'
-import '@/styles/index.css'
+import { useState } from 'react';
 // 配置
-import { MenuConfig } from '@/utils/MenuConfig';
 import { FooterContent, FooterMessage } from '@/utils/FooterConfig';
+import { MenuConfig } from '@/utils/MenuConfig';
 // 组件
-import SearchItem from '@/components/MybuildCompare/SearchItem';
-import Navbar from '@/components/common/Navbar';
-import Menu from '@/components/common/Menu';
-import LineBottom from '@/components/common/LineBottom';
-import SearchBar from '@/components/common/SearchBar';
-import List from '@/components/common/List';
-import Grid from '@/components/common/Grid';
-import Footer from '@/components/common/Footer';
+import {
+    Footer,
+    Grid,
+    Line,
+    Menu,
+    Navbar,
+    SearchBar,
+} from '@/components/common';
+// import Footer from '@/components/common/Footer';
+// import Grid from '@/components/common/Grid';
+// import LineBottom from '@/components/common/LineBottom';
+// import Menu from '@/components/common/Menu';
+// import Navbar from '@/components/common/Navbar';
+// import SearchBar from '@/components/common/SearchBar';
 // 图片
-import Logo from '@/assets/index/logo.png'
+import Logo from '@/assets/index/logo.png';
 type IMainProps = {
     meta?: ReactNode;
     children: ReactNode;
@@ -27,40 +32,56 @@ type IMainProps = {
 export default function Main(props: IMainProps) {
     const [searchValue, setsearchValue] = useState('');
     const getSearchValue = (value: string) => {
-        console.log("searchValue：" + value)
-        setsearchValue(value)
-    }
+        console.log('searchValue：' + value);
+        setsearchValue(value);
+    };
     return (
         <div>
             {props.meta}
-            <Navbar logoUrl={Logo} menuTemplate={
+            <Navbar logoUrl={Logo}>
                 <Menu menuList={MenuConfig}>
-                    <SearchBar clickSearch={getSearchValue} placeholder={'Search Category 2...'}></SearchBar>
+                    <SearchBar
+                        clickSearch={getSearchValue}
+                        placeholder={'Search Category 2...'}
+                    ></SearchBar>
                 </Menu>
-            } ></Navbar>
+            </Navbar>
             {props.children}
-            <LineBottom></LineBottom>
-            <Footer contentTemplate={
+            <Line></Line>
+            <Footer messageData={FooterMessage}>
                 <div>
-                    <Grid className="grid-cols-3 tablet:grid-cols-2 mobile:grid-cols-2 gap-6 py-[4.125rem]">
+                    <Grid
+                        cols="3"
+                        tabletCols="2"
+                        mobileCols="2"
+                        className="gap-6 py-[4.125rem]"
+                    >
                         {FooterContent.map((v: any) => {
                             return (
-                                <div className='dark-grey font-semibold cursor-default' key={v.title}>
+                                <div
+                                    className="dark-grey font-semibold cursor-default"
+                                    key={v.title}
+                                >
                                     {v.title}
                                     {v.children.map((v: any) => {
                                         return (
-                                            <div key={v.title} className='text-base body-text cursor-pointer'>
-                                                <span className='hover:underline'>{v.title}</span>
+                                            <div
+                                                key={v.title}
+                                                className="text-base body-text cursor-pointer"
+                                            >
+                                                <span className="hover:underline">
+                                                    {v.title}
+                                                </span>
                                             </div>
-                                        )
+                                        );
                                     })}
                                 </div>
-                            )
+                            );
                         })}
                     </Grid>
-                    <LineBottom></LineBottom>
+                    <Line></Line>
                 </div>
-            } messageData={FooterMessage}></Footer>
+            </Footer>
         </div>
-    )
+    );
 }

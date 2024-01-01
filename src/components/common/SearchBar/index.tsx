@@ -1,44 +1,73 @@
 // 带图标的搜索
-import React, { useState, useRef, useEffect } from "react";
-import Image from 'next/image'
-import SearchGrey from '@/assets/icon/search-grey.png'
+import SearchGrey from '@/assets/icon/search-grey.png';
+import clsx from 'clsx';
+import { useState } from 'react';
+import Icon from '../Icon';
+
+// value change?
 type SearchItemProps = {
-    hideIcon?: Boolean,
-    iconPoistion?: 'right' | 'left',
-    iconUrl?: any,
-    iconSize?: number,
-    clickSearch: Function,
-    placeholder?: string,
-    className?:string,
-    inputClassName?: string
-    iconClassName?: string
+    hideIcon?: Boolean;
+    iconPoistion?: 'right' | 'left';
+    iconUrl?: any;
+    iconSize?: number;
+    clickSearch: (value: string) => void;
+    placeholder?: string;
+    className?: string;
+    inputClassName?: string;
+    iconClassName?: string;
 };
-export default function SearchItem(props: SearchItemProps) {
+
+export default function SearchItem({
+    clickSearch,
+    className,
+    iconClassName,
+    inputClassName,
+    hideIcon = false,
+    iconUrl = SearchGrey,
+    iconPoistion = 'right',
+    placeholder = 'search',
+    iconSize = 15,
+}: SearchItemProps) {
     const [searchValue, setsearchValue] = useState('');
-    const {
-        hideIcon = false,
-        iconUrl = SearchGrey, // 默认灰色查询图标
-        iconPoistion = 'right',
-        placeholder = 'search',
-        iconSize = 15
-    } = props;
+    const classNames = clsx(
+        `${className} inline h-full border border-[#D1D1D1] background-white rounded-[5.625rem] py-[0.5625rem] px-5`
+    );
+    const inputClassNames = clsx(
+        `grey inline-block outline-none w-[11.75rem] bg-transparent ${inputClassName}`
+    );
     return (
-        <div className={`${props.className} inline h-full border border-[#D1D1D1] background-white rounded-[5.625rem] py-[0.5625rem] px-5`}>
-            {
-                !hideIcon && iconPoistion === 'left' ?
-                    <Image className={`inline-block mr-[0.625rem] ${props.iconClassName}`} onClick={() => { props.clickSearch(searchValue) }} src={iconUrl} alt="SearchGrey" width={iconSize} height={iconSize} priority />
-                    :
-                    ""
-            }
-            <input className={`grey inline-block outline-none w-[11.75rem] bg-transparent ${props.inputClassName}`} type="text" value={searchValue} placeholder={placeholder} onChange={e => {
-                setsearchValue(e.target.value);
-            }} />
-            {
-                !hideIcon && iconPoistion === 'right' ?
-                    <Image  className={`inline-block ml-1 ${props.iconClassName}`} onClick={() => { props.clickSearch(searchValue) }} src={iconUrl} alt="SearchGrey" width={iconSize} height={iconSize} priority />
-                    :
-                    ""
-            }
+        <div className={classNames}>
+            <Icon
+                className={clsx(`inline-block mr-[0.625rem] ${iconClassName}`, {
+                    hidden: hideIcon || iconPoistion !== 'left',
+                })}
+                clickIcon={() => {
+                    clickSearch(searchValue);
+                }}
+                iconSrc={iconUrl}
+                iconWidth={iconSize}
+                iconHeight={iconSize}
+            />
+            <input
+                className={inputClassNames}
+                type="text"
+                value={searchValue}
+                placeholder={placeholder}
+                onChange={(e) => {
+                    setsearchValue(e.target.value);
+                }}
+            />
+            <Icon
+                className={clsx(`inline-block ml-1 ${iconClassName}`, {
+                    hidden: hideIcon || iconPoistion !== 'right',
+                })}
+                clickIcon={() => {
+                    clickSearch(searchValue);
+                }}
+                iconSrc={iconUrl}
+                iconWidth={iconSize}
+                iconHeight={iconSize}
+            />
         </div>
-    )
+    );
 }

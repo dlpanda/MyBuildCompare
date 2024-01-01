@@ -1,21 +1,33 @@
+import clsx from 'clsx';
+import { useMemo } from 'react';
+import BreadcrumbHistory from './BreadcrumbHistory';
+import BreadcrumbNow from './BreadcrumbNow';
 
-import BreadcrumbNow from '@/components/common/Text/BreadcrumbNow';
-import BreadcrumbHistory from '@/components/common/Text/BreadcrumbHistory';
-type BreadcrumbProps = {
-    data: any,
-    className?:string,
+type BreadcrumbItem = {
+    label: string;
 };
-export default function Breadcrumb(props: BreadcrumbProps) {
-    const data = JSON.parse(JSON.stringify(props.data))
-    const current:any = data.pop()
+
+export type BreadcrumbProps = {
+    data: BreadcrumbItem[];
+    className?: string;
+};
+
+export default function Breadcrumb({ data, className }: BreadcrumbProps) {
+    const [current, history] = useMemo(() => {
+        const copy = data.slice();
+        return [copy.pop(), copy];
+    }, [data]);
+    const classNames = clsx(`px-20 ${className}`);
     return (
-        <div className={`px-20 ${props.className}`}>
-            {data.map((v: any, i: number) => {
+        <div className={classNames}>
+            {history.map((v, i) => {
                 return (
-                    <BreadcrumbHistory key={i} text={v.text}></BreadcrumbHistory>
-                )
+                    <BreadcrumbHistory key={i}>
+                        <div>{v.label} &gt;</div>
+                    </BreadcrumbHistory>
+                );
             })}
-            <BreadcrumbNow text={current.text}></BreadcrumbNow>
+            <BreadcrumbNow>{current?.label}</BreadcrumbNow>
         </div>
-    )
+    );
 }

@@ -1,41 +1,31 @@
-import Link from 'next/link';
-import Image, { StaticImageData } from 'next/image'
-import { ReactNode } from 'react';
-import MenuIcon from '@/assets/icon/menu-icon.png'
-type MenuProps = {
-    menuList: Array<any>,
-    children: ReactNode;
-};
-export default function Menu(props: MenuProps) {
+import MenuIcon from '@/assets/icon/menu-icon.png';
+import Image from 'next/image';
+import { PropsWithChildren } from 'react';
+import MenuItem, { MenuItemType } from './MenuItem';
+
+type MenuProps = PropsWithChildren<{
+    menuList: Array<MenuItemType>;
+}>;
+
+export default function Menu({ children, menuList }: MenuProps) {
     return (
         <div>
-            <div className='h-full leading-[5rem] absolute right-[5rem] tablet:hidden mobile:hidden'>
-                {props.menuList.map(v => {
-                    return (
-                        <div
-                            key={v.name}
-                            className='
-                                menu-item
-                                cursor-pointer 
-                                inline-block 
-                                mr-8
-                                // hover:after:content-[""]
-                                // hover:after:mt-[-1.5rem]
-                                // hover:after:block
-                                // hover:after:bg-#3D3D3D
-                                // hover:after:h-0.5
-                                // hover:after:w-full
-                            '>
-                            <Link href={v.href}>{v.name}</Link>
-                        </div>
-                    )
+            <div className="h-full leading-[5rem] absolute right-[5rem] tablet:hidden mobile:hidden">
+                {menuList.map((v, i) => {
+                    return <MenuItem key={i} data={v}></MenuItem>;
                 })}
-                {props.children}
-                {/* <Menu clickSearch={getSearchValue}></Menu> */}
+                {children}
             </div>
-            <div className='menu-btn absolute right-2 top-8 hidden tablet:block tablet:right-20 mobile:block'>
-                <Image src={MenuIcon} alt="MenuIcon" width={30} height={20} priority />
+            {/* 小屏菜单 */}
+            <div className="menu-btn absolute right-2 top-8 hidden tablet:block tablet:right-20 mobile:block">
+                <Image
+                    src={MenuIcon}
+                    alt="MenuIcon"
+                    width={30}
+                    height={20}
+                    priority
+                />
             </div>
         </div>
-    )
+    );
 }
