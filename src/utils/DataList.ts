@@ -117,7 +117,28 @@ export const DataList = [
         title: 'Cape Byron 245',
         text: '4 Bed, 2 bath, 2 Garage, 26 Squares',
         author: 'More Details',
-        quickLook: [],
+        quickLook: [
+            {
+                name: 'bed',
+                icon: BedPNG,
+                num: 5,
+            },
+            {
+                name: 'bed',
+                icon: BathPNG,
+                num: 3,
+            },
+            {
+                name: 'garage',
+                icon: GaragePNG,
+                num: 3,
+            },
+            {
+                name: 'squares',
+                icon: LivingPNG,
+                num: 44,
+            },
+        ],
     },
     {
         logoSrc: logo,
@@ -126,7 +147,28 @@ export const DataList = [
         title: 'Cape Byron 245',
         text: '4 Bed, 2 bath, 2 Garage, 26 Squares',
         author: 'More Details',
-        quickLook: [],
+        quickLook: [
+            {
+                name: 'bed',
+                icon: BedPNG,
+                num: 5,
+            },
+            {
+                name: 'bed',
+                icon: BathPNG,
+                num: 3,
+            },
+            {
+                name: 'garage',
+                icon: GaragePNG,
+                num: 3,
+            },
+            {
+                name: 'squares',
+                icon: LivingPNG,
+                num: 44,
+            },
+        ],
     },
     {
         logoSrc: logo,
@@ -135,7 +177,28 @@ export const DataList = [
         title: 'Cape Byron 245',
         text: '4 Bed, 2 bath, 2 Garage, 26 Squares',
         author: 'More Details',
-        quickLook: [],
+        quickLook: [
+            {
+                name: 'bed',
+                icon: BedPNG,
+                num: 5,
+            },
+            {
+                name: 'bed',
+                icon: BathPNG,
+                num: 3,
+            },
+            {
+                name: 'garage',
+                icon: GaragePNG,
+                num: 3,
+            },
+            {
+                name: 'squares',
+                icon: LivingPNG,
+                num: 44,
+            },
+        ],
     },
     {
         logoSrc: logo,
@@ -144,7 +207,28 @@ export const DataList = [
         title: 'Cape Byron 245',
         text: '4 Bed, 2 bath, 2 Garage, 26 Squares',
         author: 'More Details',
-        quickLook: [],
+        quickLook: [
+            {
+                name: 'bed',
+                icon: BedPNG,
+                num: 5,
+            },
+            {
+                name: 'bed',
+                icon: BathPNG,
+                num: 3,
+            },
+            {
+                name: 'garage',
+                icon: GaragePNG,
+                num: 3,
+            },
+            {
+                name: 'squares',
+                icon: LivingPNG,
+                num: 44,
+            },
+        ],
     },
     {
         logoSrc: logo,
@@ -153,7 +237,28 @@ export const DataList = [
         title: 'Cape Byron 245',
         text: '4 Bed, 2 bath, 2 Garage, 26 Squares',
         author: 'More Details',
-        quickLook: [],
+        quickLook: [
+            {
+                name: 'bed',
+                icon: BedPNG,
+                num: 5,
+            },
+            {
+                name: 'bed',
+                icon: BathPNG,
+                num: 3,
+            },
+            {
+                name: 'garage',
+                icon: GaragePNG,
+                num: 3,
+            },
+            {
+                name: 'squares',
+                icon: LivingPNG,
+                num: 44,
+            },
+        ],
     },
     {
         logoSrc: logo,
@@ -162,7 +267,28 @@ export const DataList = [
         title: 'Cape Byron 245',
         text: '4 Bed, 2 bath, 2 Garage, 26 Squares',
         author: 'More Details',
-        quickLook: [],
+        quickLook: [
+            {
+                name: 'bed',
+                icon: BedPNG,
+                num: 5,
+            },
+            {
+                name: 'bed',
+                icon: BathPNG,
+                num: 3,
+            },
+            {
+                name: 'garage',
+                icon: GaragePNG,
+                num: 3,
+            },
+            {
+                name: 'squares',
+                icon: LivingPNG,
+                num: 44,
+            },
+        ],
     },
 ];
 
