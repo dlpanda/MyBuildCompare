@@ -25,20 +25,23 @@ import House from '@/assets/house-designs/house.png';
 import CofingPNG from '@/assets/icon/cofing.png';
 import SearchBlack from '@/assets/icon/search-black.png';
 import Search from '@/assets/icon/search.png';
+import sanity, { GetArticlesQuery } from '@/services/sanity';
 import '@/styles/color.css';
 import '@/styles/common.css';
 import '@/styles/global.css';
 import '@/styles/index.css';
+import { GetStaticProps } from 'next';
 import ContactGreen from '../assets/icon/contact-green.png';
 import HammerGreen from '../assets/icon/hammer-green.png';
 import SearchGreen from '../assets/icon/search-green.png';
-import Blogs1 from '../assets/index/blogs-1.png';
-import Blogs2 from '../assets/index/blogs-2.png';
-import Blogs3 from '../assets/index/blogs-3.png';
-import Blogs4 from '../assets/index/blogs-4.png';
 import ModuleBg from '../assets/index/module-bg.png';
+const QUERY_LIMIT = 4;
+type Props = {
+    className?: string;
+    blogsData: GetArticlesQuery['allArticle'];
+};
 
-export default function Home() {
+export default function Home({ blogsData }: Props) {
     const columData: any = [
         {
             id: '01',
@@ -56,32 +59,32 @@ export default function Home() {
             text: 'Build Your Dream Home',
         },
     ];
-    const blogsData: any = [
-        {
-            id: '1',
-            imgSrc: Blogs1,
-            title: '4 Common Floor Plan Mistakes!',
-            author: 'Mel Davies',
-        },
-        {
-            id: '2',
-            title: 'Do not Fall For Fke Base Prices And Avoid The Price Hike!',
-            imgSrc: Blogs2,
-            author: 'Mel Davies',
-        },
-        {
-            id: '3',
-            title: 'When Is The Best Time To Start Building My New Home?',
-            imgSrc: Blogs3,
-            author: 'Kathy Schoonenberg',
-        },
-        {
-            id: '4',
-            title: 'What Stamp Duty Concessions And Exemptions Are Available For New Homes In NSW?',
-            imgSrc: Blogs4,
-            author: 'Mel Davies',
-        },
-    ];
+    // const blogsData: any = [
+    //     {
+    //         id: '1',
+    //         imgSrc: Blogs1,
+    //         title: '4 Common Floor Plan Mistakes!',
+    //         author: 'Mel Davies',
+    //     },
+    //     {
+    //         id: '2',
+    //         title: 'Do not Fall For Fke Base Prices And Avoid The Price Hike!',
+    //         imgSrc: Blogs2,
+    //         author: 'Mel Davies',
+    //     },
+    //     {
+    //         id: '3',
+    //         title: 'When Is The Best Time To Start Building My New Home?',
+    //         imgSrc: Blogs3,
+    //         author: 'Kathy Schoonenberg',
+    //     },
+    //     {
+    //         id: '4',
+    //         title: 'What Stamp Duty Concessions And Exemptions Are Available For New Homes In NSW?',
+    //         imgSrc: Blogs4,
+    //         author: 'Mel Davies',
+    //     },
+    // ];
     const [currentType, setcurrentType] = useState('');
     const changeType = (type: string) => {
         if (type === currentType) {
@@ -204,7 +207,8 @@ export default function Home() {
                         className={`
                             round-icon-button 
                             text-center
-                            blue-green-gradient
+                            blue-green-gradient 
+                            text-white
                             rounded-[1.5625rem]
                             mt-[-2px]
                             ${currentType === 'Location' ? 'bg-white' : ''}
@@ -335,7 +339,7 @@ export default function Home() {
             </div>
             <div className="my-20 mx-[4.6875rem] mobile:mx-2">
                 <Title variant="4">Blogs And Articles</Title>
-                <Blogs dataList={blogsData}></Blogs>
+                <Blogs data={blogsData}></Blogs>
                 <Button className="green-gradient">View More Articles</Button>
             </div>
             <div
@@ -363,3 +367,11 @@ export default function Home() {
         </Main>
     );
 }
+
+export const getStaticProps = (async (context) => {
+    const blogsData = await sanity.getArticles({
+        limit: QUERY_LIMIT,
+        offset: 0,
+    });
+    return { props: { blogsData } };
+}) satisfies GetStaticProps<Props>;

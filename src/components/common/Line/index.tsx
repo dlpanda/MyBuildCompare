@@ -15,7 +15,7 @@ export default function Line({
     className,
 }: LineProps) {
     const classNames = clsx(
-        `leading[${direction === 'verical' ? height : 0}]`,
+        `${className} leading[${direction === 'verical' ? height : 0}]`,
         {
             'inline-block': direction === 'verical',
         }

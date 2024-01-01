@@ -394,7 +394,7 @@ export default function HouseDesigns() {
                 <Title variant="2">Building your new home?</Title>
                 <Gap className="mobile:hidden" size={40}></Gap>
                 <Gap className="hidden mobile:block" size={20}></Gap>
-                <Button className="blue-green-gradient">
+                <Button className="blue-green-gradient text-white">
                     Share your story with us
                 </Button>
                 <Gap className="mobile:hidden" size={75}></Gap>

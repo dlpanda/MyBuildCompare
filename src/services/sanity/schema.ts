@@ -1878,14 +1878,14 @@ export type GetArticlesQueryVariables = Exact<{
 }>;
 
 
-export type GetArticlesQuery = { __typename?: 'RootQuery', allArticle: Array<{ __typename?: 'Article', title: string | null }> };
+export type GetArticlesQuery = { __typename?: 'RootQuery', allArticle: Array<{ __typename?: 'Article', _id: string | null, title: string | null, articleType: string | null, image: { __typename?: 'Image', asset: { __typename?: 'SanityImageAsset', url: string | null, size: number | null } | null } | null, person: { __typename?: 'Person', name: string | null } | null }> };
 
 export type GetBuilderQueryVariables = Exact<{
   id: Scalars['ID']['input'];
 }>;
 
 
-export type GetBuilderQuery = { __typename?: 'RootQuery', Builder: { __typename?: 'Builder', title: string | null } | null };
+export type GetBuilderQuery = { __typename?: 'RootQuery', Builder: { __typename?: 'Builder', title: string | null, licenseNo: string | null, sinceYear: number | null, description: string | null, website: string | null, logo: { __typename?: 'Image', asset: { __typename?: 'SanityImageAsset', url: string | null } | null } | null, awards: Array<{ __typename?: 'Image', asset: { __typename?: 'SanityImageAsset', url: string | null } | null } | null> | null } | null };
 
 export type GetBuildersQueryVariables = Exact<{
   where?: InputMaybe<BuilderFilter>;
@@ -1895,7 +1895,7 @@ export type GetBuildersQueryVariables = Exact<{
 }>;
 
 
-export type GetBuildersQuery = { __typename?: 'RootQuery', allBuilder: Array<{ __typename?: 'Builder', _id: string | null, title: string | null, licenseNo: string | null, sinceYear: number | null, logo: { __typename?: 'Image', asset: { __typename?: 'SanityImageAsset', url: string | null } | null } | null }> };
+export type GetBuildersQuery = { __typename?: 'RootQuery', allBuilder: Array<{ __typename?: 'Builder', _id: string | null, title: string | null, licenseNo: string | null, sinceYear: number | null, website: string | null, logo: { __typename?: 'Image', asset: { __typename?: 'SanityImageAsset', url: string | null } | null } | null }> };
 
 export type GetHouseDesignQueryVariables = Exact<{
   id: Scalars['ID']['input'];
@@ -1912,7 +1912,17 @@ export type GetHouseDesignsQueryVariables = Exact<{
 }>;
 
 
-export type GetHouseDesignsQuery = { __typename?: 'RootQuery', allHouseDesign: Array<{ __typename?: 'HouseDesign', title: string | null }> };
+export type GetHouseDesignsQuery = { __typename?: 'RootQuery', allHouseDesign: Array<{ __typename?: 'HouseDesign', _id: string | null, title: string | null, overview: string | null, builder: { __typename?: 'Builder', title: string | null, logo: { __typename?: 'Image', asset: { __typename?: 'SanityImageAsset', url: string | null } | null } | null } | null, photos: Array<{ __typename?: 'Image', asset: { __typename?: 'SanityImageAsset', url: string | null } | null } | null> | null }> };
+
+export type GetStoriesQueryVariables = Exact<{
+  where?: InputMaybe<ArticleFilter>;
+  sort?: InputMaybe<Array<ArticleSorting> | ArticleSorting>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+}>;
+
+
+export type GetStoriesQuery = { __typename?: 'RootQuery', allArticle: Array<{ __typename?: 'Article', title: string | null }> };
 
 
 export const GetArticleDocument = gql`
@@ -1925,7 +1935,18 @@ export const GetArticleDocument = gql`
 export const GetArticlesDocument = gql`
     query GetArticles($where: ArticleFilter, $sort: [ArticleSorting!], $limit: Int, $offset: Int) {
   allArticle(where: $where, sort: $sort, limit: $limit, offset: $offset) {
+    _id
     title
+    image {
+      asset {
+        url
+        size
+      }
+    }
+    person {
+      name
+    }
+    articleType
   }
 }
     `;
@@ -1933,6 +1954,20 @@ export const GetBuilderDocument = gql`
     query GetBuilder($id: ID!) {
   Builder(id: $id) {
     title
+    logo {
+      asset {
+        url
+      }
+    }
+    awards {
+      asset {
+        url
+      }
+    }
+    licenseNo
+    sinceYear
+    description
+    website
   }
 }
     `;
@@ -1948,6 +1983,7 @@ export const GetBuildersDocument = gql`
     }
     licenseNo
     sinceYear
+    website
   }
 }
     `;
@@ -1961,6 +1997,28 @@ export const GetHouseDesignDocument = gql`
 export const GetHouseDesignsDocument = gql`
     query GetHouseDesigns($where: HouseDesignFilter, $sort: [HouseDesignSorting!], $limit: Int, $offset: Int) {
   allHouseDesign(where: $where, sort: $sort, limit: $limit, offset: $offset) {
+    _id
+    title
+    builder {
+      title
+      logo {
+        asset {
+          url
+        }
+      }
+    }
+    photos {
+      asset {
+        url
+      }
+    }
+    overview
+  }
+}
+    `;
+export const GetStoriesDocument = gql`
+    query GetStories($where: ArticleFilter, $sort: [ArticleSorting!], $limit: Int, $offset: Int) {
+  allArticle(where: $where, sort: $sort, limit: $limit, offset: $offset) {
     title
   }
 }

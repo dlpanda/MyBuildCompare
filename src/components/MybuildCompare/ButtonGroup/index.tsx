@@ -12,7 +12,7 @@ type ButtonGroupProps = {
 };
 
 export default function ButtonGroup({ title, items }: ButtonGroupProps) {
-    const buttonClass = 'mr-3 h-[2.5rem] leading-[2.5rem]';
+    const buttonClass = 'mr-2 h-[2.5rem] leading-[2.5rem]';
     const [currentType, setcurrentType] = useState('Any');
     const handleChange = (type: string) => {
         if (type === currentType) {

@@ -1,7 +1,7 @@
 import Meta from '@/layouts/Meta';
 import Main from '@/templates/Main';
 import { AppConfig } from '@/utils/AppConfig';
-import { DataList } from '@/utils/DataList';
+import { GetStaticProps } from 'next';
 import Link from 'next/link';
 // 组件
 import HouseItem from '@/components/HouseItem';
@@ -20,14 +20,26 @@ import House from '../../assets/house-designs/house.png';
 import CofingPNG from '../../assets/icon/cofing.png';
 import '../../styles/color.css';
 import '../../styles/common.css';
+// 接口
+import sanity, { GetHouseDesignsQuery } from '@/services/sanity';
+const QUERY_LIMIT = 9;
+type Props = { data: GetHouseDesignsQuery['allHouseDesign'] };
 
-export default function HouseDesigns() {
+export default function HouseDesigns({ data }: Props) {
     const [searchValue, setsearchValue] = useState('');
     const getSearchValue = (value: string) => {
         console.log('searchValue：' + value);
         setsearchValue(value);
     };
-
+    const [designs, setDesigns] = useState(data);
+    console.log(designs);
+    // const handleShowMore = useCallback(async () => {
+    //     const more = await sanity.getHouseDesigns({
+    //         limit: QUERY_LIMIT,
+    //         offset: designs.length,
+    //     });
+    //     setDesigns((prev) => prev.concat(more));
+    // }, [designs.length]);
     return (
         <Main
             meta={
@@ -83,17 +95,18 @@ export default function HouseDesigns() {
                 cols="4"
                 className="gap-x-[20px] gap-y-[40px] pt-[3.125rem] px-20 tablet:grid-cols-2 mobile:grid-cols-1"
             >
-                {DataList.map((v: any, i: number) => {
+                {/* DataList */}
+                {designs.map((v) => {
                     return (
                         // destruction
                         <HouseItem
-                            key={i}
-                            logoSrc={v.logoSrc}
-                            isCollect={v.isCollect}
-                            carouselImgSrc={v.carouselImgSrc}
+                            key={v._id}
+                            logoSrc={v.builder.logo.asset.url}
+                            isCollect={false}
+                            carouselImgSrc={v.photos}
                             title={v.title}
-                            text={v.text}
-                            author={v.author}
+                            text={v.overview}
+                            author={'More Details'}
                         ></HouseItem>
                     );
                 })}
@@ -105,10 +118,18 @@ export default function HouseDesigns() {
                 Continuing Exploring
             </Title>
             <div className="text-center">
-                <Button className="blue-green-gradient mb-[4.6875rem] mx-auto">
+                <Button className="blue-green-gradient text-white mb-[4.6875rem] mx-auto">
                     Show More
                 </Button>
             </div>
         </Main>
     );
 }
+
+export const getStaticProps = (async (context) => {
+    const data = await sanity.getHouseDesigns({
+        limit: QUERY_LIMIT,
+        offset: 0,
+    });
+    return { props: { data } };
+}) satisfies GetStaticProps<Props>;

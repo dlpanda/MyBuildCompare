@@ -7,43 +7,20 @@ import Link from 'next/link';
 import Blogs from '@/components/MybuildCompare/Blogs';
 import { Button, Gap, Grid, Input, Text, Title } from '@/components/common';
 // 图片
-import Blogs1 from '@/assets/index/blogs-1.png';
-import Blogs2 from '@/assets/index/blogs-2.png';
-import Blogs3 from '@/assets/index/blogs-3.png';
-import Blogs4 from '@/assets/index/blogs-4.png';
 import bottomPNG from '@/assets/resource-centre/bottom.png';
 import itemPNG from '@/assets/resource-centre/item.png';
 import MainPNG from '@/assets/resource-centre/mian.png';
+import sanity, { GetArticlesQuery } from '@/services/sanity';
 import '@/styles/color.css';
 import '@/styles/common.css';
+import { GetStaticProps } from 'next';
+const QUERY_LIMIT = 4;
+type Props = {
+    className?: string;
+    blogsData: GetArticlesQuery['allArticle'];
+};
 
-export default function HouseDesigns() {
-    const blogsData: any = [
-        {
-            id: '1',
-            imgSrc: Blogs1,
-            title: '4 Common Floor Plan Mistakes!',
-            author: 'Mel Davies',
-        },
-        {
-            id: '2',
-            title: 'Do not Fall For Fke Base Prices And Avoid The Price Hike!',
-            imgSrc: Blogs2,
-            author: 'Mel Davies',
-        },
-        {
-            id: '3',
-            title: 'When Is The Best Time To Start Building My New Home?',
-            imgSrc: Blogs3,
-            author: 'Kathy Schoonenberg',
-        },
-        {
-            id: '4',
-            title: 'What Stamp Duty Concessions And Exemptions Are Available For New Homes In NSW?',
-            imgSrc: Blogs4,
-            author: 'Mel Davies',
-        },
-    ];
+export default function HouseDesigns({ blogsData }: Props) {
     return (
         <Main
             meta={
@@ -82,7 +59,7 @@ export default function HouseDesigns() {
             <div className="px-[3.75rem]">
                 <Title variant="4">Latest Resources</Title>
                 <Gap size={40}></Gap>
-                <Blogs dataList={blogsData}></Blogs>
+                <Blogs data={blogsData}></Blogs>
             </div>
             <div className="bg-[#F9FCFC] px-[8.75rem]  mobile:px-[2rem]">
                 <Gap className="tablet:hidden mobile:hidden" size={75}></Gap>
@@ -190,3 +167,11 @@ export default function HouseDesigns() {
         </Main>
     );
 }
+
+export const getStaticProps = (async (context) => {
+    const blogsData = await sanity.getArticles({
+        limit: QUERY_LIMIT,
+        offset: 0,
+    });
+    return { props: { blogsData } };
+}) satisfies GetStaticProps<Props>;

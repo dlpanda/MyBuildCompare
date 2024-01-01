@@ -2,13 +2,13 @@ import { Button, Gap, Input, Text } from '@/components/common';
 import Image from 'next/image';
 import Link from 'next/link';
 // 图片
-import houseLogo from '@/assets/individual-builder/logo.png';
 
+import { Builder } from '@/services/sanity';
 type FormProps = {
-    // text: string,
+    data: Builder;
 };
 
-export default function Form(props: FormProps) {
+export default function Form({ data }: FormProps) {
     const inputClassName =
         'text-[#0D544E] p-4 w-full outline-none border border-[#888888] rounded-md placeholder:text-[#0D544E] placeholder:opacity-50';
     return (
@@ -18,7 +18,7 @@ export default function Form(props: FormProps) {
                 <div className="w-[8.75rem]">
                     <Image
                         className="w-full rounded-md"
-                        src={houseLogo}
+                        src={data.logo.asset.url}
                         alt="img"
                         width={140}
                         height={140}
@@ -27,12 +27,14 @@ export default function Form(props: FormProps) {
                 </div>
                 <div className="flex flex-1 flex-col pl-4">
                     <Gap size={20}></Gap>
-                    <Text>License No. 276763C</Text>
-                    <Text>Since YYYY</Text>
+                    <Text>License No. {data.licenseNo}</Text>
+                    <Text>Since {data.sinceYear}</Text>
                     <Gap size={30}></Gap>
-                    <Text variant="underlined-links">
-                        Visit Builder Website
-                    </Text>
+                    <a href={data.website} target="_blank">
+                        <Text variant="underlined-links">
+                            Visit Builder Website
+                        </Text>
+                    </a>
                 </div>
             </div>
             <div className="tablet:hidden mobile:hidden">
@@ -60,11 +62,11 @@ export default function Form(props: FormProps) {
                 ></Input>
             </div>
             <Gap size={10}></Gap>
-            <Button className="w-full text-center blue-green-gradient tablet:hidden mobile:hidden">
+            <Button className="w-full text-center blue-green-gradient text-white tablet:hidden mobile:hidden">
                 Submit Enquiry
             </Button>
             <Link className="flex" href="/DialogForm">
-                <Button className="w-full text-center blue-green-gradient hidden tablet:block mobile:block">
+                <Button className="w-full text-center blue-green-gradient text-white hidden tablet:block mobile:block">
                     Enquire
                 </Button>
             </Link>

@@ -1,10 +1,21 @@
 query GetArticles(
-  $where: ArticleFilter
-  $sort: [ArticleSorting!]
-  $limit: Int
-  $offset: Int
+    $where: ArticleFilter
+    $sort: [ArticleSorting!]
+    $limit: Int
+    $offset: Int
 ) {
-  allArticle(where: $where, sort: $sort, limit: $limit, offset: $offset) {
-    title
-  }
+    allArticle(where: $where, sort: $sort, limit: $limit, offset: $offset) {
+        _id
+        title
+        image {
+            asset {
+                url
+                size
+            }
+        }
+        person {
+            name
+        }
+        articleType
+    }
 }

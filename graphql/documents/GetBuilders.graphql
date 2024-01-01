@@ -1,18 +1,19 @@
 query GetBuilders(
-  $where: BuilderFilter
-  $sort: [BuilderSorting!]
-  $limit: Int
-  $offset: Int
+    $where: BuilderFilter
+    $sort: [BuilderSorting!]
+    $limit: Int
+    $offset: Int
 ) {
-  allBuilder(where: $where, sort: $sort, limit: $limit, offset: $offset) {
-    _id
-    title
-    logo {
-      asset {
-        url
-      }
+    allBuilder(where: $where, sort: $sort, limit: $limit, offset: $offset) {
+        _id
+        title
+        logo {
+            asset {
+                url
+            }
+        }
+        licenseNo
+        sinceYear
+        website
     }
-    licenseNo
-    sinceYear
-  }
 }

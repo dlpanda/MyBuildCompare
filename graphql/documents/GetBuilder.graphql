@@ -1,5 +1,19 @@
 query GetBuilder($id: ID!) {
-  Builder(id: $id) {
-    title
-  }
+    Builder(id: $id) {
+        title
+        logo {
+            asset {
+                url
+            }
+        }
+        awards {
+            asset {
+                url
+            }
+        }
+        licenseNo
+        sinceYear
+        description
+        website
+    }
 }

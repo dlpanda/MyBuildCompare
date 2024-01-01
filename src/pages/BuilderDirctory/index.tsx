@@ -3,7 +3,7 @@ import Main from '@/templates/Main';
 import { AppConfig } from '@/utils/AppConfig';
 import { GetStaticProps } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
+import Router from 'next/router';
 import { useCallback, useState } from 'react';
 // 组件
 import {
@@ -24,11 +24,12 @@ import '@/styles/color.css';
 import '@/styles/common.css';
 // 接口
 import sanity, { GetBuildersQuery } from '@/services/sanity';
-type Props = { data: GetBuildersQuery['allBuilder'] };
 
 const QUERY_LIMIT = 9;
 
-export default function HouseDesigns({ data }: Props) {
+type Props = { data: GetBuildersQuery['allBuilder'] };
+
+export default function HouseDesigns({ data = [] }: Props) {
     const [searchValue, setSearchValue] = useState('');
     const getSearchValue = (value: string) => {
         console.log('searchValue：' + value);
@@ -36,14 +37,23 @@ export default function HouseDesigns({ data }: Props) {
     };
 
     const [builders, setBuilders] = useState(data);
-    const handleShowMore = useCallback(async () => {
-        const more = await sanity.getBuilders({
-            limit: QUERY_LIMIT,
-            offset: builders.length,
+    console.log(builders);
+    // const handleShowMore = useCallback(async () => {
+    //     const more = await sanity.getBuilders({
+    //         limit: QUERY_LIMIT,
+    //         offset: builders.length,
+    //     });
+    //     setBuilders((prev) => prev.concat(more));
+    // }, [builders.length]);
+    const changeRoute = useCallback((id: string) => {
+        console.log(id);
+        Router.push({
+            pathname: '/IndividualBuilder',
+            query: {
+                id,
+            },
         });
-        setBuilders((prev) => prev.concat(more));
-    }, [builders.length]);
-
+    }, []);
     return (
         <Main
             meta={
@@ -91,46 +101,53 @@ export default function HouseDesigns({ data }: Props) {
             </div>
             <Gap className="mobile:hidden" size={50}></Gap>
             <Grid className="grid-cols-3 gap-x-[20px] gap-y-[20px] pt-[3.125rem] px-20 tablet:grid-cols-2 mobile:grid-cols-1">
-                {builders.map(({ _id, licenseNo, sinceYear, logo }) => {
-                    return (
-                        <div
-                            key={_id}
-                            className="button-box-shadow px-8 rounded-md bg-cover"
-                        >
-                            <div className="flex px-2 py-6">
-                                <div className="w-[8.75rem]">
-                                    <Image
-                                        className="w-full rounded-md"
-                                        src={logo.asset.url || ''}
-                                        alt="img"
-                                        width={140}
-                                        height={140}
-                                        priority
-                                    />
-                                </div>
-                                <div className="flex flex-1 flex-col pl-4">
-                                    <Gap size={20}></Gap>
-                                    <Text>License No. {licenseNo}</Text>
-                                    <Text>Since {sinceYear}</Text>
-                                    <Gap size={30}></Gap>
-                                    <Link
-                                        className="flex"
-                                        href={{
-                                            pathname: '/IndividualBuilder',
-                                            query: {
-                                                id: _id,
-                                            },
-                                        }}
-                                    >
-                                        <Text variant="underlined-links">
-                                            Visit Builder Website
-                                        </Text>
-                                    </Link>
+                {builders.map(
+                    ({ _id, licenseNo, sinceYear, logo, website }) => {
+                        return (
+                            <div
+                                key={_id}
+                                className="flex button-box-shadow px-8 rounded-md bg-cover"
+                            >
+                                <div className="flex px-2 py-6">
+                                    <div className="w-[8.75rem]">
+                                        <Image
+                                            className="w-full rounded-md"
+                                            src={logo.asset.url || ''}
+                                            alt="img"
+                                            width={140}
+                                            height={140}
+                                            priority
+                                            onClick={() => {
+                                                changeRoute(_id);
+                                            }}
+                                        />
+                                    </div>
+                                    <div className="flex flex-1 flex-col pl-4">
+                                        <Gap size={20}></Gap>
+                                        <Text>License No. {licenseNo}</Text>
+                                        <Text>Since {sinceYear}</Text>
+                                        <Gap size={30}></Gap>
+                                        <a
+                                            href={website || 'www.baidu.com'}
+                                            target="_blank"
+                                            onClick={() => {
+                                                window.event.cancelBubble =
+                                                    true;
+                                            }}
+                                        >
+                                            <Text
+                                                variant="underlined-links"
+                                                className="inline-block"
+                                            >
+                                                Visit Builder Website
+                                            </Text>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    );
-                })}
+                        );
+                    }
+                )}
             </Grid>
             <div className="text-center">
                 <Gap size={75} tabletSize={75} mobileSize={40}></Gap>
@@ -143,7 +160,7 @@ export default function HouseDesigns({ data }: Props) {
                 <Gap size={75} tabletSize={75} mobileSize={40}></Gap>
                 <Title variant="2">Are You a builder?</Title>
                 <Gap size={40} tabletSize={40} mobileSize={20}></Gap>
-                <Button className="blue-green-gradient">
+                <Button className="blue-green-gradient text-white">
                     Join our Platform
                 </Button>{' '}
                 <Gap size={75} tabletSize={75} mobileSize={40}></Gap>

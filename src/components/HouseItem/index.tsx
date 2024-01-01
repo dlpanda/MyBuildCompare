@@ -1,14 +1,15 @@
+import house1 from '@/assets/compare-house-designs/house1.png';
 import heart from '@/assets/icon/heart.png';
-import { Carousel, Text } from '@/components/common';
+import { Text } from '@/components/common';
+import { Image as MyImage } from '@/services/sanity';
 import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
-
-import {} from '../common';
+import { Carousel } from '../common';
 
 type HouseItemProps = {
-    logoSrc: StaticImageData;
-    isCollect: string;
-    carouselImgSrc: StaticImageData[];
+    logoSrc: StaticImageData | string;
+    isCollect: boolean;
+    carouselImgSrc: MyImage[];
     title: string;
     text: string;
     author: string;
@@ -40,7 +41,7 @@ export default function HouseItem({
                     return (
                         <div className="w-full" key={index}>
                             <Image
-                                src={item.src}
+                                src={item.asset ? item.asset.url : house1}
                                 alt="carouselImg"
                                 width={323}
                                 height={333}

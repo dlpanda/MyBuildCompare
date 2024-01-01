@@ -1,21 +1,18 @@
+import house1 from '@/assets/compare-house-designs/house1.png';
 import { Text } from '@/components/common';
 import Carousel from '@/components/common/Carousel';
 import clsx from 'clsx';
-import Image, { StaticImageData } from 'next/image';
+import Image from 'next/image';
 import Link from 'next/link';
-
-type BlogItem = {
-    id: number;
-    imgSrc: StaticImageData;
-    title: string;
-    author: string;
-};
+// 接口
+import { GetArticlesQuery } from '@/services/sanity';
 type BlogsProps = {
     className?: string;
-    dataList: BlogItem[];
+    data?: GetArticlesQuery['allArticle'];
 };
 
-export default function Blogs({ className, dataList }: BlogsProps) {
+export default function Blogs({ className, data }: BlogsProps) {
+    console.log(data);
     return (
         <div>
             <div
@@ -23,13 +20,15 @@ export default function Blogs({ className, dataList }: BlogsProps) {
                     `grid grid-cols-2 gap-10 my-10 mobile:hidden ${className}`
                 )}
             >
-                {dataList.map((v) => {
+                {data.map((v) => {
                     return (
-                        <div key={v.id} className="flex tablet:block">
+                        <div key={v._id} className="flex tablet:block">
                             <div className="flex-1">
                                 <Image
                                     className="rounded-[0.75rem] w-full"
-                                    src={v.imgSrc}
+                                    src={v.image ? v.image.asset.url : house1}
+                                    width={v.image.asset.size}
+                                    height={v.image.asset.size}
                                     alt="icon"
                                     priority
                                 />
@@ -38,12 +37,15 @@ export default function Blogs({ className, dataList }: BlogsProps) {
                                 <Link className="flex" href="/IndivdualStory">
                                     <p className="title-6">{v.title}</p>
                                 </Link>
-                                <p className="body-text tablet:pt-2">
+                                <div className="body-text tablet:pt-2">
                                     Written By{' '}
-                                    <span className="underlined-links">
-                                        {v.author}
-                                    </span>
-                                </p>
+                                    <Text
+                                        variant="underlined-links"
+                                        className="inline-block"
+                                    >
+                                        {v.person ? v.person.name : ''}
+                                    </Text>
+                                </div>
                             </div>
                         </div>
                     );
@@ -51,8 +53,8 @@ export default function Blogs({ className, dataList }: BlogsProps) {
             </div>
             {/* 移动端blogs */}
             <div className={`pt-[20px] hidden mobile:block ${className}`}>
-                <Carousel>
-                    {dataList.map((v: any) => {
+                <Carousel autoPlay={false}>
+                    {[].map((v: any) => {
                         return (
                             <div key={v.id}>
                                 <Image

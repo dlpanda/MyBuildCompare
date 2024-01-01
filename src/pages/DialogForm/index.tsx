@@ -51,7 +51,7 @@ export default function HouseDesigns() {
                     ></Input>
                     <Gap size={40}></Gap>
                     <Link className="flex" href="/IndividualBuilder">
-                        <Button className="w-full text-center blue-green-gradient">
+                        <Button className="w-full text-center blue-green-gradient text-white">
                             Submit Enquiry
                         </Button>
                     </Link>

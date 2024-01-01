@@ -32,7 +32,7 @@ export default function Form(props: FormProps) {
             <Gap size={10}></Gap>
             <Input className={inputClassName} placeholder="Message*"></Input>
             <Gap size={10}></Gap>
-            <Button className="w-full text-center blue-green-gradient">
+            <Button className="w-full text-center blue-green-gradient text-white">
                 Submit Enquiry
             </Button>
             <Gap size={50}></Gap>
