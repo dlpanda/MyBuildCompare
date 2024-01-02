@@ -5,6 +5,7 @@ import { DataList } from '@/utils/DataList';
 import { GetStaticProps } from 'next';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { useCallback, useState } from 'react';
 // 组件
 import HouseItem from '@/components/HouseItem';
 import Form from '@/components/IndividualBuilder/Form';
@@ -15,23 +16,28 @@ import '@/styles/color.css';
 import '@/styles/common.css';
 // 接口
 import sanity, { GetBuilderQuery } from '@/services/sanity';
-import { useState } from 'react';
 type Props = { data: GetBuilderQuery['Builder'] };
 
 export default function HouseDesigns({ data }: Props) {
-    const houseList = JSON.parse(JSON.stringify(DataList)).splice(0, 2);
     const router = useRouter();
     const { id } = router.query;
-    console.log(id);
     const [builder, setbuilder] = useState(data);
-    // const getDetail = useCallback(async () => {
-    //     const res = await sanity.getBuilder({
-    //         id: id,
-    //     });
-    //     console.log(res);
-    //     setbuilder(res);
-    // }, []);
-    // getDetail();
+    const getDetail = useCallback(async () => {
+        console.log(id);
+        if (id) {
+            const res = await sanity.getBuilder({
+                id: id.toString(),
+            });
+            console.log(res);
+            setbuilder(res);
+        }
+    }, []);
+    getDetail();
+    // useEffect(() => {
+    //     console.log(id);
+    //     // getDetail();
+    // }, [id]);
+    const houseList = JSON.parse(JSON.stringify(DataList)).splice(0, 2);
     return (
         <Main
             meta={
