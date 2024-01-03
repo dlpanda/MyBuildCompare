@@ -1,5 +1,6 @@
 query GetArticle($id: ID!) {
-  Article(id: $id) {
-    title
-  }
+    Article(id: $id) {
+        _id
+        title
+    }
 }

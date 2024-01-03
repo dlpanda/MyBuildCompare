@@ -21,5 +21,9 @@ query GetHouseDesigns(
             }
         }
         overview
+        bedrooms
+        livingRooms
+        garage
+        storey
     }
 }
