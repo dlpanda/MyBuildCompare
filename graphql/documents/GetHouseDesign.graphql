@@ -1,5 +1,94 @@
 query GetHouseDesign($id: ID!) {
-  HouseDesign(id: $id) {
-    title
-  }
+    HouseDesign(id: $id) {
+        title
+        builder {
+            title
+            logo {
+                asset {
+                    url
+                }
+            }
+        }
+        overview
+        photos {
+            asset {
+                url
+            }
+        }
+        bedrooms
+        livingRooms
+        garage
+        storey
+        dualOccupancy
+        alfresco
+        homeTheatre
+        study
+        rumpus
+        separateLivingDining
+        rearMasterBedroom
+        separateToilet
+        powderRoom
+        walkInPantry
+        butlerPantry
+        walkInLinen
+        walkInRobe
+        laundryChute
+        balcony
+        splitLevel
+        narrowDesign
+        homestead
+        duplex
+        grannyFlat
+        knockdownRebuild
+        termiteTreatedTimber
+        steelFrame
+        sarking
+        tileRoof
+        colourbondRoof
+        landscaping
+        fencing
+        driveway
+        clothesline
+        tVAntenna
+        letterbox
+        flyscreens
+        tilingToAlfresco
+        rainwaterTank
+        serviceConnections
+        securityScreens
+        flooring
+        blinds
+        raisedCeiling
+        featureWalls
+        nichesAlcoves
+        overheadCupboards
+        kitchenGlassSplashback
+        kitchenStoneBenchtop
+        softCloseDrawers
+        dishwasherMicrowaveProvision
+        oven
+        cooktop
+        rangehood
+        dishwasher
+        microwave
+        floorToCeilingTiles
+        framelessShowerScreen
+        bathroomStoneBenchtop
+        ensuiteDoor
+        softCloseToiletSeat
+        ductedAirConditioning
+        splitSystemAirConditioning
+        ceilingFans
+        alarm
+        smokeDetectors
+        gasPoint
+        tvPoints
+        dataPoints
+        telephonePoints
+        lights
+        downLights
+        outdoorUpDownLights
+        interimOccupationCertificate
+        finalOccupationCertificate
+    }
 }
