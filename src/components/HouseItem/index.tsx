@@ -2,11 +2,15 @@ import house1 from '@/assets/compare-house-designs/house1.png';
 import heart from '@/assets/icon/heart.png';
 import { Text } from '@/components/common';
 // import { Image as MyImage } from '@/services/sanity';
+import clsx from 'clsx';
 import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
+import { useCallback, useState } from 'react';
 import { Carousel } from '../common';
 
 type HouseItemProps = {
+    id: string;
+    className?: string;
     logoSrc: StaticImageData | string;
     isCollect: boolean;
     carouselItem: {
@@ -16,27 +20,44 @@ type HouseItemProps = {
     title: string;
     text: string;
     author: string;
+    handleHeartClick?: (id: string, isSelected: boolean) => void;
 };
 
 export default function HouseItem({
+    id,
+    className,
     logoSrc,
     isCollect,
     carouselItem,
     title,
     text,
     author,
+    handleHeartClick,
 }: HouseItemProps) {
+    const [isSelected, setIsSelected] = useState(false);
+    const classNames = clsx(`relative p-1 ${className}`, {
+        border: isSelected,
+    });
+    const heartOnCilick = useCallback(() => {
+        setIsSelected((prev) => {
+            handleHeartClick(id, !prev);
+            return !prev;
+        });
+    }, []);
     return (
-        <div className="relative">
+        <div className={classNames}>
             <Image
-                className=""
+                className="w-[6.25rem] h-[3.125rem]"
                 src={logoSrc}
                 alt="icon"
                 width={100}
                 height={50}
                 priority
             />
-            <div className="bg-white z-10 absolute top-[0.625rem] right-[0.625rem] w-[50px] h-[50px] py-[15px] px-[13px] rounded-full border border-[#EFEFEF]">
+            <div
+                onClick={heartOnCilick}
+                className="bg-white z-10 absolute top-[0.625rem] right-[0.625rem] w-[50px] h-[50px] py-[15px] px-[13px] rounded-full border border-[#EFEFEF]"
+            >
                 <Image src={heart} alt="icon" width={24} height={20} priority />
             </div>
             <Carousel autoPlay={false}>
@@ -46,6 +67,7 @@ export default function HouseItem({
                             <Image
                                 src={item.asset ? item.asset.url : house1}
                                 alt="carouselImg"
+                                className="w-[20.1875rem] h-[20.8125rem]"
                                 width={323}
                                 height={333}
                                 priority

@@ -9,6 +9,9 @@ import {
     GetBuildersDocument,
     GetBuildersQuery,
     GetBuildersQueryVariables,
+    GetHouseDesignDocument,
+    GetHouseDesignQuery,
+    GetHouseDesignQueryVariables,
     GetHouseDesignsDocument,
     GetHouseDesignsQuery,
     GetHouseDesignsQueryVariables,
@@ -55,6 +58,17 @@ class Client extends UrqlClient {
         if (error) throw error;
 
         return data?.allHouseDesign;
+    }
+
+    async getHouseDesign(params: GetHouseDesignQueryVariables) {
+        const { data, error } = await this.query<GetHouseDesignQuery>(
+            GetHouseDesignDocument,
+            params
+        );
+
+        if (error) throw error;
+
+        return data?.HouseDesign;
     }
 
     async getArticles(params: GetArticlesQueryVariables) {

@@ -37,14 +37,13 @@ export default function HouseDesigns({ data = [] }: Props) {
     };
 
     const [builders, setBuilders] = useState(data);
-    console.log(builders);
-    // const handleShowMore = useCallback(async () => {
-    //     const more = await sanity.getBuilders({
-    //         limit: QUERY_LIMIT,
-    //         offset: builders.length,
-    //     });
-    //     setBuilders((prev) => prev.concat(more));
-    // }, [builders.length]);
+    const handleShowMore = useCallback(async () => {
+        const more = await sanity.getBuilders({
+            limit: QUERY_LIMIT,
+            offset: builders.length,
+        });
+        setBuilders((prev) => prev.concat(more));
+    }, [builders.length]);
     const changeRoute = useCallback((id: string) => {
         console.log(id);
         Router.push({
@@ -153,7 +152,9 @@ export default function HouseDesigns({ data = [] }: Props) {
                 <Gap size={75} tabletSize={75} mobileSize={40}></Gap>
                 <Title variant="6">Continue Exploring</Title>
                 <Gap size={20}></Gap>
-                <Button className="green-gradient">Show more</Button>
+                <Button className="green-gradient" onClick={handleShowMore}>
+                    Show more
+                </Button>
                 <Gap size={75} tabletSize={75} mobileSize={40}></Gap>
             </div>
             <div className="bg-cover bg-[url('../assets/index/module-bg.png')] text-center">

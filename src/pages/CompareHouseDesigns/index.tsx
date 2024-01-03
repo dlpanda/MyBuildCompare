@@ -1,10 +1,17 @@
+import house1 from '@/assets/compare-house-designs/house1.png';
 import Meta from '@/layouts/Meta';
 import Main from '@/templates/Main';
 import { AppConfig } from '@/utils/AppConfig';
 import { DataList } from '@/utils/DataList';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useCallback, useEffect, useState } from 'react';
 // 组件
+import BathPNG from '@/assets/icon/bath.png';
+import BedPNG from '@/assets/icon/bed.png';
+import GaragePNG from '@/assets/icon/garage.png';
+import LivingPNG from '@/assets/icon/living.png';
 import {
     Carousel,
     CheckBox,
@@ -15,14 +22,57 @@ import {
     Text,
     Title,
 } from '@/components/common';
-
 // 图片
 import '@/styles/color.css';
 import '@/styles/common.css';
+// 接口
+import sanity, { GetHouseDesignsQuery } from '@/services/sanity';
+type Props = { data: GetHouseDesignsQuery['allHouseDesign'] };
 
 export default function HouseDesigns() {
-    // ??
-    const houseList = JSON.parse(JSON.stringify(DataList)).splice(0, 3);
+    const QuickLockConfig = [
+        {
+            key: 'bedrooms',
+            title: 'Bed',
+            icon: BedPNG,
+        },
+        {
+            key: 'storey',
+            title: 'Bath',
+            icon: BathPNG,
+        },
+        {
+            key: 'garage',
+            title: 'Garage',
+            icon: GaragePNG,
+        },
+        {
+            key: 'livingRooms',
+            title: 'squares',
+            icon: LivingPNG,
+        },
+    ];
+    const router = useRouter();
+    const { selectedIds } = router.query;
+    const [dataList, setDataList] = useState([]);
+    const [selectedData, setSelectedData] = useState([]);
+    const [compSelectData, setCompSelectData] = useState([]);
+    const getDataList = useCallback(async () => {
+        console.log(selectedIds);
+        if (!selectedIds || !selectedIds.length) return; // 开发有时获取不到
+        const dataList = await Promise.all(
+            (selectedIds as string[]).map((id) => sanity.getHouseDesign({ id }))
+        );
+        setDataList(dataList);
+        setSelectedData(dataList.slice(0, 3)); // 前三个展示在页面
+        console.log(dataList.slice(0, 3));
+        setCompSelectData(dataList.slice(3)); // 其余的放到筛选组件
+    }, [selectedIds]);
+    useEffect(() => {
+        getDataList();
+    }, [getDataList]);
+    // 假数据
+    const xxxData = JSON.parse(JSON.stringify(DataList)).splice(0, 3);
     return (
         <Main
             meta={
@@ -39,7 +89,7 @@ export default function HouseDesigns() {
                 </Title>
                 <Gap size={50}></Gap>
                 <Grid className="grid-cols-3 gap-x-[20px] gap-y-[20px] tablet:grid-cols-2 mobile:grid-cols-2">
-                    {houseList.map((v: any, i: number) => {
+                    {selectedData.map((v: any, i: number) => {
                         return (
                             <div
                                 key={i}
@@ -52,33 +102,34 @@ export default function HouseDesigns() {
                                 <Select label={v.type}></Select>
                                 <Gap size={40}></Gap>
                                 <Carousel autoPlay={false}>
-                                    {v.carouselItem.map(
-                                        (item: any, index: any) => {
-                                            return (
-                                                <div
-                                                    className="w-full"
-                                                    key={index}
-                                                >
-                                                    <Image
-                                                        src={item.src}
-                                                        alt="carouselImg"
-                                                        width={323}
-                                                        height={333}
-                                                        priority
-                                                    />
-                                                </div>
-                                            );
-                                        }
-                                    )}
+                                    {v.photos.map((item: any, index: any) => {
+                                        return (
+                                            <div className="w-full" key={index}>
+                                                <Image
+                                                    src={
+                                                        item.asset
+                                                            ? item.asset.url
+                                                            : house1
+                                                    }
+                                                    className="w-[20.1875rem] h-[20.8125rem]"
+                                                    alt="carouselImg"
+                                                    width={323}
+                                                    height={333}
+                                                    priority
+                                                />
+                                            </div>
+                                        );
+                                    })}
                                 </Carousel>
                                 <Gap size={40}></Gap>
                                 <Image
-                                    className="button-box-shadow w-[200px] h-[70px]"
-                                    src={v.logoSrc}
+                                    className="button-box-shadow w-[12.5rem] h-[4.375rem]"
+                                    src={v.builder.logo.asset.url}
                                     alt="icon"
                                     priority
+                                    width={200}
+                                    height={70}
                                 />
-
                                 <Gap size={20}></Gap>
                                 <Text variant="grey-bold">{v.title}</Text>
                                 <Gap size={20}></Gap>
@@ -96,7 +147,7 @@ export default function HouseDesigns() {
                 <Gap size={40}></Gap>
                 <Gap size={40}></Gap>
                 <Grid className="grid-cols-3 gap-x-[20px] gap-y-[20px] tablet:grid-cols-2 mobile:grid-cols-2">
-                    {houseList.map((v: any, i: number) => {
+                    {selectedData.map((v: any, i: number) => {
                         return (
                             <div
                                 key={i}
@@ -106,27 +157,33 @@ export default function HouseDesigns() {
                                     ''
                                 }
                             >
-                                {v.quickLook.map((quick: any, qi: number) => {
-                                    return (
-                                        <div key={qi}>
-                                            <IconButton
-                                                iconPoistion="top"
-                                                className="text-center"
-                                                iconSrc={quick.icon}
-                                                iconWidth={33}
-                                                iconHeight={30}
-                                            >
-                                                {quick.num + ' ' + quick.name}
-                                            </IconButton>
-                                            <Gap
-                                                className={
-                                                    (qi === 3 && 'hidden') || ''
-                                                }
-                                                size={40}
-                                            ></Gap>
-                                        </div>
-                                    );
-                                })}
+                                {QuickLockConfig.map(
+                                    (quick: any, qi: number) => {
+                                        return (
+                                            <div key={qi}>
+                                                <IconButton
+                                                    iconPoistion="top"
+                                                    className="text-center"
+                                                    iconSrc={quick.icon}
+                                                    iconWidth={33}
+                                                    iconHeight={30}
+                                                >
+                                                    {`${v[quick.key] || 0}  ${
+                                                        quick.title
+                                                    }`}
+                                                </IconButton>
+                                                <Gap
+                                                    className={
+                                                        (qi === 3 &&
+                                                            'hidden') ||
+                                                        ''
+                                                    }
+                                                    size={40}
+                                                ></Gap>
+                                            </div>
+                                        );
+                                    }
+                                )}
                             </div>
                         );
                     })}
@@ -136,18 +193,21 @@ export default function HouseDesigns() {
                 <Gap size={40}></Gap>
                 <Gap size={40}></Gap>
                 <Grid className="grid-cols-3 gap-x-[20px] gap-y-[20px] tablet:grid-cols-2 mobile:grid-cols-2">
-                    {houseList.map((v: any, i: number) => {
+                    {selectedData.map((v: any, i: number) => {
                         return (
                             <Image
+                                // fill
                                 key={i}
                                 className={`button-box-shadow w-full ${
                                     (i === 2 &&
                                         'tablet:hidden mobile:hidden') ||
                                     ''
                                 }`}
-                                src={v.floorImg}
+                                src={v.floorPlans[0].asset.url}
                                 alt="icon"
                                 priority
+                                width={300}
+                                height={500}
                             />
                         );
                     })}
@@ -159,7 +219,7 @@ export default function HouseDesigns() {
                 <Text variant="grey-bold">Must Haves</Text>
                 <Gap size={20}></Gap>
                 <Grid className="grid-cols-3 gap-x-[20px] tablet:grid-cols-2 mobile:grid-cols-2">
-                    {houseList.map((v: any, i: number) => {
+                    {xxxData.map((v: any, i: number) => {
                         return (
                             <div
                                 key={i}
@@ -195,7 +255,7 @@ export default function HouseDesigns() {
                 <Text variant="grey-bold">External Features</Text>
                 <Gap size={20}></Gap>
                 <Grid className="grid-cols-3 gap-x-[20px] tablet:grid-cols-2 mobile:grid-cols-2">
-                    {houseList.map((v: any, i: number) => {
+                    {xxxData.map((v: any, i: number) => {
                         return (
                             <div
                                 key={i}
@@ -227,7 +287,7 @@ export default function HouseDesigns() {
                 <Text variant="grey-bold">Internal Features</Text>
                 <Gap size={20}></Gap>
                 <Grid className="grid-cols-3 gap-x-[20px] tablet:grid-cols-2 mobile:grid-cols-2">
-                    {houseList.map((v: any, i: number) => {
+                    {xxxData.map((v: any, i: number) => {
                         return (
                             <div
                                 key={i}
@@ -263,7 +323,7 @@ export default function HouseDesigns() {
                 <Text variant="grey-bold">Kitchen Features</Text>
                 <Gap size={20}></Gap>
                 <Grid className="grid-cols-3 gap-x-[20px] tablet:grid-cols-2 mobile:grid-cols-2">
-                    {houseList.map((v: any, i: number) => {
+                    {xxxData.map((v: any, i: number) => {
                         return (
                             <div
                                 key={i}
@@ -299,7 +359,7 @@ export default function HouseDesigns() {
                 <Text variant="grey-bold">Kitchen Appliances</Text>
                 <Gap size={20}></Gap>
                 <Grid className="grid-cols-3 gap-x-[20px] tablet:grid-cols-2 mobile:grid-cols-2">
-                    {houseList.map((v: any, i: number) => {
+                    {xxxData.map((v: any, i: number) => {
                         return (
                             <div
                                 key={i}
@@ -335,7 +395,7 @@ export default function HouseDesigns() {
                 <Text variant="grey-bold">Bathroom/En-suite Features</Text>
                 <Gap size={20}></Gap>
                 <Grid className="grid-cols-3 gap-x-[20px] tablet:grid-cols-2 mobile:grid-cols-2">
-                    {houseList.map((v: any, i: number) => {
+                    {xxxData.map((v: any, i: number) => {
                         return (
                             <div
                                 key={i}
@@ -371,7 +431,7 @@ export default function HouseDesigns() {
                 <Text variant="grey-bold">Electrical/Gas Features</Text>
                 <Gap size={20}></Gap>
                 <Grid className="grid-cols-3 gap-x-[20px] tablet:grid-cols-2 mobile:grid-cols-2">
-                    {houseList.map((v: any, i: number) => {
+                    {xxxData.map((v: any, i: number) => {
                         return (
                             <div
                                 key={i}
@@ -407,7 +467,7 @@ export default function HouseDesigns() {
                 <Text variant="grey-bold">Miscellaneous</Text>
                 <Gap size={20}></Gap>
                 <Grid className="grid-cols-3 gap-x-[20px] tablet:grid-cols-2 mobile:grid-cols-2">
-                    {houseList.map((v: any, i: number) => {
+                    {xxxData.map((v: any, i: number) => {
                         return (
                             <div
                                 key={i}

@@ -3,6 +3,8 @@ import Main from '@/templates/Main';
 import { AppConfig } from '@/utils/AppConfig';
 import { GetStaticProps } from 'next';
 import Link from 'next/link';
+import Router from 'next/router';
+import { useCallback, useState } from 'react';
 // 组件
 import HouseItem from '@/components/HouseItem';
 import {
@@ -13,7 +15,6 @@ import {
     Title,
 } from '@/components/common';
 // 图片
-import { useState } from 'react';
 import HouseAbove from '../../assets/house-designs/house-above.png';
 import HouseNext from '../../assets/house-designs/house-next.png';
 import House from '../../assets/house-designs/house.png';
@@ -33,13 +34,43 @@ export default function HouseDesigns({ data }: Props) {
     };
     const [designs, setDesigns] = useState(data);
     console.log(designs);
-    // const handleShowMore = useCallback(async () => {
-    //     const more = await sanity.getHouseDesigns({
-    //         limit: QUERY_LIMIT,
-    //         offset: designs.length,
-    //     });
-    //     setDesigns((prev) => prev.concat(more));
-    // }, [designs.length]);
+    // 选中
+    const [selectedIds, setSelectedIds] = useState([]);
+    const handleHeartClick = useCallback((id: string, isSelected: boolean) => {
+        if (selectedIds.length === 10) return alert('请不要选择超过10项');
+        console.log(isSelected);
+        if (isSelected) {
+            setSelectedIds((prev) => {
+                prev.push(id);
+                console.log(prev);
+                return prev;
+            });
+        } else {
+            const index = selectedIds.findIndex((value) => value === id);
+            setSelectedIds((prev) => {
+                prev.splice(index, 1);
+                console.log(prev);
+                return prev;
+            });
+        }
+    }, []);
+    // 跳转到对比
+    const handleCompare = useCallback(() => {
+        Router.push({
+            pathname: '/CompareHouseDesigns',
+            query: {
+                selectedIds,
+            },
+        });
+    }, []);
+    // 更多
+    const handleShowMore = useCallback(async () => {
+        const more = await sanity.getHouseDesigns({
+            limit: QUERY_LIMIT,
+            offset: designs.length,
+        });
+        setDesigns((prev) => prev.concat(more));
+    }, [designs.length]);
     return (
         <Main
             meta={
@@ -101,11 +132,17 @@ export default function HouseDesigns({ data }: Props) {
                         // destruction
                         <HouseItem
                             key={v._id}
+                            id={v._id}
                             logoSrc={v.builder.logo.asset.url}
+                            handleHeartClick={handleHeartClick}
                             isCollect={false}
                             carouselItem={v.photos}
                             title={v.title}
-                            text={v.overview}
+                            text={`${v.bedrooms || 0} Bed ${
+                                v.storey || 0
+                            } Bath ${v.garage || 0} Garage ${
+                                v.bedrooms || 0
+                            } livingRooms `}
                             author={'More Details'}
                         ></HouseItem>
                     );
@@ -118,9 +155,18 @@ export default function HouseDesigns({ data }: Props) {
                 Continuing Exploring
             </Title>
             <div className="text-center">
-                <Button className="blue-green-gradient text-white mb-[4.6875rem] mx-auto">
+                <Button
+                    className="blue-green-gradient text-white mb-[4.6875rem] mx-auto"
+                    onClick={handleShowMore}
+                >
                     Show More
                 </Button>
+            </div>
+            <div
+                onClick={handleCompare}
+                className="fixed top-1/2 left-[50%] ml-[-3rem] rounded-xl border w-[6rem] bg-[#ccc] text-center cursor-pointer select-none"
+            >
+                Compare
             </div>
         </Main>
     );

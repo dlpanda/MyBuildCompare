@@ -24,13 +24,12 @@ export default function HouseDesigns({ data }: Props) {
     const [builder, setbuilder] = useState(data);
     const getDetail = useCallback(async () => {
         console.log(id);
-        if (id) {
-            const res = await sanity.getBuilder({
-                id: id.toString(),
-            });
-            console.log(res);
-            setbuilder(res);
-        }
+        if (!id) return; // 开发有时获取不到
+        const res = await sanity.getBuilder({
+            id: id.toString(),
+        });
+        console.log(res);
+        setbuilder(res);
     }, []);
     getDetail();
     // useEffect(() => {

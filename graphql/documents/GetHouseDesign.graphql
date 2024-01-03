@@ -19,6 +19,11 @@ query GetHouseDesign($id: ID!) {
         livingRooms
         garage
         storey
+        floorPlans {
+            asset {
+                url
+            }
+        }
         dualOccupancy
         alfresco
         homeTheatre
