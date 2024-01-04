@@ -11,7 +11,7 @@ import HousePNG1 from '@/assets/photos/1.png';
 import '@/styles/color.css';
 import '@/styles/common.css';
 
-export default function HouseDesigns() {
+export default function Album() {
     return (
         <Main
             meta={

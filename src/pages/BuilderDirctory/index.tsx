@@ -29,7 +29,7 @@ const QUERY_LIMIT = 9;
 
 type Props = { data: GetBuildersQuery['allBuilder'] };
 
-export default function HouseDesigns({ data = [] }: Props) {
+export default function BuilderDirctory({ data = [] }: Props) {
     const [searchValue, setSearchValue] = useState('');
     const getSearchValue = (value: string) => {
         console.log('searchValue：' + value);

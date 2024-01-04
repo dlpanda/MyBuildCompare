@@ -1,5 +1,6 @@
 import house1 from '@/assets/compare-house-designs/house1.png';
 import Meta from '@/layouts/Meta';
+import sanity from '@/services/sanity';
 import Main from '@/templates/Main';
 import { AppConfig } from '@/utils/AppConfig';
 import { DataList } from '@/utils/DataList';
@@ -26,8 +27,6 @@ import {
 import '@/styles/color.css';
 import '@/styles/common.css';
 // 接口
-import sanity, { GetHouseDesignsQuery } from '@/services/sanity';
-type Props = { data: GetHouseDesignsQuery['allHouseDesign'] };
 
 export default function HouseDesigns() {
     const QuickLockConfig = [

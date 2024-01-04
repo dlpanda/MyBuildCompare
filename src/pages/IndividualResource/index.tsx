@@ -11,7 +11,7 @@ import itemPNG from '@/assets/resource-centre/item.png';
 import '@/styles/color.css';
 import '@/styles/common.css';
 
-export default function HouseDesigns() {
+export default function IndividualResource() {
     return (
         <Main
             meta={
