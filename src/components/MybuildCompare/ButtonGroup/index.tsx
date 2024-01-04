@@ -1,26 +1,29 @@
 import { Button, Gap, Text } from '@/components/common';
-import { useState } from 'react';
 
 type ButtonItem = {
     label: string;
-    className: string;
+    className?: string;
+};
+
+type ChangeArgs = {
+    type: 'add' | 'remove';
+    index: number;
 };
 
 type ButtonGroupProps = {
     title: string;
-    items?: ButtonItem[];
+    items: ButtonItem[];
+    selectedIndexes?: number[];
+    onChange?: (args: ChangeArgs) => void;
 };
 
-export default function ButtonGroup({ title, items }: ButtonGroupProps) {
+export default function ButtonGroup({
+    title,
+    items,
+    selectedIndexes,
+    onChange,
+}: ButtonGroupProps) {
     const buttonClass = 'mr-2 h-[2.5rem] leading-[2.5rem]';
-    const [currentType, setcurrentType] = useState('Any');
-    const handleChange = (type: string) => {
-        if (type === currentType) {
-            setcurrentType('');
-        } else {
-            setcurrentType(type);
-        }
-    };
 
     return (
         <div>
@@ -28,18 +31,25 @@ export default function ButtonGroup({ title, items }: ButtonGroupProps) {
                 {title}
             </Text>
             <Gap size={10}></Gap>
-            {['Any', '1', '2', '3', '4', '5+'].map((v, i) => {
+            {items.map(({ label }, i) => {
                 return (
                     <Button
                         key={i}
                         className={`${buttonClass} ${
-                            currentType === v
+                            selectedIndexes.includes(i)
                                 ? 'bg-[#3D3D3D] text-white'
                                 : 'text-[#3D3D3D]'
                         }`}
-                        onClick={() => handleChange(v)}
+                        onClick={() =>
+                            onChange?.({
+                                type: selectedIndexes.includes(i)
+                                    ? 'remove'
+                                    : 'add',
+                                index: i,
+                            })
+                        }
                     >
-                        {v}
+                        {label}
                     </Button>
                 );
             })}

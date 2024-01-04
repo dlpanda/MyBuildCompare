@@ -43,22 +43,22 @@ export default function Slider() {
     // scrollFlag改变
     useEffect(() => {
         let newTimer: any = timer;
-        if (scrollFlag) {
-            const maxSrollWidth =
-                scrollDom.current.scrollWidth - scrollDom.current.offsetWidth;
-            newTimer = setInterval(() => {
-                if (isSrollToRight) {
-                    scrollDom.current.scrollLeft += 1;
-                    setisSrollToRight(
-                        scrollDom.current.scrollLeft < maxSrollWidth
-                    );
-                } else {
-                    scrollDom.current.scrollLeft -= 1;
-                    setisSrollToRight(scrollDom.current.scrollLeft === 0);
-                }
-            }, 20);
-            settimer(newTimer);
-        }
+        // if (scrollFlag) {
+        //     const maxSrollWidth =
+        //         scrollDom.current.scrollWidth - scrollDom.current.offsetWidth;
+        //     newTimer = setInterval(() => {
+        //         if (isSrollToRight) {
+        //             scrollDom.current.scrollLeft += 1;
+        //             setisSrollToRight(
+        //                 scrollDom.current.scrollLeft < maxSrollWidth
+        //             );
+        //         } else {
+        //             scrollDom.current.scrollLeft -= 1;
+        //             setisSrollToRight(scrollDom.current.scrollLeft === 0);
+        //         }
+        //     }, 20);
+        //     settimer(newTimer);
+        // }
         // 组件销毁
         return () => {
             clearInterval(newTimer);

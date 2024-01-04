@@ -17,12 +17,12 @@ import {
     GetHouseDesignsQueryVariables,
 } from './schema';
 
-const SANITY_ENDPOINT = process.env.NEXT_PUBLIC_SANITY_ENDPOINT;
+const GQL_ENDPOINT = process.env.NEXT_PUBLIC_SANITY_GQL_ENDPOINT;
 
 class Client extends UrqlClient {
     constructor() {
         super({
-            url: SANITY_ENDPOINT,
+            url: GQL_ENDPOINT,
             exchanges: [cacheExchange, fetchExchange],
         });
     }
@@ -76,7 +76,6 @@ class Client extends UrqlClient {
             GetArticlesDocument,
             params
         );
-        console.log(data);
         if (error) throw error;
 
         return data?.allArticle;

@@ -2,40 +2,72 @@ import { AppConfig } from '@/utils/AppConfig';
 import { BuilderCompare } from '@/utils/BuilderCompare';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 // 组件
-import Blogs from '@/components/MybuildCompare/Blogs';
-import ButtonGroup from '@/components/MybuildCompare/ButtonGroup';
-import Colunm from '@/components/MybuildCompare/Colunm';
-import SeachItem from '@/components/MybuildCompare/SeachItem';
-import Slider from '@/components/MybuildCompare/Slider';
-import { Button, Gap, Grid, Line, SearchBar, Title } from '@/components/common';
-import Meta from '@/layouts/Meta';
-import Main from '@/templates/Main';
-// import Button from '@/components/common/Button/Button';
-// import Gap from '@/components/common/Gap';
-// import Grid from '@/components/common/Grid';
-// import Line from '@/components/common/Line';
-// import SearchBar from '@/components/common/SearchBar';
-// import Title from '@/components/common/Title/Title';
-// 图片
 import HouseAbove from '@/assets/house-designs/house-above.png';
 import HouseNext from '@/assets/house-designs/house-next.png';
 import House from '@/assets/house-designs/house.png';
 import CofingPNG from '@/assets/icon/cofing.png';
 import SearchBlack from '@/assets/icon/search-black.png';
 import Search from '@/assets/icon/search.png';
+import Blogs from '@/components/MybuildCompare/Blogs';
+import ButtonGroup from '@/components/MybuildCompare/ButtonGroup';
+import Colunm from '@/components/MybuildCompare/Colunm';
+import SeachItem from '@/components/MybuildCompare/SeachItem';
+import Slider from '@/components/MybuildCompare/Slider';
+import {
+    Button,
+    Gap,
+    Grid,
+    Icon,
+    Line,
+    SearchBar,
+    Title,
+} from '@/components/common';
+import Meta from '@/layouts/Meta';
 import sanity, { GetArticlesQuery } from '@/services/sanity';
 import '@/styles/color.css';
 import '@/styles/common.css';
 import '@/styles/global.css';
 import '@/styles/index.css';
+import Main from '@/templates/Main';
+import clsx from 'clsx';
 import { GetStaticProps } from 'next';
+import Router from 'next/router';
+import PlacesAutocomplete, {
+    geocodeByPlaceId,
+} from 'react-places-autocomplete';
 import ContactGreen from '../assets/icon/contact-green.png';
 import HammerGreen from '../assets/icon/hammer-green.png';
 import SearchGreen from '../assets/icon/search-green.png';
 import ModuleBg from '../assets/index/module-bg.png';
+import { BATHROOMS, BEDROOMS, GARAGES } from '../utils/FilterConfig';
+
 const QUERY_LIMIT = 4;
+
+type SearchBy = 'by-design' | 'by-filter' | 'by-location';
+
+type SearchConditions = {
+    'by-design': {
+        storeys: number[];
+        duplex?: boolean;
+    };
+    'by-filter': {
+        bedrooms: number[];
+        bathrooms: number[];
+        garages: number[];
+    };
+    'by-location': {
+        location: {
+            center: {
+                lat: number;
+                lng: number;
+            };
+            radius: number;
+        };
+    };
+};
+
 type Props = {
     className?: string;
     blogsData: GetArticlesQuery['allArticle'];
@@ -59,48 +91,89 @@ export default function Home({ blogsData }: Props) {
             text: 'Build Your Dream Home',
         },
     ];
-    // const blogsData: any = [
-    //     {
-    //         id: '1',
-    //         imgSrc: Blogs1,
-    //         title: '4 Common Floor Plan Mistakes!',
-    //         author: 'Mel Davies',
-    //     },
-    //     {
-    //         id: '2',
-    //         title: 'Do not Fall For Fke Base Prices And Avoid The Price Hike!',
-    //         imgSrc: Blogs2,
-    //         author: 'Mel Davies',
-    //     },
-    //     {
-    //         id: '3',
-    //         title: 'When Is The Best Time To Start Building My New Home?',
-    //         imgSrc: Blogs3,
-    //         author: 'Kathy Schoonenberg',
-    //     },
-    //     {
-    //         id: '4',
-    //         title: 'What Stamp Duty Concessions And Exemptions Are Available For New Homes In NSW?',
-    //         imgSrc: Blogs4,
-    //         author: 'Mel Davies',
-    //     },
-    // ];
-    const [currentType, setcurrentType] = useState('');
-    const changeType = (type: string) => {
-        if (type === currentType) {
-            setcurrentType('');
-        } else {
-            setcurrentType(type);
-        }
-    };
-    const [currentDesign, setcurrentDesign] = useState('');
-    const changeDesign = (type: string) => {
-        if (type === currentDesign) {
-            setcurrentDesign('');
-        } else {
-            setcurrentDesign(type);
-        }
-    };
+
+    const [address, setAddress] = useState('');
+    const [searchBy, setSearchBy] = useState<SearchBy>();
+    const [searchConditions, setSearchConditions] = useState<SearchConditions>({
+        'by-design': { storeys: [], duplex: false },
+        'by-filter': { bedrooms: [], bathrooms: [], garages: [] },
+        'by-location': {
+            location: {
+                center: {
+                    lat: -33.865143,
+                    lng: 151.2099,
+                },
+                radius: 15 * 1000,
+            },
+        },
+    });
+    const { 'by-design': design, 'by-filter': filter } = searchConditions;
+
+    const handleSearch = useCallback(async () => {
+        Router.push({
+            pathname: '/HouseDesigns',
+            query: {
+                searchParams: JSON.stringify(searchConditions[searchBy]),
+            },
+        });
+    }, [searchConditions, searchBy]);
+
+    const handleSelect = useCallback(
+        async (address: string, placeId: string) => {
+            const [
+                {
+                    geometry: { location },
+                },
+            ] = await geocodeByPlaceId(placeId);
+            setSearchConditions(
+                ({
+                    'by-location': {
+                        location: { radius },
+                    },
+                    ...rest
+                }) => ({
+                    'by-location': {
+                        location: {
+                            center: {
+                                lat: location.lat(),
+                                lng: location.lng(),
+                            },
+                            radius,
+                        },
+                    },
+                    ...rest,
+                })
+            );
+            setAddress(address);
+        },
+        []
+    );
+
+    const handleSearchFilterChange = useCallback(
+        (
+            key: keyof SearchConditions['by-filter'],
+            { type, index }: { type: 'add' | 'remove'; index: number }
+        ) =>
+            setSearchConditions(
+                ({ 'by-filter': { [key]: val, ...others }, ...rest }) => ({
+                    'by-filter': {
+                        [key]:
+                            index == 0
+                                ? type === 'add'
+                                    ? []
+                                    : val
+                                : type === 'remove'
+                                ? val.filter((e) => e !== index)
+                                : getBoundaryArray([...val, index]),
+
+                        ...others,
+                    } as SearchConditions['by-filter'],
+                    ...rest,
+                })
+            ),
+        []
+    );
+
     return (
         <Main
             meta={
@@ -120,7 +193,7 @@ export default function Home({ blogsData }: Props) {
                 {/* desktop & tablet */}
                 <div
                     className={`search mobile:!hidden ${
-                        currentType ? '!bg-[#F2F2F2]' : ''
+                        searchBy ? '!bg-[#F2F2F2]' : ''
                     } `}
                 >
                     <div
@@ -128,17 +201,17 @@ export default function Home({ blogsData }: Props) {
                             option 
                             bold 
                             ${
-                                currentType === 'design'
+                                searchBy === 'by-design'
                                     ? 'bg-white active-shadow !font-semibold !text-[#3D3D3D]'
                                     : ''
                             }
                             ${
-                                currentType
+                                searchBy
                                     ? '!font-normal text-[#888888]'
                                     : 'font-semibold !text-[#3D3D3D]'
                             }
                         `}
-                        onClick={() => changeType('design')}
+                        onClick={() => setSearchBy('by-design')}
                     >
                         House Design
                     </div>
@@ -148,8 +221,7 @@ export default function Home({ blogsData }: Props) {
                         height="3.125rem"
                         color="#D9D9D9"
                         className={`${
-                            currentType === 'design' ||
-                            currentType === 'Filters'
+                            searchBy && searchBy !== 'by-location'
                                 ? '!hidden'
                                 : ''
                         }`}
@@ -159,17 +231,17 @@ export default function Home({ blogsData }: Props) {
                         option 
                         bold 
                         ${
-                            currentType === 'Filters'
+                            searchBy === 'by-filter'
                                 ? 'bg-white active-shadow !font-semibold !text-[#3D3D3D]'
                                 : ''
                         }
                         ${
-                            currentType
+                            searchBy
                                 ? '!font-normal text-[#888888]'
                                 : 'font-semibold !text-[#3D3D3D]'
                         }
                         `}
-                        onClick={() => changeType('Filters')}
+                        onClick={() => setSearchBy('by-filter')}
                     >
                         Filters
                     </div>
@@ -179,8 +251,7 @@ export default function Home({ blogsData }: Props) {
                         height="3.125rem"
                         color="#D9D9D9"
                         className={`${
-                            currentType === 'Location' ||
-                            currentType === 'Filters'
+                            searchBy && searchBy !== 'by-design'
                                 ? '!hidden'
                                 : ''
                         }`}
@@ -189,17 +260,17 @@ export default function Home({ blogsData }: Props) {
                         className={`
                             option 
                             ${
-                                currentType === 'Location'
+                                searchBy === 'by-location'
                                     ? '!bg-white active-shadow !font-semibold !text-[#3D3D3D]'
                                     : ''
                             }
                             ${
-                                currentType
+                                searchBy
                                     ? '!pr-[10rem] bg-[#F2F2F2] !font-normal'
                                     : 'bg-white font-semibold'
                             }
                         `}
-                        onClick={() => changeType('Location')}
+                        onClick={() => setSearchBy('by-location')}
                     >
                         Search Location
                     </div>
@@ -211,18 +282,20 @@ export default function Home({ blogsData }: Props) {
                             text-white
                             rounded-[1.5625rem]
                             mt-[-2px]
-                            ${currentType === 'Location' ? 'bg-white' : ''}
+                            cursor-pointer
+                            ${searchBy === 'by-location' ? 'bg-white' : ''}
                             ${
-                                currentType
+                                searchBy
                                     ? 'w-[7.5rem] pl-[1.25rem] right-[-4rem] !text-left'
                                     : ''
                             }
                         `}
+                        onClick={handleSearch}
                     >
                         <Image
                             className={`
                                 inline-block
-                                ${currentType ? 'mr-[0.625rem]' : ''}
+                                ${searchBy ? 'mr-[0.625rem]' : ''}
                             `}
                             src={Search}
                             alt="Search"
@@ -233,7 +306,7 @@ export default function Home({ blogsData }: Props) {
                         <span
                             className={`
                             text-white
-                            ${currentType ? 'inline-block' : 'hidden'}
+                            ${searchBy ? 'inline-block' : 'hidden'}
                         `}
                         >
                             Search
@@ -243,7 +316,7 @@ export default function Home({ blogsData }: Props) {
                 <Gap size={10}></Gap>
                 <div
                     className={`${
-                        currentType === 'design' ? 'flex' : 'hidden'
+                        searchBy === 'by-design' ? 'flex' : 'hidden'
                     } button-box-shadow w-[37.5rem] h-[12.5rem] p-[2.5rem] bg-[#fff] mx-auto rounded-xl text-left relative`}
                 >
                     <SeachItem
@@ -251,8 +324,23 @@ export default function Home({ blogsData }: Props) {
                         iconWidth={28}
                         iconHeight={24}
                         text="Single-Storey"
-                        isAcitve={currentDesign === 'Single-Storey'}
-                        onClick={() => changeDesign('Single-Storey')}
+                        isAcitve={design.storeys.includes(1)}
+                        onClick={() =>
+                            setSearchConditions(
+                                ({
+                                    'by-design': { storeys: storey, ...others },
+                                    ...rest
+                                }) => ({
+                                    'by-design': {
+                                        ...others,
+                                        storeys: storey.includes(1)
+                                            ? storey.filter((e) => e !== 1)
+                                            : [...storey, 1],
+                                    },
+                                    ...rest,
+                                })
+                            )
+                        }
                     ></SeachItem>
                     <Gap direction="verical" size={20}></Gap>
                     <SeachItem
@@ -260,8 +348,23 @@ export default function Home({ blogsData }: Props) {
                         iconWidth={28}
                         iconHeight={24}
                         text="Double-Storey"
-                        isAcitve={currentDesign === 'Double-Storey'}
-                        onClick={() => changeDesign('Double-Storey')}
+                        isAcitve={design.storeys.includes(2)}
+                        onClick={() =>
+                            setSearchConditions(
+                                ({
+                                    'by-design': { storeys: storey, ...others },
+                                    ...rest
+                                }) => ({
+                                    'by-design': {
+                                        ...others,
+                                        storeys: storey.includes(2)
+                                            ? storey.filter((e) => e !== 2)
+                                            : [...storey, 2],
+                                    },
+                                    ...rest,
+                                })
+                            )
+                        }
                     ></SeachItem>
                     <Gap direction="verical" size={20}></Gap>
                     <SeachItem
@@ -269,35 +372,131 @@ export default function Home({ blogsData }: Props) {
                         iconWidth={41}
                         iconHeight={24}
                         text="Duplex"
-                        isAcitve={currentDesign === 'Duplex'}
-                        onClick={() => changeDesign('Duplex')}
+                        isAcitve={design.duplex}
+                        onClick={() =>
+                            setSearchConditions(
+                                ({
+                                    'by-design': { duplex, ...others },
+                                    ...rest
+                                }) => ({
+                                    'by-design': {
+                                        ...others,
+                                        duplex: !duplex,
+                                    },
+                                    ...rest,
+                                })
+                            )
+                        }
                     ></SeachItem>
                 </div>
                 <div
                     className={`${
-                        currentType === 'Filters' ? 'block' : 'hidden'
+                        searchBy === 'by-filter' ? 'block' : 'hidden'
                     } button-box-shadow w-[31.0625rem] h-[21rem] p-[2.5rem] bg-[#fff] mx-auto rounded-xl text-left relative`}
                 >
-                    <ButtonGroup title="Bedrooms"></ButtonGroup>
+                    <ButtonGroup
+                        title="Bedrooms"
+                        items={BEDROOMS.map((label) => ({ label }))}
+                        selectedIndexes={
+                            !filter.bedrooms?.length ? [0] : filter.bedrooms
+                        }
+                        onChange={(args) =>
+                            handleSearchFilterChange('bedrooms', args)
+                        }
+                    />
                     <Gap size={20}></Gap>
-                    <ButtonGroup title="Bathrooms"></ButtonGroup>
+                    <ButtonGroup
+                        title="Bathrooms"
+                        items={BATHROOMS.map((label) => ({ label }))}
+                        selectedIndexes={
+                            !filter.bathrooms?.length ? [0] : filter.bathrooms
+                        }
+                        onChange={(args) =>
+                            handleSearchFilterChange('bathrooms', args)
+                        }
+                    />
                     <Gap size={20}></Gap>
-                    <ButtonGroup title="Garage"></ButtonGroup>
+                    <ButtonGroup
+                        title="Garages"
+                        items={GARAGES.map((label) => ({ label }))}
+                        selectedIndexes={
+                            !filter.garages?.length ? [0] : filter.garages
+                        }
+                        onChange={(args) =>
+                            handleSearchFilterChange('garages', args)
+                        }
+                    />
                 </div>
                 <div
                     className={`${
-                        currentType === 'Location' ? 'block' : 'hidden'
+                        searchBy === 'by-location' ? 'block' : 'hidden'
                     } button-box-shadow w-[36.8125rem] h-[8.75rem] p-[2.5rem] bg-[#fff] mx-auto rounded-xl text-left relative`}
                 >
-                    <SearchBar
-                        className="w-full h-full !inline-block leading-[2.5rem] rounded-xl font-semibold"
-                        iconUrl={SearchBlack}
-                        iconPoistion="left"
-                        placeholder="Search Locations"
-                        iconSize={20}
-                        inputClassName="!w-[calc(100%-20px-0.625rem)] !text-[#3D3D3D]"
-                        clickSearch={() => {}}
-                    ></SearchBar>
+                    <PlacesAutocomplete
+                        value={address}
+                        onChange={setAddress}
+                        onSelect={handleSelect}
+                        searchOptions={{
+                            componentRestrictions: { country: ['au'] },
+                        }}
+                        googleCallbackName="initializeGoogleAPI"
+                    >
+                        {({
+                            getInputProps,
+                            suggestions,
+                            getSuggestionItemProps,
+                            loading,
+                        }) => (
+                            <div className="inline h-full border border-[#D1D1D1] background-white rounded-[5.625rem] py-[0.5625rem] px-5 w-full h-full !inline-block leading-[2.5rem] rounded-xl font-semibold">
+                                <Icon
+                                    className={clsx(
+                                        `inline-block mr-[0.625rem]`
+                                    )}
+                                    iconSrc={SearchBlack}
+                                    iconWidth={20}
+                                    iconHeight={20}
+                                />
+                                <input
+                                    {...getInputProps({
+                                        placeholder: 'Search Places ...',
+                                        className:
+                                            'grey inline-block outline-none w-[11.75rem] bg-transparent !w-[calc(100%-20px-0.625rem)] !text-[#3D3D3D]',
+                                    })}
+                                />
+                                <div className="autocomplete-dropdown-container">
+                                    {suggestions.map((suggestion) => {
+                                        const className = suggestion.active
+                                            ? 'suggestion-item--active'
+                                            : 'suggestion-item';
+                                        const style = suggestion.active
+                                            ? {
+                                                  backgroundColor: '#fafafa',
+                                                  cursor: 'pointer',
+                                              }
+                                            : {
+                                                  backgroundColor: '#ffffff',
+                                                  cursor: 'pointer',
+                                              };
+                                        return (
+                                            <div
+                                                {...getSuggestionItemProps(
+                                                    suggestion,
+                                                    {
+                                                        className,
+                                                        style,
+                                                    }
+                                                )}
+                                            >
+                                                <span>
+                                                    {suggestion.description}
+                                                </span>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            </div>
+                        )}
+                    </PlacesAutocomplete>
                 </div>
                 {/* mobile search */}
                 <div className="hidden w-[90%] h-[48px] mx-auto mobile:flex">
@@ -367,6 +566,13 @@ export default function Home({ blogsData }: Props) {
         </Main>
     );
 }
+
+const getBoundaryArray = (arr: number[]) => {
+    if (arr.length < 2) return arr;
+
+    arr.sort();
+    return [arr[0], arr[arr.length - 1]];
+};
 
 export const getStaticProps = (async (context) => {
     const blogsData = await sanity.getArticles({

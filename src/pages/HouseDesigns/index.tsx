@@ -3,8 +3,8 @@ import Main from '@/templates/Main';
 import { AppConfig } from '@/utils/AppConfig';
 import { GetStaticProps } from 'next';
 import Link from 'next/link';
-import Router from 'next/router';
-import { useCallback, useState } from 'react';
+import Router, { useRouter } from 'next/router';
+import { useCallback, useEffect, useState } from 'react';
 // 组件
 import HouseItem from '@/components/HouseItem';
 import {
@@ -23,17 +23,49 @@ import '../../styles/color.css';
 import '../../styles/common.css';
 // 接口
 import sanity, { GetHouseDesignsQuery } from '@/services/sanity';
+
 const QUERY_LIMIT = 9;
+const API_ENDPOINT = process.env.NEXT_PUBLIC_SANITY_API_ENDPOINT;
+
 type Props = { data: GetHouseDesignsQuery['allHouseDesign'] };
 
 export default function HouseDesigns({ data }: Props) {
+    const {
+        query: { searchParams },
+    } = useRouter();
+
     const [searchValue, setsearchValue] = useState('');
     const getSearchValue = (value: string) => {
         console.log('searchValue：' + value);
         setsearchValue(value);
     };
-    const [designs, setDesigns] = useState(data);
-    console.log(designs);
+    const [designs, setDesigns] = useState<typeof data>([]);
+
+    useEffect(() => {
+        if (!searchParams) {
+            setDesigns(data);
+            return;
+        }
+
+        (async () => {
+            const params = {
+                limit: QUERY_LIMIT,
+                params: JSON.parse(searchParams as string),
+            };
+            const resp = await fetch(`${API_ENDPOINT}/search-designs`, {
+                method: 'POST',
+                body: JSON.stringify(params),
+            });
+            const entities: { _id: string }[] = await resp.json();
+            const data = await sanity.getHouseDesigns({
+                where: { _id: { in: entities.map(({ _id }) => _id) } },
+                limit: QUERY_LIMIT,
+                offset: 0,
+            });
+            setDesigns(data);
+        })();
+    }, [searchParams]);
+
     // 选中
     const [selectedIds, setSelectedIds] = useState([]);
     const handleHeartClick = useCallback((id: string, isSelected: boolean) => {

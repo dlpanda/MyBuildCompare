@@ -5,7 +5,7 @@ import { useState } from 'react';
 import Icon from '../Icon';
 
 // value change?
-type SearchItemProps = {
+type SearchBarProps = {
     hideIcon?: Boolean;
     iconPoistion?: 'right' | 'left';
     iconUrl?: any;
@@ -17,7 +17,7 @@ type SearchItemProps = {
     iconClassName?: string;
 };
 
-export default function SearchItem({
+export default function SearchBar({
     clickSearch,
     className,
     iconClassName,
@@ -27,7 +27,7 @@ export default function SearchItem({
     iconPoistion = 'right',
     placeholder = 'search',
     iconSize = 15,
-}: SearchItemProps) {
+}: SearchBarProps) {
     const [searchValue, setsearchValue] = useState('');
     const classNames = clsx(
         `${className} inline h-full border border-[#D1D1D1] background-white rounded-[5.625rem] py-[0.5625rem] px-5`

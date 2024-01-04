@@ -12,7 +12,6 @@ type BlogsProps = {
 };
 
 export default function Blogs({ className, data }: BlogsProps) {
-    console.log(data);
     return (
         <div>
             <div
