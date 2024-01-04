@@ -9,7 +9,7 @@ import { useCallback, useState } from 'react';
 import { Carousel } from '../common';
 
 type HouseItemProps = {
-    id: string;
+    id?: string;
     className?: string;
     logoSrc: StaticImageData | string;
     isCollect: boolean;
