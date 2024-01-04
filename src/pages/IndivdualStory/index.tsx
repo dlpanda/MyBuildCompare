@@ -16,7 +16,7 @@ import MainPNG from '@/assets/your-stroies/main.png';
 import '@/styles/color.css';
 import '@/styles/common.css';
 
-export default function HouseDesigns() {
+export default function IndivdualStory() {
     return (
         <Main
             meta={

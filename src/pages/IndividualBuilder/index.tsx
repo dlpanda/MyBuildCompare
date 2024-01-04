@@ -18,7 +18,7 @@ import sanity, { GetBuilderQuery } from '@/services/sanity';
 import { useState } from 'react';
 type Props = { data: GetBuilderQuery['Builder'] };
 
-export default function HouseDesigns({ data }: Props) {
+export default function IndividualBuilder({ data }: Props) {
     const houseList = JSON.parse(JSON.stringify(DataList)).splice(0, 2);
     const router = useRouter();
     const { id } = router.query;

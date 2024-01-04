@@ -25,7 +25,7 @@ import Search from '@/assets/icon/search.png';
 import '@/styles/color.css';
 import '@/styles/common.css';
 
-export default function HouseDesigns() {
+export default function IndexFilter() {
     const [currentDesign, setcurrentDesign] = useState('');
     const changeDesign = (type: string) => {
         if (type === currentDesign) {

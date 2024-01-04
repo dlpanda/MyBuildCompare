@@ -15,7 +15,7 @@ import Blogs2 from '@/assets/your-stroies/story2.png';
 import '@/styles/color.css';
 import '@/styles/common.css';
 
-export default function HouseDesigns() {
+export default function YourStories() {
     const houseList = JSON.parse(JSON.stringify(DataList)).splice(0, 4);
     const blogsData: any = [
         {

@@ -20,7 +20,7 @@ type Props = {
     blogsData: GetArticlesQuery['allArticle'];
 };
 
-export default function HouseDesigns({ blogsData }: Props) {
+export default function ResourceCentre({ blogsData }: Props) {
     return (
         <Main
             meta={

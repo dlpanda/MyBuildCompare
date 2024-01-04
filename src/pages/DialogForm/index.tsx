@@ -8,7 +8,7 @@ import { Button, Dialog, Gap, Input, Popup, Title } from '@/components/common';
 import '@/styles/color.css';
 import '@/styles/common.css';
 
-export default function HouseDesigns() {
+export default function DialogForm() {
     const inputClassName =
         'text-[#0D544E] p-4 w-full outline-none border border-[#888888] rounded-md placeholder:text-[#0D544E] placeholder:opacity-50';
 
