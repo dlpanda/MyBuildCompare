@@ -26,8 +26,6 @@ import {
 import '@/styles/color.css';
 import '@/styles/common.css';
 // 接口
-import sanity, { GetHouseDesignsQuery } from '@/services/sanity';
-type Props = { data: GetHouseDesignsQuery['allHouseDesign'] };
 
 export default function HouseDesigns() {
     const QuickLockConfig = [

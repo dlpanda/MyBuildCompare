@@ -34,7 +34,7 @@ import Vertical1PNG from '@/assets/individual/vertical1.png';
 import '@/styles/color.css';
 import '@/styles/common.css';
 
-export default function HouseDesigns() {
+export default function IndividualHouseDesigns() {
     const houseList = JSON.parse(JSON.stringify(DataList)).splice(0, 4);
     return (
         <Main

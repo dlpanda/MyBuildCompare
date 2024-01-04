@@ -18,7 +18,7 @@ import '@/styles/common.css';
 import sanity, { GetBuilderQuery } from '@/services/sanity';
 type Props = { data: GetBuilderQuery['Builder'] };
 
-export default function HouseDesigns({ data }: Props) {
+export default function IndividualBuilder({ data }: Props) {
     const router = useRouter();
     const { id } = router.query;
     const [builder, setbuilder] = useState(data);

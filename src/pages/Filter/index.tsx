@@ -20,7 +20,7 @@ import {
 import '@/styles/color.css';
 import '@/styles/common.css';
 
-export default function HouseDesigns() {
+export default function Filter() {
     return (
         <Main
             meta={
