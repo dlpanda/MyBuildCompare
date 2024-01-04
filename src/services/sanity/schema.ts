@@ -1912,7 +1912,7 @@ export type GetHouseDesignQueryVariables = Exact<{
 }>;
 
 
-export type GetHouseDesignQuery = { __typename?: 'RootQuery', HouseDesign: { __typename?: 'HouseDesign', title: string | null, overview: string | null, bedrooms: number | null, livingRooms: number | null, garage: number | null, storey: number | null, dualOccupancy: boolean | null, alfresco: boolean | null, homeTheatre: boolean | null, study: boolean | null, rumpus: boolean | null, separateLivingDining: boolean | null, rearMasterBedroom: boolean | null, separateToilet: boolean | null, powderRoom: boolean | null, walkInPantry: boolean | null, butlerPantry: boolean | null, walkInLinen: boolean | null, walkInRobe: boolean | null, laundryChute: boolean | null, balcony: boolean | null, splitLevel: boolean | null, narrowDesign: boolean | null, homestead: boolean | null, duplex: boolean | null, grannyFlat: boolean | null, knockdownRebuild: boolean | null, termiteTreatedTimber: boolean | null, steelFrame: boolean | null, sarking: boolean | null, tileRoof: boolean | null, colourbondRoof: boolean | null, landscaping: boolean | null, fencing: boolean | null, driveway: boolean | null, clothesline: boolean | null, tVAntenna: boolean | null, letterbox: boolean | null, flyscreens: boolean | null, tilingToAlfresco: boolean | null, rainwaterTank: boolean | null, serviceConnections: boolean | null, securityScreens: boolean | null, flooring: boolean | null, blinds: boolean | null, raisedCeiling: boolean | null, featureWalls: boolean | null, nichesAlcoves: boolean | null, overheadCupboards: boolean | null, kitchenGlassSplashback: boolean | null, kitchenStoneBenchtop: boolean | null, softCloseDrawers: boolean | null, dishwasherMicrowaveProvision: boolean | null, oven: boolean | null, cooktop: boolean | null, rangehood: boolean | null, dishwasher: boolean | null, microwave: boolean | null, floorToCeilingTiles: boolean | null, framelessShowerScreen: boolean | null, bathroomStoneBenchtop: boolean | null, ensuiteDoor: boolean | null, softCloseToiletSeat: boolean | null, ductedAirConditioning: boolean | null, splitSystemAirConditioning: boolean | null, ceilingFans: boolean | null, alarm: boolean | null, smokeDetectors: boolean | null, gasPoint: boolean | null, tvPoints: boolean | null, dataPoints: boolean | null, telephonePoints: boolean | null, lights: boolean | null, downLights: boolean | null, outdoorUpDownLights: boolean | null, interimOccupationCertificate: boolean | null, finalOccupationCertificate: boolean | null, builder: { __typename?: 'Builder', title: string | null, logo: { __typename?: 'Image', asset: { __typename?: 'SanityImageAsset', url: string | null } | null } | null } | null, photos: Array<{ __typename?: 'Image', asset: { __typename?: 'SanityImageAsset', url: string | null } | null } | null> | null, floorPlans: Array<{ __typename?: 'File', asset: { __typename?: 'SanityFileAsset', url: string | null } | null } | null> | null } | null };
+export type GetHouseDesignQuery = { __typename?: 'RootQuery', HouseDesign: { __typename?: 'HouseDesign', title: string | null, overview: string | null, bedrooms: number | null, livingRooms: number | null, garage: number | null, storey: number | null, houseSize: number | null, dualOccupancy: boolean | null, alfresco: boolean | null, homeTheatre: boolean | null, study: boolean | null, rumpus: boolean | null, separateLivingDining: boolean | null, rearMasterBedroom: boolean | null, separateToilet: boolean | null, powderRoom: boolean | null, walkInPantry: boolean | null, butlerPantry: boolean | null, walkInLinen: boolean | null, walkInRobe: boolean | null, laundryChute: boolean | null, balcony: boolean | null, splitLevel: boolean | null, narrowDesign: boolean | null, homestead: boolean | null, duplex: boolean | null, grannyFlat: boolean | null, knockdownRebuild: boolean | null, termiteTreatedTimber: boolean | null, steelFrame: boolean | null, sarking: boolean | null, tileRoof: boolean | null, colourbondRoof: boolean | null, landscaping: boolean | null, fencing: boolean | null, driveway: boolean | null, clothesline: boolean | null, tVAntenna: boolean | null, letterbox: boolean | null, flyscreens: boolean | null, tilingToAlfresco: boolean | null, rainwaterTank: boolean | null, serviceConnections: boolean | null, securityScreens: boolean | null, flooring: boolean | null, blinds: boolean | null, raisedCeiling: boolean | null, featureWalls: boolean | null, nichesAlcoves: boolean | null, overheadCupboards: boolean | null, kitchenGlassSplashback: boolean | null, kitchenStoneBenchtop: boolean | null, softCloseDrawers: boolean | null, dishwasherMicrowaveProvision: boolean | null, oven: boolean | null, cooktop: boolean | null, rangehood: boolean | null, dishwasher: boolean | null, microwave: boolean | null, floorToCeilingTiles: boolean | null, framelessShowerScreen: boolean | null, bathroomStoneBenchtop: boolean | null, ensuiteDoor: boolean | null, softCloseToiletSeat: boolean | null, ductedAirConditioning: boolean | null, splitSystemAirConditioning: boolean | null, ceilingFans: boolean | null, alarm: boolean | null, smokeDetectors: boolean | null, gasPoint: boolean | null, tvPoints: boolean | null, dataPoints: boolean | null, telephonePoints: boolean | null, lights: boolean | null, downLights: boolean | null, outdoorUpDownLights: boolean | null, interimOccupationCertificate: boolean | null, finalOccupationCertificate: boolean | null, builder: { __typename?: 'Builder', title: string | null, logo: { __typename?: 'Image', asset: { __typename?: 'SanityImageAsset', url: string | null } | null } | null } | null, photos: Array<{ __typename?: 'Image', asset: { __typename?: 'SanityImageAsset', url: string | null } | null } | null> | null, floorPlans: Array<{ __typename?: 'File', asset: { __typename?: 'SanityFileAsset', url: string | null } | null } | null> | null } | null };
 
 export type GetHouseDesignsQueryVariables = Exact<{
   where?: InputMaybe<HouseDesignFilter>;
@@ -1922,7 +1922,7 @@ export type GetHouseDesignsQueryVariables = Exact<{
 }>;
 
 
-export type GetHouseDesignsQuery = { __typename?: 'RootQuery', allHouseDesign: Array<{ __typename?: 'HouseDesign', _id: string | null, title: string | null, overview: string | null, bedrooms: number | null, livingRooms: number | null, garage: number | null, storey: number | null, builder: { __typename?: 'Builder', title: string | null, logo: { __typename?: 'Image', asset: { __typename?: 'SanityImageAsset', url: string | null } | null } | null } | null, photos: Array<{ __typename?: 'Image', asset: { __typename?: 'SanityImageAsset', url: string | null } | null } | null> | null }> };
+export type GetHouseDesignsQuery = { __typename?: 'RootQuery', allHouseDesign: Array<{ __typename?: 'HouseDesign', _id: string | null, title: string | null, overview: string | null, bedrooms: number | null, livingRooms: number | null, garage: number | null, storey: number | null, houseSize: number | null, builder: { __typename?: 'Builder', title: string | null, logo: { __typename?: 'Image', asset: { __typename?: 'SanityImageAsset', url: string | null } | null } | null } | null, photos: Array<{ __typename?: 'Image', asset: { __typename?: 'SanityImageAsset', url: string | null } | null } | null> | null }> };
 
 export type GetAllSettingsQueryVariables = Exact<{
   where?: InputMaybe<SettingsFilter>;
@@ -1932,7 +1932,7 @@ export type GetAllSettingsQueryVariables = Exact<{
 }>;
 
 
-export type GetAllSettingsQuery = { __typename?: 'RootQuery', allSettings: Array<{ __typename?: 'Settings', _id: string | null, title: string | null, footerLinkGroups: Array<{ __typename?: 'FooterLinkGroup', title: string | null, children: Array<{ __typename?: 'FooterLink', link: { __typename?: 'Link', text: string | null, url: string | null } | null } | null> | null } | null> | null, footerLinks: Array<{ __typename?: 'Link', url: string | null } | null> | null }> };
+export type GetAllSettingsQuery = { __typename?: 'RootQuery', allSettings: Array<{ __typename?: 'Settings', _id: string | null, title: string | null, footerLinkGroups: Array<{ __typename?: 'FooterLinkGroup', title: string | null, _key: string | null, children: Array<{ __typename?: 'FooterLink', _key: string | null, link: { __typename?: 'Link', text: string | null, url: string | null } | null } | null> | null } | null> | null, footerLinks: Array<{ __typename?: 'Link', url: string | null } | null> | null }> };
 
 export type GetStoriesQueryVariables = Exact<{
   where?: InputMaybe<ArticleFilter>;
@@ -2042,6 +2042,7 @@ export const GetHouseDesignDocument = gql`
     livingRooms
     garage
     storey
+    houseSize
     floorPlans {
       asset {
         url
@@ -2144,6 +2145,7 @@ export const GetHouseDesignsDocument = gql`
     livingRooms
     garage
     storey
+    houseSize
   }
 }
     `;
@@ -2154,7 +2156,9 @@ export const GetAllSettingsDocument = gql`
     title
     footerLinkGroups {
       title
+      _key
       children {
+        _key
         link {
           text
           url

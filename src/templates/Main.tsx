@@ -3,9 +3,9 @@ import '@/styles/common.css';
 import '@/styles/global.css';
 import '@/styles/index.css';
 import type { ReactNode } from 'react';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 // 配置
-import { FooterContent, FooterMessage } from '@/utils/FooterConfig';
+import { FooterMessage } from '@/utils/FooterConfig';
 import { MenuConfig } from '@/utils/MenuConfig';
 // 组件
 import {
@@ -16,6 +16,7 @@ import {
     Navbar,
     SearchBar,
 } from '@/components/common';
+import sanity, { GetAllSettingsQuery } from '@/services/sanity';
 // import Footer from '@/components/common/Footer';
 // import Grid from '@/components/common/Grid';
 // import LineBottom from '@/components/common/LineBottom';
@@ -24,20 +25,30 @@ import {
 // import SearchBar from '@/components/common/SearchBar';
 // 图片
 import Logo from '@/assets/index/logo.png';
-type IMainProps = {
+
+type MainProps = {
     meta?: ReactNode;
     children: ReactNode;
 };
-
-export default function Main(props: IMainProps) {
+export default function Main({ meta, children }: MainProps) {
     const [searchValue, setsearchValue] = useState('');
     const getSearchValue = (value: string) => {
         console.log('searchValue：' + value);
         setsearchValue(value);
     };
+    const [footerLinkGroups, setFooterLinkGroups] = useState([]);
+    const loadFooterData = useCallback(async () => {
+        const data: GetAllSettingsQuery['allSettings'] =
+            await sanity.getAllSettings({
+                limit: 1,
+                offset: 0,
+            });
+        setFooterLinkGroups(() => data[0].footerLinkGroups);
+    }, []);
+    loadFooterData();
     return (
         <div>
-            {props.meta}
+            {meta}
             <Navbar logoUrl={Logo}>
                 <Menu menuList={MenuConfig}>
                     <SearchBar
@@ -46,7 +57,7 @@ export default function Main(props: IMainProps) {
                     ></SearchBar>
                 </Menu>
             </Navbar>
-            {props.children}
+            {children}
             <Line></Line>
             <Footer messageData={FooterMessage}>
                 <div>
@@ -56,22 +67,25 @@ export default function Main(props: IMainProps) {
                         mobileCols="2"
                         className="gap-6 py-[4.125rem]"
                     >
-                        {FooterContent.map((v: any) => {
+                        {footerLinkGroups.map((v: any) => {
                             return (
                                 <div
                                     className="dark-grey font-semibold cursor-default"
-                                    key={v.title}
+                                    key={v._key}
                                 >
                                     {v.title}
-                                    {v.children.map((v: any) => {
+                                    {v.children.map((vv: any) => {
                                         return (
                                             <div
-                                                key={v.title}
+                                                key={vv._key}
                                                 className="text-base body-text cursor-pointer"
                                             >
-                                                <span className="hover:underline">
-                                                    {v.title}
-                                                </span>
+                                                <a
+                                                    href={vv.link.url}
+                                                    className="hover:underline"
+                                                >
+                                                    {vv.link.text}
+                                                </a>
                                             </div>
                                         );
                                     })}

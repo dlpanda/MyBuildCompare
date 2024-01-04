@@ -47,7 +47,7 @@ export default function HouseItem({
     return (
         <div className={classNames}>
             <Image
-                className="w-[6.25rem] h-[3.125rem]"
+                className="h-[3.125rem] w-auto"
                 src={logoSrc}
                 alt="icon"
                 width={100}
@@ -67,7 +67,7 @@ export default function HouseItem({
                             <Image
                                 src={item.asset ? item.asset.url : house1}
                                 alt="carouselImg"
-                                className="w-[20.1875rem] h-[20.8125rem]"
+                                className="h-[20.8125rem] w-auto"
                                 width={323}
                                 height={333}
                                 priority

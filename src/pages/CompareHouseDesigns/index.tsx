@@ -64,12 +64,13 @@ export default function HouseDesigns() {
         );
         setDataList(dataList);
         setSelectedData(dataList.slice(0, 3)); // 前三个展示在页面
-        console.log(dataList.slice(0, 3));
+        console.log(dataList.slice(3));
         setCompSelectData(dataList.slice(3)); // 其余的放到筛选组件
     }, [selectedIds]);
     useEffect(() => {
         getDataList();
     }, [getDataList]);
+    const onSelectChange = useCallback((item: any) => {}, []);
     // 假数据
     const xxxData = JSON.parse(JSON.stringify(DataList)).splice(0, 3);
     return (
@@ -98,7 +99,11 @@ export default function HouseDesigns() {
                                     ''
                                 }
                             >
-                                <Select label={v.type}></Select>
+                                <Select
+                                    label={v.title}
+                                    items={compSelectData}
+                                    onSelectChange={onSelectChange}
+                                ></Select>
                                 <Gap size={40}></Gap>
                                 <Carousel autoPlay={false}>
                                     {v.photos.map((item: any, index: any) => {
@@ -110,7 +115,7 @@ export default function HouseDesigns() {
                                                             ? item.asset.url
                                                             : house1
                                                     }
-                                                    className="w-[20.1875rem] h-[20.8125rem]"
+                                                    className="h-[20.8125rem] w-auto"
                                                     alt="carouselImg"
                                                     width={323}
                                                     height={333}
@@ -122,7 +127,7 @@ export default function HouseDesigns() {
                                 </Carousel>
                                 <Gap size={40}></Gap>
                                 <Image
-                                    className="button-box-shadow w-[12.5rem] h-[4.375rem]"
+                                    className="button-box-shadow w-auto h-[4.375rem]"
                                     src={v.builder.logo.asset.url}
                                     alt="icon"
                                     priority

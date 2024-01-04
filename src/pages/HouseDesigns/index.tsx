@@ -15,6 +15,7 @@ import {
     Title,
 } from '@/components/common';
 // 图片
+import ComparePNG from '@/assets/icon/compare.png';
 import HouseAbove from '../../assets/house-designs/house-above.png';
 import HouseNext from '../../assets/house-designs/house-next.png';
 import House from '../../assets/house-designs/house.png';
@@ -173,8 +174,8 @@ export default function HouseDesigns({ data }: Props) {
                             text={`${v.bedrooms || 0} Bed ${
                                 v.storey || 0
                             } Bath ${v.garage || 0} Garage ${
-                                v.bedrooms || 0
-                            } livingRooms `}
+                                v.houseSize || 0
+                            } Squares`}
                             author={'More Details'}
                         ></HouseItem>
                     );
@@ -196,10 +197,19 @@ export default function HouseDesigns({ data }: Props) {
             </div>
             <div
                 onClick={handleCompare}
-                className="fixed top-1/2 left-[50%] ml-[-3rem] rounded-xl border w-[6rem] bg-[#ccc] text-center cursor-pointer select-none"
+                className="fixed z-20 top-1/2 left-[50%] ml-[-3rem] rounded-xl border w-[6rem] bg-[#ccc] text-center cursor-pointer select-none"
             >
                 Compare
             </div>
+            <IconButton
+                className="hover:bg-[#888888] border-none shadow-none bg-[#686868] text-white fixed z-20 top-1/2 left-[50%] ml-[-4.5rem] rounded-[16px] border w-[9rem] text-center cursor-pointer select-none py-2"
+                iconSrc={ComparePNG}
+                iconWidth={20}
+                iconHeight={20}
+                iconPoistion="right"
+            >
+                Compare
+            </IconButton>
         </Main>
     );
 }

@@ -1,5 +1,8 @@
 import { Client as UrqlClient, cacheExchange, fetchExchange } from '@urql/core';
 import {
+    GetAllSettingsDocument,
+    GetAllSettingsQuery,
+    GetAllSettingsQueryVariables,
     GetArticlesDocument,
     GetArticlesQuery,
     GetArticlesQueryVariables,
@@ -79,6 +82,16 @@ class Client extends UrqlClient {
         if (error) throw error;
 
         return data?.allArticle;
+    }
+
+    async getAllSettings(params: GetAllSettingsQueryVariables) {
+        const { data, error } = await this.query<GetAllSettingsQuery>(
+            GetAllSettingsDocument,
+            params
+        );
+        if (error) throw error;
+
+        return data?.allSettings;
     }
 
     // async getHouseDesigns() {

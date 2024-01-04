@@ -9,7 +9,9 @@ query GetAllSettings(
         title
         footerLinkGroups {
             title
+            _key
             children {
+                _key
                 link {
                     text
                     url

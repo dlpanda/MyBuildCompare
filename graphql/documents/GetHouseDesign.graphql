@@ -19,6 +19,7 @@ query GetHouseDesign($id: ID!) {
         livingRooms
         garage
         storey
+        houseSize
         floorPlans {
             asset {
                 url
