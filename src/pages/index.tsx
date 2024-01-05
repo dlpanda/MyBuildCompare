@@ -464,7 +464,7 @@ export default function Home({ blogsData }: Props) {
                                     })}
                                 />
                                 <div className="autocomplete-dropdown-container">
-                                    {suggestions.map((suggestion) => {
+                                    {suggestions.map((suggestion, i) => {
                                         const className = suggestion.active
                                             ? 'suggestion-item--active'
                                             : 'suggestion-item';
@@ -479,6 +479,7 @@ export default function Home({ blogsData }: Props) {
                                               };
                                         return (
                                             <div
+                                                key={i}
                                                 {...getSuggestionItemProps(
                                                     suggestion,
                                                     {

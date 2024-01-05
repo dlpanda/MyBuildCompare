@@ -24,6 +24,7 @@ import SearchBlack from '@/assets/icon/search-black.png';
 import Search from '@/assets/icon/search.png';
 import '@/styles/color.css';
 import '@/styles/common.css';
+import { BATHROOMS, BEDROOMS, GARAGES } from '@/utils/FilterConfig';
 
 export default function IndexFilter() {
     const [currentDesign, setcurrentDesign] = useState('');
@@ -89,11 +90,20 @@ export default function IndexFilter() {
                     <Gap size={20}></Gap>
                     <Title variant="6">Rooms and Parking</Title>
                     <Gap size={20}></Gap>
-                    <ButtonGroup title="Bedrooms"></ButtonGroup>
+                    <ButtonGroup
+                        title="Bedrooms"
+                        items={BEDROOMS.map((label) => ({ label }))}
+                    ></ButtonGroup>
                     <Gap size={20}></Gap>
-                    <ButtonGroup title="Bathrooms"></ButtonGroup>
+                    <ButtonGroup
+                        title="Bathrooms"
+                        items={BATHROOMS.map((label) => ({ label }))}
+                    ></ButtonGroup>
                     <Gap size={20}></Gap>
-                    <ButtonGroup title="Garage"></ButtonGroup>
+                    <ButtonGroup
+                        title="Garages"
+                        items={GARAGES.map((label) => ({ label }))}
+                    ></ButtonGroup>
                     <Gap size={20}></Gap>
                     <Gap size={20}></Gap>
                     <Title variant="6">Search Location</Title>

@@ -36,7 +36,7 @@ export default function ButtonGroup({
                     <Button
                         key={i}
                         className={`${buttonClass} ${
-                            selectedIndexes.includes(i)
+                            selectedIndexes?.includes(i)
                                 ? 'bg-[#3D3D3D] text-white'
                                 : 'text-[#3D3D3D]'
                         }`}

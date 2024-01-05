@@ -19,6 +19,7 @@ import {
 // 图片
 import '@/styles/color.css';
 import '@/styles/common.css';
+import { BATHROOMS, BEDROOMS, GARAGES } from '@/utils/FilterConfig';
 
 export default function Filter() {
     return (
@@ -46,11 +47,20 @@ export default function Filter() {
                     <Gap size={15}></Gap>
                     <Title variant="6">Rooms and Parking</Title>
                     <Gap size={15}></Gap>
-                    <ButtonGroup title="Bedrooms"></ButtonGroup>
+                    <ButtonGroup
+                        title="Bedrooms"
+                        items={BEDROOMS.map((label) => ({ label }))}
+                    ></ButtonGroup>
                     <Gap size={20}></Gap>
-                    <ButtonGroup title="Bathrooms"></ButtonGroup>
+                    <ButtonGroup
+                        title="Bathrooms"
+                        items={BATHROOMS.map((label) => ({ label }))}
+                    ></ButtonGroup>
                     <Gap size={20}></Gap>
-                    <ButtonGroup title="Garage"></ButtonGroup>
+                    <ButtonGroup
+                        title="Garages"
+                        items={GARAGES.map((label) => ({ label }))}
+                    ></ButtonGroup>
                     <Gap size={15}></Gap>
                     <Line color="#EFEFEF"></Line>
                     <Gap size={15}></Gap>
