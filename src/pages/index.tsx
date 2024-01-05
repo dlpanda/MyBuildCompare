@@ -504,7 +504,7 @@ export default function Home({ blogsData }: Props) {
                     <SearchBar
                         className="flex-1 h-full !inline-block leading-[36px] rounded-full font-semibold button-box-shadow border-[0.5px] border-[#D1D1D1] bg-white"
                         iconUrl={SearchBlack}
-                        iconPoistion="left"
+                        iconPosition="left"
                         placeholder="Search Locations"
                         iconSize={20}
                         iconClassName="mt-[-6px]"

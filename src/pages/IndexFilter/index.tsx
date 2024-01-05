@@ -112,7 +112,7 @@ export default function IndexFilter() {
                         <SearchBar
                             className="w-full h-full !inline-block leading-[3rem] rounded-xl font-semibold"
                             iconUrl={SearchBlack}
-                            iconPoistion="left"
+                            iconPosition="left"
                             placeholder="Search Locations"
                             iconSize={20}
                             inputClassName="!w-[calc(100%-20px-0.625rem)] !text-[#3D3D3D]"
@@ -138,7 +138,7 @@ export default function IndexFilter() {
                                 iconSrc={Search}
                                 iconWidth={12}
                                 iconHeight={12}
-                                iconPoistion="left"
+                                iconPosition="left"
                             >
                                 filters
                             </IconButton>

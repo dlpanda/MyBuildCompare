@@ -1,5 +1,6 @@
 import house1 from '@/assets/compare-house-designs/house1.png';
-import heart from '@/assets/icon/heart.png';
+import heartGreyPNG from '@/assets/icon/heart-grey.png';
+import heartRedPNG from '@/assets/icon/heart-red.png';
 import { Text } from '@/components/common';
 // import { Image as MyImage } from '@/services/sanity';
 import clsx from 'clsx';
@@ -35,9 +36,10 @@ export default function HouseItem({
     handleHeartClick,
 }: HouseItemProps) {
     const [isSelected, setIsSelected] = useState(false);
-    const classNames = clsx(`relative p-1 ${className}`, {
-        border: isSelected,
-    });
+    const classNames = clsx(`relative p-1 ${className}`);
+    // {
+    //     border: isSelected,
+    // }
     const heartOnCilick = useCallback(() => {
         setIsSelected((prev) => {
             handleHeartClick(id, !prev);
@@ -58,7 +60,13 @@ export default function HouseItem({
                 onClick={heartOnCilick}
                 className="bg-white z-10 absolute top-[0.625rem] right-[0.625rem] w-[50px] h-[50px] py-[15px] px-[13px] rounded-full border border-[#EFEFEF]"
             >
-                <Image src={heart} alt="icon" width={24} height={20} priority />
+                <Image
+                    src={isSelected ? heartRedPNG : heartGreyPNG}
+                    alt="icon"
+                    width={24}
+                    height={20}
+                    priority
+                />
             </div>
             <Carousel autoPlay={false}>
                 {carouselItem.map((item, index) => {

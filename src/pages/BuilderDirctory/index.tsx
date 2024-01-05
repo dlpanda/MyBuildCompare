@@ -65,7 +65,7 @@ export default function BuilderDirctory({ data = [] }: Props) {
             <Gap size={50}></Gap>
             <div className="flex justify-center gap-5 h-12">
                 <IconButton
-                    iconPoistion="top"
+                    iconPosition="top"
                     className="mobile:hidden"
                     iconSrc={House}
                     iconWidth={29}
@@ -74,7 +74,7 @@ export default function BuilderDirctory({ data = [] }: Props) {
                     Single-Storey
                 </IconButton>
                 <IconButton
-                    iconPoistion="top"
+                    iconPosition="top"
                     className="mobile:hidden"
                     iconSrc={HouseNext}
                     iconWidth={27}
@@ -83,7 +83,7 @@ export default function BuilderDirctory({ data = [] }: Props) {
                     Double-Storey
                 </IconButton>
                 <IconButton
-                    iconPoistion="top"
+                    iconPosition="top"
                     className="mobile:hidden"
                     iconSrc={HouseAbove}
                     iconWidth={27}
@@ -95,7 +95,7 @@ export default function BuilderDirctory({ data = [] }: Props) {
                     className="button-box-shadow"
                     clickSearch={getSearchValue}
                     placeholder={'Search'}
-                    iconPoistion="left"
+                    iconPosition="left"
                 ></SearchBar>
             </div>
             <Gap className="mobile:hidden" size={50}></Gap>

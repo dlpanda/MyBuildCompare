@@ -118,7 +118,7 @@ export default function HouseDesigns({ data }: Props) {
                     iconSrc={House}
                     iconWidth={29}
                     iconHeight={24}
-                    iconPoistion="top"
+                    iconPosition="top"
                 >
                     Single-Storey
                 </IconButton>
@@ -126,7 +126,7 @@ export default function HouseDesigns({ data }: Props) {
                     iconSrc={HouseNext}
                     iconWidth={27}
                     iconHeight={24}
-                    iconPoistion="top"
+                    iconPosition="top"
                 >
                     Double-Storey
                 </IconButton>
@@ -134,7 +134,7 @@ export default function HouseDesigns({ data }: Props) {
                     iconSrc={HouseAbove}
                     iconWidth={27}
                     iconHeight={24}
-                    iconPoistion="top"
+                    iconPosition="top"
                 >
                     Duplex
                 </IconButton>
@@ -142,7 +142,7 @@ export default function HouseDesigns({ data }: Props) {
                     className="button-box-shadow mobile:hidden"
                     clickSearch={getSearchValue}
                     placeholder={'Search'}
-                    iconPoistion="left"
+                    iconPosition="left"
                 ></SearchBar>
                 <Link className="flex" href="/Filter">
                     <IconButton
@@ -195,18 +195,19 @@ export default function HouseDesigns({ data }: Props) {
                     Show More
                 </Button>
             </div>
-            <div
+            {/* <div
                 onClick={handleCompare}
                 className="fixed z-20 top-1/2 left-[50%] ml-[-3rem] rounded-xl border w-[6rem] bg-[#ccc] text-center cursor-pointer select-none"
             >
                 Compare
-            </div>
+            </div> */}
             <IconButton
+                onClick={handleCompare}
                 className="hover:bg-[#888888] border-none shadow-none bg-[#686868] text-white fixed z-20 top-1/2 left-[50%] ml-[-4.5rem] rounded-[16px] border w-[9rem] text-center cursor-pointer select-none py-2"
                 iconSrc={ComparePNG}
                 iconWidth={20}
                 iconHeight={20}
-                iconPoistion="right"
+                iconPosition="right"
             >
                 Compare
             </IconButton>

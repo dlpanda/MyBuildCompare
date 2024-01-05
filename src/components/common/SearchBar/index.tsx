@@ -7,7 +7,7 @@ import Icon from '../Icon';
 // value change?
 type SearchBarProps = {
     hideIcon?: Boolean;
-    iconPoistion?: 'right' | 'left';
+    iconPosition?: 'right' | 'left';
     iconUrl?: any;
     iconSize?: number;
     clickSearch: (value: string) => void;
@@ -24,7 +24,7 @@ export default function SearchBar({
     inputClassName,
     hideIcon = false,
     iconUrl = SearchGrey,
-    iconPoistion = 'right',
+    iconPosition = 'right',
     placeholder = 'search',
     iconSize = 15,
 }: SearchBarProps) {
@@ -39,7 +39,7 @@ export default function SearchBar({
         <div className={classNames}>
             <Icon
                 className={clsx(`inline-block mr-[0.625rem] ${iconClassName}`, {
-                    hidden: hideIcon || iconPoistion !== 'left',
+                    hidden: hideIcon || iconPosition !== 'left',
                 })}
                 clickIcon={() => {
                     clickSearch(searchValue);
@@ -59,7 +59,7 @@ export default function SearchBar({
             />
             <Icon
                 className={clsx(`inline-block ml-1 ${iconClassName}`, {
-                    hidden: hideIcon || iconPoistion !== 'right',
+                    hidden: hideIcon || iconPosition !== 'right',
                 })}
                 clickIcon={() => {
                     clickSearch(searchValue);

@@ -82,7 +82,7 @@ export default function IndividualHouseDesigns() {
                                 iconSrc={Compare}
                                 iconWidth={20}
                                 iconHeight={20}
-                                iconPoistion="right"
+                                iconPosition="right"
                             >
                                 Compare
                             </IconButton>
@@ -123,7 +123,7 @@ export default function IndividualHouseDesigns() {
                     iconSrc={HeartLine}
                     iconWidth={20}
                     iconHeight={20}
-                    iconPoistion="right"
+                    iconPosition="right"
                 ></IconButton>
                 <Gap size={40}></Gap>
                 <div className="flex">
@@ -147,7 +147,7 @@ export default function IndividualHouseDesigns() {
                         <Gap size={80}></Gap>
                         <Grid className="grid-cols-4 gap-y-[20px] px-[4.375rem] text-center mobile:grid-cols-2">
                             <IconButton
-                                iconPoistion="top"
+                                iconPosition="top"
                                 iconSrc={BedPNG}
                                 iconWidth={33}
                                 iconHeight={30}
@@ -155,7 +155,7 @@ export default function IndividualHouseDesigns() {
                                 4 Bed
                             </IconButton>
                             <IconButton
-                                iconPoistion="top"
+                                iconPosition="top"
                                 iconSrc={BathPNG}
                                 iconWidth={33}
                                 iconHeight={30}
@@ -163,7 +163,7 @@ export default function IndividualHouseDesigns() {
                                 2 Bath
                             </IconButton>
                             <IconButton
-                                iconPoistion="top"
+                                iconPosition="top"
                                 iconSrc={GaragePNG}
                                 iconWidth={33}
                                 iconHeight={30}
@@ -171,7 +171,7 @@ export default function IndividualHouseDesigns() {
                                 2 Garage
                             </IconButton>
                             <IconButton
-                                iconPoistion="top"
+                                iconPosition="top"
                                 iconSrc={LivingPNG}
                                 iconWidth={33}
                                 iconHeight={30}

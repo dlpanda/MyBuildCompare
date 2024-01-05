@@ -166,7 +166,7 @@ export default function HouseDesigns() {
                                         return (
                                             <div key={qi}>
                                                 <IconButton
-                                                    iconPoistion="top"
+                                                    iconPosition="top"
                                                     className="text-center"
                                                     iconSrc={quick.icon}
                                                     iconWidth={33}

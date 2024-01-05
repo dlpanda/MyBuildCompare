@@ -8,8 +8,9 @@ type IconButtonProps = PropsWithChildren<{
     iconSrc: string | StaticImageData;
     iconWidth: number;
     iconHeight: number;
-    iconPoistion?: 'right' | 'left' | 'top';
+    iconPosition?: 'right' | 'left' | 'top';
     textClassName?: string;
+    onClick?: () => void;
 }>;
 
 export default function ButtonIcon({
@@ -19,26 +20,27 @@ export default function ButtonIcon({
     iconHeight,
     iconWidth,
     iconSrc,
-    iconPoistion = 'left',
+    iconPosition = 'left',
+    onClick,
 }: IconButtonProps) {
     const classNames = clsx(
         ` gap-4 items-center px-5 rounded-[5.625rem]  cursor-pointer ${className}`,
         {
-            flex: iconPoistion !== 'top',
-            border: iconPoistion !== 'top',
-            'button-box-shadow': iconPoistion !== 'top',
-            'border-[#D1D1D1]': iconPoistion !== 'top',
+            flex: iconPosition !== 'top',
+            border: iconPosition !== 'top',
+            'button-box-shadow': iconPosition !== 'top',
+            'border-[#D1D1D1]': iconPosition !== 'top',
         }
     );
     const textClassNames = clsx(`${textClassName}`, {
-        block: iconPoistion === 'top',
+        block: iconPosition === 'top',
     });
     return (
-        <div className={classNames}>
+        <div className={classNames} onClick={onClick}>
             <Icon
                 className={clsx({
-                    hidden: iconPoistion !== 'left' && iconPoistion !== 'top',
-                    'mx-auto': iconPoistion === 'top',
+                    hidden: iconPosition !== 'left' && iconPosition !== 'top',
+                    'mx-auto': iconPosition === 'top',
                 })}
                 iconSrc={iconSrc}
                 iconWidth={iconWidth}
@@ -46,7 +48,7 @@ export default function ButtonIcon({
             />
             <div className={textClassNames}>{children}</div>
             <Icon
-                className={clsx({ hidden: iconPoistion !== 'right' })}
+                className={clsx({ hidden: iconPosition !== 'right' })}
                 iconSrc={iconSrc}
                 iconWidth={iconWidth}
                 iconHeight={iconHeight}
