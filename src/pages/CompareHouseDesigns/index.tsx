@@ -2,17 +2,23 @@ import house1 from '@/assets/compare-house-designs/house1.png';
 import Meta from '@/layouts/Meta';
 import sanity from '@/services/sanity';
 import Main from '@/templates/Main';
+import {
+    BathroomEnSuiteFeatures,
+    ElectricalGasFeatures,
+    ExternalFeatures,
+    InternalFeatures,
+    KitchenFeatures,
+    Miscellaneous,
+    MustHaves,
+    QuickLockConfig,
+    interfaceKeyFormatter,
+} from '@/utils';
 import { AppConfig } from '@/utils/AppConfig';
-import { DataList } from '@/utils/DataList';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useCallback, useEffect, useState } from 'react';
 // 组件
-import BathPNG from '@/assets/icon/bath.png';
-import BedPNG from '@/assets/icon/bed.png';
-import GaragePNG from '@/assets/icon/garage.png';
-import LivingPNG from '@/assets/icon/living.png';
 import {
     Carousel,
     CheckBox,
@@ -29,28 +35,6 @@ import '@/styles/common.css';
 // 接口
 
 export default function HouseDesigns() {
-    const QuickLockConfig = [
-        {
-            key: 'bedrooms',
-            title: 'Bed',
-            icon: BedPNG,
-        },
-        {
-            key: 'storey',
-            title: 'Bath',
-            icon: BathPNG,
-        },
-        {
-            key: 'garage',
-            title: 'Garage',
-            icon: GaragePNG,
-        },
-        {
-            key: 'livingRooms',
-            title: 'squares',
-            icon: LivingPNG,
-        },
-    ];
     const router = useRouter();
     const { selectedIds } = router.query;
     const [dataList, setDataList] = useState([]);
@@ -72,7 +56,7 @@ export default function HouseDesigns() {
     }, [getDataList]);
     const onSelectChange = useCallback((item: any) => {}, []);
     // 假数据
-    const xxxData = JSON.parse(JSON.stringify(DataList)).splice(0, 3);
+    // const selectedData = JSON.parse(JSON.stringify(DataList)).splice(0, 3);
     return (
         <Main
             meta={
@@ -200,7 +184,6 @@ export default function HouseDesigns() {
                     {selectedData.map((v: any, i: number) => {
                         return (
                             <Image
-                                // fill
                                 key={i}
                                 className={`button-box-shadow w-full ${
                                     (i === 2 &&
@@ -223,7 +206,7 @@ export default function HouseDesigns() {
                 <Text variant="grey-bold">Must Haves</Text>
                 <Gap size={20}></Gap>
                 <Grid className="grid-cols-3 gap-x-[20px] tablet:grid-cols-2 mobile:grid-cols-2">
-                    {xxxData.map((v: any, i: number) => {
+                    {selectedData.map((data: any, i: number) => {
                         return (
                             <div
                                 key={i}
@@ -233,24 +216,25 @@ export default function HouseDesigns() {
                                     i
                                 }`}
                             >
-                                {new Array(20)
-                                    .fill('')
-                                    .map((vv: any, ii: number) => {
-                                        return (
-                                            <div
-                                                key={ii}
-                                                className={`mb-[20px] ${
-                                                    (ii === 2 &&
-                                                        'tablet:hidden mobile:hidden') ||
-                                                    ''
-                                                }`}
+                                {MustHaves.map((key: any, ii: number) => {
+                                    return (
+                                        <div
+                                            key={key}
+                                            className={`mb-[20px] ${
+                                                (ii === 2 &&
+                                                    'tablet:hidden mobile:hidden') ||
+                                                ''
+                                            }`}
+                                        >
+                                            <CheckBox
+                                                isChecked={data[key] || false}
+                                                disabled={true}
                                             >
-                                                <CheckBox isChecked={true}>
-                                                    Alfresco
-                                                </CheckBox>
-                                            </div>
-                                        );
-                                    })}
+                                                {interfaceKeyFormatter(key)}
+                                            </CheckBox>
+                                        </div>
+                                    );
+                                })}
                             </div>
                         );
                     })}
@@ -259,30 +243,39 @@ export default function HouseDesigns() {
                 <Text variant="grey-bold">External Features</Text>
                 <Gap size={20}></Gap>
                 <Grid className="grid-cols-3 gap-x-[20px] tablet:grid-cols-2 mobile:grid-cols-2">
-                    {xxxData.map((v: any, i: number) => {
+                    {selectedData.map((data: any, i: number) => {
                         return (
                             <div
                                 key={i}
                                 className={`${
                                     (i === 2 &&
                                         'tablet:hidden mobile:hidden') ||
-                                    ''
+                                    i
                                 }`}
                             >
-                                {new Array(16)
-                                    .fill('')
-                                    .map((vv: any, ii: number) => {
+                                {ExternalFeatures.map(
+                                    (key: any, ii: number) => {
                                         return (
                                             <div
-                                                key={ii}
-                                                className={`mb-[20px]`}
+                                                key={key}
+                                                className={`mb-[20px] ${
+                                                    (ii === 2 &&
+                                                        'tablet:hidden mobile:hidden') ||
+                                                    ''
+                                                }`}
                                             >
-                                                <CheckBox isChecked={true}>
-                                                    Termite Treated Timber
+                                                <CheckBox
+                                                    isChecked={
+                                                        data[key] || false
+                                                    }
+                                                    disabled={true}
+                                                >
+                                                    {interfaceKeyFormatter(key)}
                                                 </CheckBox>
                                             </div>
                                         );
-                                    })}
+                                    }
+                                )}
                             </div>
                         );
                     })}
@@ -291,34 +284,39 @@ export default function HouseDesigns() {
                 <Text variant="grey-bold">Internal Features</Text>
                 <Gap size={20}></Gap>
                 <Grid className="grid-cols-3 gap-x-[20px] tablet:grid-cols-2 mobile:grid-cols-2">
-                    {xxxData.map((v: any, i: number) => {
+                    {selectedData.map((data: any, i: number) => {
                         return (
                             <div
                                 key={i}
                                 className={`${
                                     (i === 2 &&
                                         'tablet:hidden mobile:hidden') ||
-                                    ''
+                                    i
                                 }`}
                             >
-                                {new Array(5)
-                                    .fill('')
-                                    .map((vv: any, ii: number) => {
+                                {InternalFeatures.map(
+                                    (key: any, ii: number) => {
                                         return (
                                             <div
-                                                key={ii}
+                                                key={key}
                                                 className={`mb-[20px] ${
                                                     (ii === 2 &&
                                                         'tablet:hidden mobile:hidden') ||
                                                     ''
                                                 }`}
                                             >
-                                                <CheckBox isChecked={true}>
-                                                    Flooring
+                                                <CheckBox
+                                                    isChecked={
+                                                        data[key] || false
+                                                    }
+                                                    disabled={true}
+                                                >
+                                                    {interfaceKeyFormatter(key)}
                                                 </CheckBox>
                                             </div>
                                         );
-                                    })}
+                                    }
+                                )}
                             </div>
                         );
                     })}
@@ -327,34 +325,35 @@ export default function HouseDesigns() {
                 <Text variant="grey-bold">Kitchen Features</Text>
                 <Gap size={20}></Gap>
                 <Grid className="grid-cols-3 gap-x-[20px] tablet:grid-cols-2 mobile:grid-cols-2">
-                    {xxxData.map((v: any, i: number) => {
+                    {selectedData.map((data: any, i: number) => {
                         return (
                             <div
                                 key={i}
                                 className={`${
                                     (i === 2 &&
                                         'tablet:hidden mobile:hidden') ||
-                                    ''
+                                    i
                                 }`}
                             >
-                                {new Array(5)
-                                    .fill('')
-                                    .map((vv: any, ii: number) => {
-                                        return (
-                                            <div
-                                                key={ii}
-                                                className={`mb-[20px] ${
-                                                    (ii === 2 &&
-                                                        'tablet:hidden mobile:hidden') ||
-                                                    ''
-                                                }`}
+                                {KitchenFeatures.map((key: any, ii: number) => {
+                                    return (
+                                        <div
+                                            key={key}
+                                            className={`mb-[20px] ${
+                                                (ii === 2 &&
+                                                    'tablet:hidden mobile:hidden') ||
+                                                ''
+                                            }`}
+                                        >
+                                            <CheckBox
+                                                isChecked={data[key] || false}
+                                                disabled={true}
                                             >
-                                                <CheckBox isChecked={true}>
-                                                    Overhead Cupboards
-                                                </CheckBox>
-                                            </div>
-                                        );
-                                    })}
+                                                {interfaceKeyFormatter(key)}
+                                            </CheckBox>
+                                        </div>
+                                    );
+                                })}
                             </div>
                         );
                     })}
@@ -363,34 +362,35 @@ export default function HouseDesigns() {
                 <Text variant="grey-bold">Kitchen Appliances</Text>
                 <Gap size={20}></Gap>
                 <Grid className="grid-cols-3 gap-x-[20px] tablet:grid-cols-2 mobile:grid-cols-2">
-                    {xxxData.map((v: any, i: number) => {
+                    {selectedData.map((data: any, i: number) => {
                         return (
                             <div
                                 key={i}
                                 className={`${
                                     (i === 2 &&
                                         'tablet:hidden mobile:hidden') ||
-                                    ''
+                                    i
                                 }`}
                             >
-                                {new Array(5)
-                                    .fill('')
-                                    .map((vv: any, ii: number) => {
-                                        return (
-                                            <div
-                                                key={ii}
-                                                className={`mb-[20px] ${
-                                                    (ii === 2 &&
-                                                        'tablet:hidden mobile:hidden') ||
-                                                    ''
-                                                }`}
+                                {KitchenFeatures.map((key: any, ii: number) => {
+                                    return (
+                                        <div
+                                            key={key}
+                                            className={`mb-[20px] ${
+                                                (ii === 2 &&
+                                                    'tablet:hidden mobile:hidden') ||
+                                                ''
+                                            }`}
+                                        >
+                                            <CheckBox
+                                                isChecked={data[key] || false}
+                                                disabled={true}
                                             >
-                                                <CheckBox isChecked={true}>
-                                                    Oven
-                                                </CheckBox>
-                                            </div>
-                                        );
-                                    })}
+                                                {interfaceKeyFormatter(key)}
+                                            </CheckBox>
+                                        </div>
+                                    );
+                                })}
                             </div>
                         );
                     })}
@@ -399,34 +399,39 @@ export default function HouseDesigns() {
                 <Text variant="grey-bold">Bathroom/En-suite Features</Text>
                 <Gap size={20}></Gap>
                 <Grid className="grid-cols-3 gap-x-[20px] tablet:grid-cols-2 mobile:grid-cols-2">
-                    {xxxData.map((v: any, i: number) => {
+                    {selectedData.map((data: any, i: number) => {
                         return (
                             <div
                                 key={i}
                                 className={`${
                                     (i === 2 &&
                                         'tablet:hidden mobile:hidden') ||
-                                    ''
+                                    i
                                 }`}
                             >
-                                {new Array(6)
-                                    .fill('')
-                                    .map((vv: any, ii: number) => {
+                                {BathroomEnSuiteFeatures.map(
+                                    (key: any, ii: number) => {
                                         return (
                                             <div
-                                                key={ii}
+                                                key={key}
                                                 className={`mb-[20px] ${
                                                     (ii === 2 &&
                                                         'tablet:hidden mobile:hidden') ||
                                                     ''
                                                 }`}
                                             >
-                                                <CheckBox isChecked={true}>
-                                                    Floor to ceiling tiles
+                                                <CheckBox
+                                                    isChecked={
+                                                        data[key] || false
+                                                    }
+                                                    disabled={true}
+                                                >
+                                                    {interfaceKeyFormatter(key)}
                                                 </CheckBox>
                                             </div>
                                         );
-                                    })}
+                                    }
+                                )}
                             </div>
                         );
                     })}
@@ -435,34 +440,39 @@ export default function HouseDesigns() {
                 <Text variant="grey-bold">Electrical/Gas Features</Text>
                 <Gap size={20}></Gap>
                 <Grid className="grid-cols-3 gap-x-[20px] tablet:grid-cols-2 mobile:grid-cols-2">
-                    {xxxData.map((v: any, i: number) => {
+                    {selectedData.map((data: any, i: number) => {
                         return (
                             <div
                                 key={i}
                                 className={`${
                                     (i === 2 &&
                                         'tablet:hidden mobile:hidden') ||
-                                    ''
+                                    i
                                 }`}
                             >
-                                {new Array(12)
-                                    .fill('')
-                                    .map((vv: any, ii: number) => {
+                                {ElectricalGasFeatures.map(
+                                    (key: any, ii: number) => {
                                         return (
                                             <div
-                                                key={ii}
+                                                key={key}
                                                 className={`mb-[20px] ${
                                                     (ii === 2 &&
                                                         'tablet:hidden mobile:hidden') ||
                                                     ''
                                                 }`}
                                             >
-                                                <CheckBox isChecked={true}>
-                                                    Ducted Air-conditioning
+                                                <CheckBox
+                                                    isChecked={
+                                                        data[key] || false
+                                                    }
+                                                    disabled={true}
+                                                >
+                                                    {interfaceKeyFormatter(key)}
                                                 </CheckBox>
                                             </div>
                                         );
-                                    })}
+                                    }
+                                )}
                             </div>
                         );
                     })}
@@ -471,35 +481,35 @@ export default function HouseDesigns() {
                 <Text variant="grey-bold">Miscellaneous</Text>
                 <Gap size={20}></Gap>
                 <Grid className="grid-cols-3 gap-x-[20px] tablet:grid-cols-2 mobile:grid-cols-2">
-                    {xxxData.map((v: any, i: number) => {
+                    {selectedData.map((data: any, i: number) => {
                         return (
                             <div
                                 key={i}
                                 className={`${
                                     (i === 2 &&
                                         'tablet:hidden mobile:hidden') ||
-                                    ''
+                                    i
                                 }`}
                             >
-                                {new Array(2)
-                                    .fill('')
-                                    .map((vv: any, ii: number) => {
-                                        return (
-                                            <div
-                                                key={ii}
-                                                className={`mb-[20px] ${
-                                                    (ii === 2 &&
-                                                        'tablet:hidden mobile:hidden') ||
-                                                    ''
-                                                }`}
+                                {Miscellaneous.map((key: any, ii: number) => {
+                                    return (
+                                        <div
+                                            key={key}
+                                            className={`mb-[20px] ${
+                                                (ii === 2 &&
+                                                    'tablet:hidden mobile:hidden') ||
+                                                ''
+                                            }`}
+                                        >
+                                            <CheckBox
+                                                isChecked={data[key] || false}
+                                                disabled={true}
                                             >
-                                                <CheckBox isChecked={true}>
-                                                    Interim Occupation
-                                                    Certificate
-                                                </CheckBox>
-                                            </div>
-                                        );
-                                    })}
+                                                {interfaceKeyFormatter(key)}
+                                            </CheckBox>
+                                        </div>
+                                    );
+                                })}
                             </div>
                         );
                     })}
