@@ -89,6 +89,8 @@ export default function HouseDesigns({ data }: Props) {
     }, []);
     // 跳转到对比
     const handleCompare = useCallback(() => {
+        if (selectedIds.length <= 1)
+            return alert('Please select at least two comparison items');
         Router.push({
             pathname: '/CompareHouseDesigns',
             query: {

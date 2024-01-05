@@ -75,7 +75,7 @@ export default function HouseItem({
                             <Image
                                 src={item.asset ? item.asset.url : house1}
                                 alt="carouselImg"
-                                className="h-[20.8125rem] w-auto"
+                                className="h-auto w-full"
                                 width={323}
                                 height={333}
                                 priority

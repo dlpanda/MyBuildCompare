@@ -99,7 +99,7 @@ export default function HouseDesigns() {
                                                             ? item.asset.url
                                                             : house1
                                                     }
-                                                    className="h-[20.8125rem] w-auto"
+                                                    className="h-auto w-full"
                                                     alt="carouselImg"
                                                     width={323}
                                                     height={333}

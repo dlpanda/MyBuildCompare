@@ -19,6 +19,7 @@ CarouselProps) {
     return (
         <RRCarousel
             className={classNames}
+            showStatus={false}
             autoPlay={autoPlay} //是否自动播放
             // {...rest}
         >
