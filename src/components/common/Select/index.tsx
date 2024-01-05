@@ -53,7 +53,7 @@ export default function Select({ label, items }: SelectProps) {
                 </div>
             </div>
             <div
-                className={`w-full absolute z-50 leading-10 px-4 border border-t-0 ${
+                className={`w-full absolute z-50 leading-10 px-4 border border-t-0 bg-white ${
                     dropDown ? 'block ' : 'hidden'
                 }`}
             >
